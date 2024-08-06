@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "531340532708",
+    "project_id": "expense-income-tracker-talha",
+    "storage_bucket": "expense-income-tracker-talha.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:531340532708:android:7835c081c00521da9705f1",
+        "android_client_info": {
+          "package_name": "com.react_native_talha"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "531340532708-nh597pngon19stqdtuoji1narriopb3g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.react_native_talha",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "531340532708-578riacp1pcmemh81cabl204s9s2364v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClY7fAChGeREyzXlcX-dxNqBQjmEVZpjU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "531340532708-578riacp1pcmemh81cabl204s9s2364v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
