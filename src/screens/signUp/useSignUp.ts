@@ -11,6 +11,8 @@ export const useSignUp = () => {
   const onSignInPress = () => {
     navigation.navigate('SignIn');
   };
+
+  const [isChecked,setIsChecked]=useState(false)
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [loading, setLoading] = useState(false);
@@ -27,18 +29,36 @@ export const useSignUp = () => {
     }
   };
 
-  const onRegisterPress = async () => {
+  const onSignUpPress = async () => {
     try {
       setLoading(true);
       if (!email || !name || !password) {
         Snackbar.show({
           text:"All fields are required",
-          duration:Snackbar.LENGTH_SHORT
+          duration:Snackbar.LENGTH_SHORT,
+           backgroundColor:"red"
+        })
+      }else if(!isChecked){
+        Snackbar.show({
+          text:"Make sure you agree to Privacy Policy",
+          duration:Snackbar.LENGTH_SHORT,
+          backgroundColor:"red"
+          
         })
       }
       else{
-        await dispatch(signUp({name,email,password}))
-        navigation.navigate("VerifyEmail")
+       const res= await dispatch(signUp({name,email,password}))
+        if (res.meta.requestStatus==="fulfilled"){
+          Snackbar.show({
+            text:"Verify your email then Sign In",
+            duration:Snackbar.LENGTH_LONG,
+            backgroundColor:"green"
+          })
+          setName("")
+          setEmail("")
+          setPassword("")
+        }
+        // navigation.navigate("VerifyEmail")
       }
     } catch (error: any) {
       console.log(error.message)
@@ -48,12 +68,14 @@ export const useSignUp = () => {
   };
 
   return {
-    onRegisterPress,
+    onSignUpPress,
     onSignInPress,
     setName,
     setEmail,
     setPassword,
     signInWithGoogle,
+    setIsChecked,
+    isChecked,
     password,
     loading,
     name,

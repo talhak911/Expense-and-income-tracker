@@ -1,15 +1,17 @@
 import {Button, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import styles from './styles';
 import {useSignUp} from './useSignUp';
-
+import GoogleIcon from '../../assets/icons/google';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import { useFocusEffect } from '@react-navigation/native';
+import {useFocusEffect} from '@react-navigation/native';
 import React from 'react';
+import {PasswordInput} from '../../components/passwordInput/PasswordInput';
+import {Checkbox} from '../../components/ui/CheckBox';
+import {CustomInput} from '../../components/ui/CustomInput';
 
 export const SignUp = () => {
-  
   const {
-    onRegisterPress,
+    onSignUpPress,
     onSignInPress,
     setEmail,
     setName,
@@ -19,6 +21,8 @@ export const SignUp = () => {
     email,
     name,
     loading,
+    isChecked,
+    setIsChecked,
   } = useSignUp();
   return (
     <View
@@ -31,54 +35,36 @@ export const SignUp = () => {
       <KeyboardAwareScrollView
         style={{flex: 1, width: '100%'}}
         keyboardShouldPersistTaps="always">
-        <TextInput
-          style={styles.input}
-          placeholder="Name"
-          placeholderTextColor="#aaaaaa"
-          onChangeText={text => setName(text)}
-          value={name}
-          underlineColorAndroid="transparent"
-          autoCapitalize="none"
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="E-mail"
-          placeholderTextColor="#aaaaaa"
-          onChangeText={text => setEmail(text)}
-          value={email}
-          underlineColorAndroid="transparent"
-          autoCapitalize="none"
-        />
-        <TextInput
-          style={styles.input}
-          placeholderTextColor="#aaaaaa"
-          secureTextEntry
-          placeholder="Password"
-          onChangeText={text => setPassword(text)}
-          value={password}
-          underlineColorAndroid="transparent"
-          autoCapitalize="none"
-        />
-       {loading?<Text
-       style={{alignSelf:"center",fontSize:20,fontWeight:"bold"}}
-       >Loading</Text>:
-     <>
-        <TouchableOpacity
-        disabled={loading}
-        style={styles.button}
-        onPress={() => onRegisterPress()}>
-        <Text style={styles.buttonTitle}>Sign Up</Text>
-        {loading && <Text>Loading</Text>}
-      </TouchableOpacity>
-      <TouchableOpacity
-        disabled={loading}
-        style={styles.button}
-        onPress={() => signInWithGoogle()}>
-        <Text style={styles.buttonTitle}>Sign in with google</Text>
-        {loading && <Text>Loading</Text>}
-      </TouchableOpacity>
-     </>
-       }
+        <CustomInput onChange={setName} placeHolder="Name" value={name} />
+        <CustomInput onChange={setEmail} placeHolder="E-mail" value={email} />
+        <PasswordInput value={password} onChange={setPassword} />
+
+        {loading ? (
+          <Text style={{alignSelf: 'center', fontSize: 20, fontWeight: 'bold'}}>
+            Loading
+          </Text>
+        ) : (
+          <>
+            <Checkbox checked={isChecked} onChange={setIsChecked} />
+
+            <TouchableOpacity
+              disabled={loading}
+              style={styles.button}
+              onPress={() => onSignUpPress()}>
+              <Text style={styles.buttonTitle}>Sign Up</Text>
+            </TouchableOpacity>
+            <Text style={{alignSelf:"center",marginVertical:12,fontSize:14,color:"#91919F"}}>or</Text>
+            <TouchableOpacity
+              disabled={loading}
+              style={styles.buttonGoogle}
+              onPress={() => signInWithGoogle()}>
+              <GoogleIcon />
+              <Text style={{color: 'black', fontWeight: 'bold'}}>
+                Sign in with google
+              </Text>
+            </TouchableOpacity>
+          </>
+        )}
         <View style={styles.footerView}>
           <View style={styles.footerContainer}>
             <Text style={styles.footerText}>Already got an account?</Text>

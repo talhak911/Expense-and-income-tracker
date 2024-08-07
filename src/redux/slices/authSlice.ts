@@ -3,6 +3,7 @@ import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import Snackbar from 'react-native-snackbar';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import {GOOGLE_API} from '@env';
 export type AuthStateType = {
   user: Partial<FirebaseAuthTypes.User> | null;
 };
@@ -25,7 +26,23 @@ export const signIn = createAsyncThunk(
         photoURL: response.user.photoURL,
         emailVerified: response.user.emailVerified,
       };
-      return user;
+      if (user.emailVerified) {
+        return user;
+      } else {
+        Snackbar.show({
+          text: 'Verify your email',
+          backgroundColor: 'red',
+          duration: Snackbar.LENGTH_LONG,
+          action: {
+            text: 'send verification email',
+            onPress() {
+              auth().currentUser?.sendEmailVerification();
+              auth().signOut();
+            },
+            textColor: 'yellow',
+          },
+        });
+      }
     } catch (error: any) {
       if (error.code === 'auth/invalid-email' || 'auth/wrong-password') {
         Snackbar.show({
@@ -72,6 +89,7 @@ export const signUp = createAsyncThunk(
         Snackbar.show({
           text: 'Email is already in use',
           duration: Snackbar.LENGTH_LONG,
+          backgroundColor: 'red',
         });
       }
 
@@ -79,12 +97,14 @@ export const signUp = createAsyncThunk(
         Snackbar.show({
           text: 'That email address is invalid!',
           duration: Snackbar.LENGTH_LONG,
+           backgroundColor:"red"
         });
       }
       if (error.code === 'auth/weak-password') {
         Snackbar.show({
           text: 'Choose strong password',
           duration: Snackbar.LENGTH_LONG,
+           backgroundColor:"red"
         });
       } else console.log(error);
       return rejectWithValue('Error while sign up');
@@ -94,12 +114,11 @@ export const signUp = createAsyncThunk(
 
 export const signUpWithGoogle = createAsyncThunk(
   'auth/signUpWithGoogle',
-  async (_, {rejectWithValue, dispatch}) => {
+  async (_, {rejectWithValue}) => {
     try {
       console.log('running');
       GoogleSignin.configure({
-        webClientId:
-          '531340532708-578riacp1pcmemh81cabl204s9s2364v.apps.googleusercontent.com',
+        webClientId: GOOGLE_API,
       });
       // Check if your device supports Google Play
       await GoogleSignin.hasPlayServices({showPlayServicesUpdateDialog: true});
@@ -149,12 +168,9 @@ export const signUpWithGoogle = createAsyncThunk(
   },
 );
 
-export const signOut = createAsyncThunk(
-  'auth/signOut',
-  async () => {
-     await auth().signOut()
-  }
-  )
+export const signOut = createAsyncThunk('auth/signOut', async () => {
+  await auth().signOut();
+});
 
 export const authSlice = createSlice({
   name: 'authSlice',
@@ -170,7 +186,7 @@ export const authSlice = createSlice({
     builder.addCase(signUpWithGoogle.fulfilled, (state, action) => {
       state.user = action.payload;
     });
-    builder.addCase(signOut.fulfilled, (state) => {
+    builder.addCase(signOut.fulfilled, state => {
       state.user = null;
     });
   },

@@ -5,8 +5,9 @@ import React, {useEffect} from 'react';
 // import {SignIn} from './screens/signIn/SignIn';
 // import BottomNavigator from './src/navigation/BottomNavigator';
 // import AuthNavigator from './src/navigation/AuthNavigator';
-import {store} from './src/redux/store';
+import {store,persistor} from './src/redux/store';
 import AppNavigator from './src/navigation/AppNavigator';
+import { PersistGate } from 'redux-persist/integration/react';
 // export type RootStackParamsList = {
 //   Home: undefined;
 //   SignUp: undefined;
@@ -22,7 +23,10 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <AppNavigator />
+         <PersistGate loading={null} persistor={persistor}>
+         <AppNavigator />
+      </PersistGate>
+    
     </Provider>
   );
 }

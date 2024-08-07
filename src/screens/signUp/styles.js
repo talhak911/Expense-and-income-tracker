@@ -16,7 +16,7 @@ export default StyleSheet.create({
     },
     input: {
         height: 48,
-        borderRadius: 5,
+        borderRadius: 16,
         overflow: 'hidden',
         backgroundColor: 'white',
         borderWidth:1,
@@ -27,13 +27,26 @@ export default StyleSheet.create({
         marginRight: 30,
         paddingLeft: 16
     },
+    buttonGoogle:{
+      marginLeft: 30,
+      marginRight: 30,
+      flexDirection:"row",
+      gap:10,
+      height: 48,
+     // backgroundColor:"grey",
+      borderRadius: 16,
+      borderColor:"#F1F1FA",
+      borderWidth:1,
+      alignItems: "center",
+      justifyContent: 'center'
+    },
     button: {
         backgroundColor: '#7F3DFF',
         marginLeft: 30,
         marginRight: 30,
         marginTop: 20,
         height: 48,
-        borderRadius: 10,
+        borderRadius: 16,
         alignItems: "center",
         justifyContent: 'center'
     },
@@ -54,7 +67,7 @@ export default StyleSheet.create({
         alignItems: 'center',
       },
       footerText: {
-        marginRight: 5, // Add some space between the text and the button
+        marginRight: 5,
       },
       footerLink: {
         borderBottomWidth:1,

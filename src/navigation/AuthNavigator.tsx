@@ -5,6 +5,7 @@ import {SignIn} from '../screens/signIn/SignIn';
 import { VerifyEmail } from '../screens/verifyEmail/VerifyEmail';
 
 export default function AuthNavigator() {
+
   const Stack = createNativeStackNavigator();
 
   return (
