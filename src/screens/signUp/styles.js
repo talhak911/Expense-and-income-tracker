@@ -1,8 +1,10 @@
 import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
     container: {
-        flex: 1,
-        alignItems: 'center'
+      flex: 1,
+      justifyContent: 'center',
+      backgroundColor: 'white',
+      paddingTop: 30,
     },
     title: {
 
@@ -27,19 +29,19 @@ export default StyleSheet.create({
         marginRight: 30,
         paddingLeft: 16
     },
-    buttonGoogle:{
-      marginLeft: 30,
-      marginRight: 30,
-      flexDirection:"row",
-      gap:10,
-      height: 48,
-     // backgroundColor:"grey",
-      borderRadius: 16,
-      borderColor:"#F1F1FA",
-      borderWidth:1,
-      alignItems: "center",
-      justifyContent: 'center'
-    },
+    // buttonGoogle:{
+    //   marginLeft: 16,
+    //   marginRight: 16,
+    //   flexDirection:"row",
+    //   gap:10,
+    //   height: 48,
+    //  // backgroundColor:"grey",
+    //   borderRadius: 16,
+    //   borderColor:"#F1F1FA",
+    //   borderWidth:1,
+    //   alignItems: "center",
+    //   justifyContent: 'center'
+    // },
     button: {
         backgroundColor: '#7F3DFF',
         marginLeft: 30,
@@ -72,6 +74,6 @@ export default StyleSheet.create({
       footerLink: {
         borderBottomWidth:1,
         borderBottomColor:'#7F3DFF',
-        color: '#7F3DFF', // Customize as needed
+        color: '#7F3DFF', 
       },
 })

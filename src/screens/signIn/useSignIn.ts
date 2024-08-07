@@ -3,16 +3,26 @@ import {useState} from 'react';
 import Snackbar from 'react-native-snackbar';
 import {useAppDispatch} from '../../hooks/useStore';
 import {signIn} from '../../redux/slices/authSlice';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { AuthStackParamList } from '../../navigation/AuthNavigator';
 export const useSignIn = () => {
+
+  type SignInNavigationProp = NativeStackNavigationProp<AuthStackParamList, 'SignIn'>;
+
   const dispatch = useAppDispatch();
-  const navigation = useNavigation();
-  const onSignUpPress = () => {
+  const navigation = useNavigation<SignInNavigationProp>();
+  const navigateToSignUp = () => {
     navigation.navigate('SignUp');
   };
+  const navigateToForgetPassword = () => {
+    navigation.navigate('ForgetPassword');
+  };
   const [email, setEmail] = useState('');
+  const [loading,setLoading]=useState(false)
   const [password, setPassword] = useState('');
   const onSignInPress = async () => {
     try {
+      setLoading(true)
       if (!email || !password) {
         Snackbar.show({
           text: 'Email and Password required',
@@ -38,14 +48,18 @@ export const useSignIn = () => {
         });
       }
     }
+    finally{setLoading(false)}
   };
 
   return {
     setEmail,
     setPassword,
     onSignInPress,
-    onSignUpPress,
+    navigateToSignUp,
+    setLoading,
+    navigateToForgetPassword,
     email,
+    loading,
     password,
   };
 };

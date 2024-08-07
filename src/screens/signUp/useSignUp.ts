@@ -4,10 +4,15 @@ import {useNavigation} from '@react-navigation/native';
 import Snackbar from 'react-native-snackbar';
 import { useAppDispatch } from '../../hooks/useStore';
 import { signUp, signUpWithGoogle } from '../../redux/slices/authSlice';
+import { AuthStackParamList } from '../../navigation/AuthNavigator'; // Adjust path
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+
+type SignUpNavigationProp = NativeStackNavigationProp<AuthStackParamList, 'SignUp'>;
+
 
 export const useSignUp = () => {
   const dispatch = useAppDispatch()
-  const navigation = useNavigation();
+  const navigation = useNavigation<SignUpNavigationProp>();
   const onSignInPress = () => {
     navigation.navigate('SignIn');
   };
@@ -18,16 +23,6 @@ export const useSignUp = () => {
   const [loading, setLoading] = useState(false);
   const [password, setPassword] = useState('');
 
-  const signInWithGoogle = async () => {
-    try {
-      setLoading(true);
-  await dispatch(signUpWithGoogle())
-    } catch (error) {
-      console.log('google sign in error', error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const onSignUpPress = async () => {
     try {
@@ -58,7 +53,7 @@ export const useSignUp = () => {
           setEmail("")
           setPassword("")
         }
-        // navigation.navigate("VerifyEmail")
+
       }
     } catch (error: any) {
       console.log(error.message)
@@ -73,8 +68,8 @@ export const useSignUp = () => {
     setName,
     setEmail,
     setPassword,
-    signInWithGoogle,
     setIsChecked,
+    setLoading,
     isChecked,
     password,
     loading,

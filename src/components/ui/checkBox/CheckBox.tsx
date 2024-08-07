@@ -17,11 +17,11 @@ export const Checkbox = ({
       >
       <View style={styles.checkbox}>
         {checked && (
-          <MaterialCommunityIcons name="check" size={18} color="black" />
+          <MaterialCommunityIcons name="check" size={18} color="#7F3DFF" />
         )}
       </View>
       <Text style={styles.label}>
-        By signing up, you agree to the
+        By signing up, you agree to the {' '}
         <Text style={{color: '#7F3DFF'}}>
           Terms of Service and Privacy Policy
         </Text>
