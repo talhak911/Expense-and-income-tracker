@@ -1,6 +1,7 @@
 import { StyleSheet, Text, TouchableOpacity } from "react-native"
 import GoogleIcon from "../../assets/icons/google";
 import { useSignUpGoogle } from "./useSignUpGoogle";
+import { Height } from "../../utils/responsive";
 export const SignUpGoogle=({loading,setLoading}:{loading:boolean,setLoading:(e:boolean)=>void})=>{
 const {signInWithGoogle} = useSignUpGoogle({setLoading})
     return(
@@ -30,11 +31,14 @@ const {signInWithGoogle} = useSignUpGoogle({setLoading})
 
 const styles = StyleSheet.create({
   buttonGoogle:{
-    marginLeft: 16,
-    marginRight: 16,
+    // marginLeft: 16,
+    // marginRight: 16,
+   // marginHorizontal:Width(2),
     flexDirection:"row",
     gap:10,
-    height: 48,
+    width:'100%',
+    // height: 56,
+    height: Height(7),
     borderRadius: 16,
     borderColor:"#F1F1FA",
     borderWidth:1,

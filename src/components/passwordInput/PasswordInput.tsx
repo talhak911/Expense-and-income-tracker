@@ -2,6 +2,7 @@ import React from 'react';
 import {Pressable, StyleSheet, Text, TextInput, View} from 'react-native';
 import {usePasswordInput} from './usePasswordInput';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { Height, Width } from '../../utils/responsive';
 
 export const PasswordInput = ({
   value,
@@ -19,6 +20,7 @@ export const PasswordInput = ({
         style={styles.inputField}
         //   name="password"
         placeholder="Password"
+        placeholderTextColor={"#91919F"}
         autoCapitalize="none"
         autoCorrect={false}
         // textContentType="newPassword"
@@ -38,21 +40,25 @@ export const PasswordInput = ({
 
 const styles = StyleSheet.create({
   inputContainer: {
-    height: 48,
+    height: Height(7),
     borderRadius: 16,
     flexDirection: 'row',
     alignItems: 'center',
     // overflow: 'hidden',
-    // backgroundColor: 'white',
+     backgroundColor: 'white',
     borderWidth: 1,
     borderColor: '#F1F1FA',
-    marginTop: 24,
-    marginLeft: 16,
-    marginRight: 16,
-    paddingLeft: 16,
-    paddingRight: 16,
+   // marginTop: 24,
+    // marginLeft: 16,
+    // marginRight: 16,
+    // paddingLeft: 16,
+    // paddingRight: 16,
+    //marginHorizontal:Width(4),
+    //paddingHorizontal: Width(4), 
   },
   inputField: {
     width: '90%',
+    //color:"black",
+    paddingLeft: Width(5)
   },
 });

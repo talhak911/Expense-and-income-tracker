@@ -6,15 +6,16 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 //import {useFocusEffect} from '@react-navigation/native';
 import React from 'react';
 import {PasswordInput} from '../../components/passwordInput/PasswordInput';
-import {Checkbox} from '../../components/ui/checkBox/CheckBox';
-import {CustomInput} from '../../components/ui/customInput/CustomInput';
-import {CustomButton} from '../../components/ui/customButton/CustomButtom';
-import { SignUpGoogle } from '../../components/signUpGoogle.tsx/SignUpGoogle';
+import {Checkbox} from '../../components/checkBox/CheckBox';
+import {CustomInput} from '../../components/customInput/CustomInput';
+import {CustomButton} from '../../components/customButton/CustomButtom';
+import {SignUpGoogle} from '../../components/signUpGoogle.tsx/SignUpGoogle';
+import {Width} from '../../utils/responsive';
 // import { NativeStackScreenProps } from '@react-navigation/native-stack';
 // import { AuthStackParamList } from '../../navigation/AuthNavigator';
 // type SignUpProps = NativeStackScreenProps<AuthStackParamList, 'SignUp'>;
 
-export const SignUp= () => {
+export const SignUp = () => {
   const {
     onSignUpPress,
     onSignInPress,
@@ -34,16 +35,17 @@ export const SignUp= () => {
       <KeyboardAwareScrollView
         // style={{flex: 1, width: '100%'}}
         keyboardShouldPersistTaps="always">
-        <CustomInput onChange={setName} placeHolder="Name" value={name} />
-        <CustomInput onChange={setEmail} placeHolder="E-mail" value={email} />
-        <PasswordInput value={password} onChange={setPassword} />
-
+        <View style={styles.gap}>
+          <CustomInput onChange={setName} placeHolder="Name" value={name} />
+          <CustomInput onChange={setEmail} placeHolder="E-mail" value={email} />
+          <PasswordInput value={password} onChange={setPassword} />
+        </View>
         {loading ? (
           <Text style={{alignSelf: 'center', fontSize: 20, fontWeight: 'bold'}}>
             Loading
           </Text>
         ) : (
-          <>
+          <View style={{alignItems: 'center', marginHorizontal: Width(4)}}>
             <Checkbox checked={isChecked} onChange={setIsChecked} />
 
             <CustomButton
@@ -51,12 +53,8 @@ export const SignUp= () => {
               loading={loading}
               onPress={onSignUpPress}
             />
-<SignUpGoogle
-loading={loading}
-setLoading={setLoading}
-/>
-           
-          </>
+            <SignUpGoogle loading={loading} setLoading={setLoading} />
+          </View>
         )}
         <View style={styles.footerView}>
           <View style={styles.footerContainer}>

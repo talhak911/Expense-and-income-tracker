@@ -2,10 +2,11 @@ import {Text, TextInput, TouchableOpacity, View} from 'react-native';
 
 import styles from './styles';
 import {useSignIn} from './useSignIn';
-import {CustomInput} from '../../components/ui/customInput/CustomInput';
+import {CustomInput} from '../../components/customInput/CustomInput';
 import {PasswordInput} from '../../components/passwordInput/PasswordInput';
-import {CustomButton} from '../../components/ui/customButton/CustomButtom';
+import {CustomButton} from '../../components/customButton/CustomButtom';
 import {SignUpGoogle} from '../../components/signUpGoogle.tsx/SignUpGoogle';
+import { Width } from '../../utils/responsive';
 
 export const SignIn = () => {
   const {
@@ -21,22 +22,28 @@ export const SignIn = () => {
   } = useSignIn();
   return (
     <View style={styles.container}>
-      <CustomInput value={email} placeHolder="E-mail" onChange={setEmail} />
-      <PasswordInput onChange={setPassword} value={password} />
+     <View style={{gap:24, marginHorizontal:Width(4)}}>
+     <CustomInput value={email} placeHolder="E-mail" onChange={setEmail} />
+     <PasswordInput onChange={setPassword} value={password} />
+     </View>
       {loading ? (
         <Text style={{alignSelf: 'center', fontSize: 20, fontWeight: 'bold'}}>
           Loading
         </Text>
       ) : (
-        <>
-          <CustomButton
-            loading={loading}
-            onPress={onSignInPress}
-            title="Login"
-          />
+        <View style={{marginTop:40,marginHorizontal:Width(4)}}>
+       <View style={{alignItems:'center',width:'100%'}}>
+
+       <CustomButton
+
+loading={loading}
+onPress={onSignInPress}
+title="Login"
+/>
+       </View>
         <TouchableOpacity
         onPress={navigateToForgetPassword}
-        style={{marginVertical:16, alignSelf:"flex-end",marginRight:16}}
+        style={{marginTop:16, alignSelf:"flex-end",marginRight:16}}
         >
           <Text
           style={{fontWeight:"bold",color:"#7F3DFF"}}
@@ -51,7 +58,7 @@ export const SignIn = () => {
               </Text>
             </Text>
           </View>
-        </>
+        </View>
       )}
     </View>
   );

@@ -112,6 +112,48 @@ export const signUp = createAsyncThunk(
   },
 );
 
+// export const changePassword = createAsyncThunk('auth/changePassword',async()=>{
+//  const user =await auth.EmailAuthProvider.credential("email","password")
+//  const response = await auth().signInWithEmailAndPassword(email, password);
+//  response.user.reauthenticateWithCredential(auth().currentUser)
+// })
+
+interface ChangePasswordPayload {
+  email: string;
+  currentPassword: string;
+  newPassword: string;
+}
+
+export const changePassword = createAsyncThunk(
+  'auth/changePassword',
+  async ({ email, currentPassword, newPassword }: ChangePasswordPayload, { rejectWithValue }) => {
+    try {
+      const userCredential = await auth().signInWithEmailAndPassword(email, currentPassword);
+      const user = userCredential.user;
+      if (user) {
+        const credential = auth.EmailAuthProvider.credential(email, currentPassword);
+        await user.reauthenticateWithCredential(credential);
+        await user.updatePassword(newPassword);
+        console.log("password changed")
+        return { success: true };
+      } else {
+        console.log("no change")
+        throw new Error('User not found');
+      }
+    } catch (error: any) {
+      console.log(error)
+      if (error.code === 'auth/wrong-password' || 'auth/invalid-credential') {
+        Snackbar.show({
+          text: 'Invalid current password',
+          duration: Snackbar.LENGTH_SHORT,
+          backgroundColor:"red"
+        });
+      } 
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 export const signUpWithGoogle = createAsyncThunk(
   'auth/signUpWithGoogle',
   async (_, {rejectWithValue}) => {
@@ -167,6 +209,7 @@ export const signUpWithGoogle = createAsyncThunk(
     }
   },
 );
+
 
 export const signOut = createAsyncThunk('auth/signOut', async () => {
   await auth().signOut();

@@ -1,3 +1,4 @@
+import "react-native-gesture-handler"
 import SplashScreen from 'react-native-splash-screen';
 import {Provider} from 'react-redux';
 import React, {useEffect} from 'react';
