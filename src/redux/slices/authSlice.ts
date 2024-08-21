@@ -218,7 +218,11 @@ export const signOut = createAsyncThunk('auth/signOut', async () => {
 export const authSlice = createSlice({
   name: 'authSlice',
   initialState,
-  reducers: {},
+  reducers: {
+    setUser:(state,action)=>{
+state.user=action.payload
+    }
+  },
   extraReducers: builder => {
     builder.addCase(signIn.fulfilled, (state, action) => {
       state.user = action.payload;
@@ -228,6 +232,7 @@ export const authSlice = createSlice({
     });
     builder.addCase(signUpWithGoogle.fulfilled, (state, action) => {
       state.user = action.payload;
+      console.log(state.user)
     });
     builder.addCase(signOut.fulfilled, state => {
       state.user = null;
@@ -235,5 +240,5 @@ export const authSlice = createSlice({
   },
 });
 
-export const {} = authSlice.actions;
+export const {setUser} = authSlice.actions;
 export default authSlice.reducer;

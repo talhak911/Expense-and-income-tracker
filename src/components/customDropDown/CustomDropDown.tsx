@@ -5,8 +5,8 @@ import { COLORS } from '../../constants/colors';
 import DownIcon from '../../assets/icons/down';
 import { useCustomDropdown } from './useCustomDropDown';
 
-const CustomDropdown = ({items, onSelect }:{items:{value:string}[],onSelect:()=>void}) => {
-const {handlePress,handleItemPress,isOpen,selectedValue}=useCustomDropdown({onSelect})
+const CustomDropdown = ({items, onSelect,selectedValue }:{items:{value:string}[],onSelect:(e:string)=>void,selectedValue:string|null}) => {
+const {handlePress,handleItemPress,isOpen}=useCustomDropdown({onSelect})
   return (
     <View>
       <TouchableOpacity

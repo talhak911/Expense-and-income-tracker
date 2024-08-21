@@ -1,28 +1,31 @@
-import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {COLORS} from '../../constants/colors';
 import {FontSize, Height, Width} from '../../utils/responsive';
-import { CustomButton } from '../../components/customButton/CustomButtom';
-import { BottomModel } from '../../components/bottomModel/BottomModel';
-import { useDetailTransaction } from './useDetailTransaction';
-
+import {CustomButton} from '../../components/customButton/CustomButtom';
+import {BottomModel} from '../../components/bottomModel/BottomModel';
+import {useDetailTransaction} from './useDetailTransaction';
+import { Image } from 'react-native';
 
 export default function DetailTransaction({route, navigation}) {
-
-const {modalVisible,closeModal,DeleteModal}=useDetailTransaction({route,navigation})
-
+  const {amount,description,date,type,category,url,id}=route.params
+  const {modalVisible, closeModal, DeleteModal,deleteTransactionFunction} = useDetailTransaction({
+    route,
+    navigation,
+  });
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
-       {modalVisible &&    <BottomModel visible={modalVisible} element={<DeleteModal/>} onClose={closeModal}/>}
+      {modalVisible && (
+        <BottomModel
+          visible={modalVisible}
+          element={<DeleteModal closeModal={closeModal} action={()=>{deleteTransactionFunction(id)}}/>}
+          onClose={closeModal}
+        />
+      )}
       <View
         style={{
-          backgroundColor: COLORS.red,
+          backgroundColor: route.params.headerColor,
           borderBottomLeftRadius: Width(6),
           borderBottomRightRadius: Width(6),
         }}>
@@ -38,7 +41,7 @@ const {modalVisible,closeModal,DeleteModal}=useDetailTransaction({route,navigati
               color: COLORS.white,
               fontWeight: 'bold',
             }}>
-            $120
+            ${amount}
           </Text>
           <Text
             style={{
@@ -46,27 +49,27 @@ const {modalVisible,closeModal,DeleteModal}=useDetailTransaction({route,navigati
               color: COLORS.white,
               fontSize: FontSize(16),
             }}>
-            Buy some grocery
+            {description}
           </Text>
           <Text
             style={{
               marginTop: Height(0.7),
-              marginBottom:Height(7),
+              marginBottom: Height(7),
               color: COLORS.white,
               fontSize: FontSize(13),
             }}>
-            Saturday 4 June 2021 16:20
+           {date}
           </Text>
         </View>
       </View>
       <View style={styles.floatingCard}>
         <View style={{gap: 5, alignItems: 'center'}}>
           <Text style={styles.greyText}>Type</Text>
-          <Text style={styles.bold_16}>Expense</Text>
+          <Text style={styles.bold_16}>{type}</Text>
         </View>
         <View style={{gap: 5, alignItems: 'center'}}>
           <Text style={styles.greyText}>Category</Text>
-          <Text style={styles.bold_16}>Shopping</Text>
+          <Text style={styles.bold_16}>{category}</Text>
         </View>
         <View style={{gap: 5, alignItems: 'center'}}>
           <Text style={styles.greyText}>Wallet</Text>
@@ -74,21 +77,22 @@ const {modalVisible,closeModal,DeleteModal}=useDetailTransaction({route,navigati
         </View>
       </View>
 
-     <ScrollView>
-     <View style={styles.details}>
-        <View style={styles.border} />
-        <Text style={styles.heading}>Description</Text>
-        <Text style={styles.description}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, aut. Ipsum voluptatem explicabo incidunt dolorum iste illo rem omnis cupiditate fugiat eius, deserunt voluptate quod voluptatibus ipsa beatae laborum fuga.</Text>
-        <Text style={styles.heading}>Attachment</Text>
-      
-      <View 
-      style={styles.image}
-      />
-      <View style={styles.button}>
-      <CustomButton title='Edit' loading={false} onPress={()=>{}}/>
-      </View>
-       </View>
-     </ScrollView>
+      <ScrollView>
+        <View style={styles.details}>
+          <View style={styles.border} />
+          <Text style={styles.heading}>Description</Text>
+          <Text style={styles.description}>
+    {description}
+          </Text>
+          <Text style={styles.heading}>Attachment</Text>
+
+         
+          {url && <Image style={styles.image} source={{uri:url}}  />}
+          <View style={styles.button}>
+            <CustomButton title="Edit" loading={false} onPress={() => {}} />
+          </View>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -98,6 +102,7 @@ export const styles = StyleSheet.create({
     color: COLORS.grey,
   },
   bold_16: {
+    textTransform:"capitalize",
     fontSize: FontSize(16),
     fontWeight: '600',
     color: COLORS.charcoal,
@@ -120,26 +125,27 @@ export const styles = StyleSheet.create({
     borderStyle: 'dashed',
   },
   details: {
-    marginTop:Height(2),
-    paddingHorizontal:Width(4),
-    gap:Height(1.6)
+    marginTop: Height(2),
+    paddingHorizontal: Width(4),
+    gap: Height(1.6),
   },
-  description:{
-    fontSize:FontSize(16),
-    color:COLORS.charcoal,
+  description: {
+    fontSize: FontSize(16),
+    color: COLORS.charcoal,
   },
-  heading:{
-    fontSize:FontSize(16),
-    color:COLORS.grey,
-    fontWeight:"600"
+  heading: {
+    fontSize: FontSize(16),
+    color: COLORS.grey,
+    fontWeight: '600',
   },
-  image:{
-    height:116,
-    backgroundColor:"black",
-    borderRadius:8
+  image: {
+    resizeMode:"cover",
+    height: 116,
+    backgroundColor: 'black',
+    borderRadius: 8,
   },
-  button:{
-    marginTop:Height(8),
-    marginBottom:16
-  }
+  button: {
+    marginTop: Height(8),
+    marginBottom: 16,
+  },
 });

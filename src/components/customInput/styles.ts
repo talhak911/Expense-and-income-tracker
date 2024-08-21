@@ -13,7 +13,7 @@ input:{
     borderWidth: FontSize(1),
     fontSize:FontSize(16),
     borderColor: '#F1F1FA',
-    maxWidth:500,
+    // maxWidth:500,
     //marginTop: 24,
     // marginBottom: 24,
     //width:Width(6),

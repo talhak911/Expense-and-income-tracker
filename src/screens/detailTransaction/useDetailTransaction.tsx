@@ -4,12 +4,23 @@ import BackIcon from '../../assets/icons/back';
 import DeleteIcon from '../../assets/icons/delete';
 import { COLORS } from '../../constants/colors';
 import { FontSize, Height, Width } from '../../utils/responsive';
+import { useAppDispatch, useAppSelector } from '../../hooks/useStore';
+import { deleteTransaction } from '../../redux/slices/transactionsSlice';
 
 export const useDetailTransaction = ({ route, navigation }) => {
+  const uid = useAppSelector(state=>state.auth.user?.uid)
+  console.log("uid of user is",uid)
+  const dispatch = useAppDispatch()
   const { headerColor } = route.params;
   const [modalVisible, setModalVisible] = useState(false);
-
-  const DeleteModal = () => (
+const deleteTransactionFunction= async(id:string)=>{
+  console.log("deleteTranasaction function")
+  const res =await dispatch(deleteTransaction({id,uid}))
+  if (res.meta.requestStatus==="fulfilled"){
+    navigation.navigate("Transaction")
+  }
+}
+  const DeleteModal = ({closeModal,action}) => (
     <View style={{ alignItems: 'center', gap: Height(1) }}>
       <Text style={{ color: COLORS.charcoal, fontSize: FontSize(18), fontWeight: '600' }}>
         Remove This transaction?
@@ -32,6 +43,7 @@ export const useDetailTransaction = ({ route, navigation }) => {
           <Text style={{ color: COLORS.purple, fontWeight: '600' }}>No</Text>
         </TouchableOpacity>
         <TouchableOpacity
+        onPress={action}
           style={{
             alignItems: 'center',
             justifyContent: 'center',
@@ -73,6 +85,7 @@ export const useDetailTransaction = ({ route, navigation }) => {
   return {
     modalVisible,
     closeModal,
+    deleteTransactionFunction,
     DeleteModal,
   };
 };

@@ -11,7 +11,7 @@ export const useResetPassword = () => {
   const [password, setPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const email = useAppSelector(state => state.user?.email);
+  const email = useAppSelector(state => state.auth.user?.email);
   const onChangePassword = (text: string) => {
     setPassword(text);
   };

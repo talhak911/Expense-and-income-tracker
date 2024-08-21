@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { FontSize } from '../../utils/responsive';
 export default StyleSheet.create({
     container: {
         flex: 1,
@@ -45,6 +46,8 @@ export default StyleSheet.create({
         marginTop: 20
     },
     footerText: {
+        fontSize:FontSize(14),
+        color:"black",
         marginRight: 5,
       },
       footerLink: {

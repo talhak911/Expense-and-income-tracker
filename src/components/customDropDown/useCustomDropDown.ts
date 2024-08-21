@@ -1,23 +1,23 @@
-import { useState } from "react";
-import { voidFunction } from "../../types/types";
+import {useState} from 'react';
+import {voidFunction} from '../../types/types';
 
-export const useCustomDropdown=({onSelect}:{onSelect:(v:string)=>void})=>{
-    const [isOpen, setIsOpen] = useState(false);
-    const [selectedValue, setSelectedValue] = useState<string|null>(null);
-  
-    const handlePress = () => {
-      setIsOpen(!isOpen);
-    };
-  
-    const handleItemPress = (value:string) => {
-      setSelectedValue(value);
-      setIsOpen(false);
-      onSelect(value);
-    };
-  return{
+export const useCustomDropdown = ({
+  onSelect,
+}: {
+  onSelect: (v: string) => void;
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const handlePress = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleItemPress = (value: string) => {
+    setIsOpen(false);
+    onSelect(value);
+  };
+  return {
+    isOpen,
     handlePress,
     handleItemPress,
-    selectedValue,
-    isOpen
-  }
-}
+  };
+};
