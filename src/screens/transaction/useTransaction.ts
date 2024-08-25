@@ -3,16 +3,20 @@ import {useAppSelector} from '../../hooks/useStore';
 import {useNavigation} from '@react-navigation/native';
 import {COLORS} from '../../constants/colors';
 import dayjs from 'dayjs';
-import {StackNavigationProp} from '../../types/types';
+import {
+  DetailTransactionProps,
+  FilterByType,
+  NavigateToDetailTransaction,
+  SortByType,
+  StackNavigationProp,
+} from '../../types/types';
 
 export const useTransaction = () => {
   const navigation = useNavigation<StackNavigationProp>();
   const transactions = useAppSelector(state => state.transactions.transactions);
   const [modelVisible, setModelVisible] = useState(false);
-  const [filterBy, setFilterBy] = useState<'income' | 'expense' | null>(null);
-  const [sortBy, setSortBy] = useState<
-    'highest' | 'lowest' | 'newest' | 'oldest'
-  >('newest');
+  const [filterBy, setFilterBy] = useState<FilterByType>(null);
+  const [sortBy, setSortBy] = useState<SortByType>('newest');
 
   const navigateToDetailTransaction = ({
     id,
@@ -22,7 +26,7 @@ export const useTransaction = () => {
     amount,
     date,
     category,
-  }: any) => {
+  }: NavigateToDetailTransaction) => {
     navigation.navigate('Detail Transaction', {
       headerColor: type === 'income' ? COLORS.green : COLORS.red,
       id,
@@ -31,7 +35,7 @@ export const useTransaction = () => {
       url,
       category,
       description,
-      amount,
+      amount: amount.toString(),
     });
   };
 
@@ -68,8 +72,17 @@ export const useTransaction = () => {
     return filteredTransactions;
   }, [transactions, filterBy, sortBy]);
 
+  const periodOrder = [
+    'Today',
+    'Yesterday',
+    'This Week',
+    'Last Week',
+    'This Month',
+    'Last Month',
+    'Older',
+  ];
   const groupedTransactions = useMemo(() => {
-    return filteredSortedTransactions.reduce((acc, transaction) => {
+    const grouped = filteredSortedTransactions.reduce((acc, transaction) => {
       const period = dayjs(transaction.date).isSame(dayjs(), 'day')
         ? 'Today'
         : dayjs(transaction.date).isSame(dayjs().subtract(1, 'day'), 'day')
@@ -90,6 +103,26 @@ export const useTransaction = () => {
       acc[period].push(transaction);
       return acc;
     }, {} as Record<string, typeof filteredSortedTransactions>);
+
+    const sortedGrouped = periodOrder.reduce((acc, period) => {
+      if (grouped[period]) {
+        acc[period] = grouped[period];
+      }
+      return acc;
+    }, {} as Record<string, typeof filteredSortedTransactions>);
+
+    if (sortBy === 'oldest') {
+      const reversedGrouped = periodOrder.reverse().reduce((acc, period) => {
+        if (sortedGrouped[period]) {
+          acc[period] = sortedGrouped[period];
+        }
+        return acc;
+      }, {} as Record<string, typeof filteredSortedTransactions>);
+
+      return reversedGrouped;
+    }
+
+    return sortedGrouped;
   }, [filteredSortedTransactions]);
 
   return {

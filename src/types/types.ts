@@ -12,7 +12,15 @@ export type AttachmentModelProps = {
   onImagePress: () => void;
   onDocumentPress: () => void;
 };
-
+export type NavigateToDetailTransaction = {
+  id: string | undefined;
+  type: 'income' | 'expense';
+  description: string;
+  url: string | null | undefined;
+  amount: number;
+  date: string;
+  category: string;
+};
 export type voidFunction = () => void;
 
 export type TransactionCardProps = {
@@ -23,7 +31,20 @@ export type TransactionCardProps = {
   time: string;
   amount: string;
 };
+export type FilterTransactionsProps = {
+  filterBy: FilterByType;
+  sortBy: string | null;
+  close: voidFunction;
+  setFilterBy: React.Dispatch<React.SetStateAction<FilterByType>>;
+  setSortBy: React.Dispatch<React.SetStateAction<SortByType>>;
+};
 
+export type useFilterTransactionsProps = {
+  setFilterBy: React.Dispatch<React.SetStateAction<FilterByType>>;
+  setSortBy: React.Dispatch<React.SetStateAction<SortByType>>;
+};
+export type SortByType = 'highest' | 'lowest' | 'newest' | 'oldest' | null;
+export type FilterByType = 'income' | 'expense' | null;
 export type TransactionStatusModalProps = {
   transactionStatus: string;
   isVisible: boolean;
@@ -44,6 +65,16 @@ export type ChangePasswordPayload = {
   currentPassword: string;
   newPassword: string;
 };
+export type TransactionType = {
+  uid: string;
+  type: 'expense' | 'income';
+  category: string;
+  amount: number;
+  date?: dayjs.ConfigType | Date;
+  id?: string | undefined;
+  attachment_url?: string | null;
+  description: string;
+};
 export type StackNavigatorParamList = {
   Tab: undefined;
   Income: undefined;
@@ -51,10 +82,10 @@ export type StackNavigatorParamList = {
   'Financial Report': undefined;
   'Detail Transaction': {
     headerColor: string;
-    id: string;
+    id: string | undefined;
     date: string;
-    type: 'category' | 'expense';
-    url: string;
+    type: 'income' | 'expense';
+    url: string | null | undefined;
     category: string;
     description: string;
     amount: string;
@@ -63,16 +94,6 @@ export type StackNavigatorParamList = {
   Currency: undefined;
   Settings: undefined;
   'Reset Password': undefined;
-};
-export type TransactionType = {
-  uid: string;
-  type: 'expense' | 'income';
-  category: string;
-  amount: number;
-  date?: dayjs.ConfigType | Date;
-  id?: string;
-  attachment_url?: string | null;
-  description: string;
 };
 export type DetailTransactionProps = NativeStackScreenProps<
   StackNavigatorParamList,
