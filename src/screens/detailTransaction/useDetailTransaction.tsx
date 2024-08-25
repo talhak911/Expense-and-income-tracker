@@ -1,16 +1,10 @@
 import React, {useState} from 'react';
-import {TouchableOpacity, Text, View, Linking} from 'react-native';
+import {TouchableOpacity, Linking} from 'react-native';
 import BackIcon from '../../assets/icons/back';
 import DeleteIcon from '../../assets/icons/delete';
-import {COLORS} from '../../constants/colors';
-import {FontSize, Height, Width} from '../../utils/responsive';
 import {useAppDispatch, useAppSelector} from '../../hooks/useStore';
 import {deleteTransaction} from '../../redux/slices/transactionsSlice';
-import {
-  DetailTransactionProps,
-  StackNavigationProp,
-  voidFunction,
-} from '../../types/types';
+import {DetailTransactionProps, StackNavigationProp} from '../../types/types';
 import {useNavigation} from '@react-navigation/native';
 
 export const useDetailTransaction = ({
@@ -18,13 +12,13 @@ export const useDetailTransaction = ({
   navigation,
 }: DetailTransactionProps) => {
   const stackNavigation = useNavigation<StackNavigationProp>();
-  const currency = useAppSelector(state=>state.transactions.currency)
+  const currency = useAppSelector(state => state.transactions.currency);
   const uid = useAppSelector(state => state.auth.user?.uid);
   const dispatch = useAppDispatch();
   const {headerColor} = route.params;
   const [modalVisible, setModalVisible] = useState(false);
 
-  const openAttachment = (url:string) => {
+  const openAttachment = (url: string) => {
     Linking.openURL(url).catch(err => console.error("Couldn't load page", err));
   };
 
@@ -36,64 +30,6 @@ export const useDetailTransaction = ({
       }
     }
   };
-  const DeleteModal = ({
-    closeModal,
-    action,
-  }: {
-    closeModal: voidFunction;
-    action: voidFunction;
-  }) => (
-    <View style={{alignItems: 'center', gap: Height(1)}}>
-      <Text
-        style={{
-          color: COLORS.charcoal,
-          fontSize: FontSize(18),
-          fontWeight: '600',
-        }}>
-        Remove This transaction?
-      </Text>
-      <Text
-        style={{
-          fontSize: FontSize(16),
-          color: COLORS.grey,
-          textAlign: 'center',
-        }}>
-        Are you sure do you wanna remove this transaction
-      </Text>
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-around',
-          width: '100%',
-          marginTop: 16,
-        }}>
-        <TouchableOpacity
-          onPress={closeModal}
-          style={{
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: COLORS.lightPurple,
-            height: Height(8),
-            width: Width(40),
-            borderRadius: 16,
-          }}>
-          <Text style={{color: COLORS.purple, fontWeight: '600'}}>No</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={action}
-          style={{
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: COLORS.purple,
-            height: Height(8),
-            width: Width(40),
-            borderRadius: 16,
-          }}>
-          <Text style={{color: COLORS.white, fontWeight: '600'}}>Yes</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
-  );
 
   const closeModal = () => {
     setModalVisible(false);
@@ -130,6 +66,5 @@ export const useDetailTransaction = ({
     openAttachment,
     closeModal,
     deleteTransactionFunction,
-    DeleteModal,
   };
 };

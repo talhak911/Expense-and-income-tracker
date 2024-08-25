@@ -1,4 +1,4 @@
-import { Text, TouchableOpacity, View} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
 import React, {useState} from 'react';
 import {ScrollView} from 'react-native-gesture-handler';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -10,9 +10,9 @@ import SortIcon from '../../assets/icons/sort';
 import SingleBar from '../../components/barGraph/BarGraph';
 import PieChart from '../../components/pieChart/PieChart';
 import {useFinancialReport} from './useFinancialReport';
-import { styles } from './styles';
+import {styles} from './styles';
 
-export default function FinancialReport ()  {
+export default function FinancialReport() {
   const {expenses, incomes, totalExpense, totalIncome} = useFinancialReport();
   const [isActive, setIsActive] = useState<'expense' | 'income'>('expense');
 
@@ -22,10 +22,8 @@ export default function FinancialReport ()  {
   return (
     <ScrollView style={styles.container}>
       <SafeAreaView>
-        <View
-          style={[styles.topRow]}>
-          <View
-            style={styles.monthButton}>
+        <View style={[styles.topRow]}>
+          <View style={styles.monthButton}>
             <DownIcon />
             <Text style={{color: COLORS.black50}}>Month</Text>
           </View>
@@ -33,22 +31,23 @@ export default function FinancialReport ()  {
         </View>
 
         <View style={{position: 'relative', alignSelf: 'center'}}>
-          <PieChart data={isActive==='expense'?expenses:incomes} />
-          <Text
-            style={styles.totalAmount}>
-            ${isActive==='expense'?totalExpense:totalIncome}
+          <PieChart data={isActive === 'expense' ? expenses : incomes} />
+          <Text style={styles.totalAmount}>
+            ${isActive === 'expense' ? totalExpense : totalIncome}
           </Text>
         </View>
-        <View
-          style={styles.toggleButtonsContainer}>
+        <View style={styles.toggleButtonsContainer}>
           <TouchableOpacity
             onPress={() => {
               handleIsActive('expense');
             }}
-            style={[styles.toggleButton,{
-              backgroundColor:
-                isActive === 'expense' ? COLORS.purple : COLORS.lightGrey,
-            }]}>
+            style={[
+              styles.toggleButton,
+              {
+                backgroundColor:
+                  isActive === 'expense' ? COLORS.purple : COLORS.lightGrey,
+              },
+            ]}>
             <Text
               style={{
                 color: isActive === 'expense' ? 'white' : 'black',
@@ -61,10 +60,13 @@ export default function FinancialReport ()  {
             onPress={() => {
               handleIsActive('income');
             }}
-            style={[styles.toggleButton,{
-              backgroundColor:
-                isActive === 'income' ? COLORS.purple : COLORS.lightGrey,
-            }]}>
+            style={[
+              styles.toggleButton,
+              {
+                backgroundColor:
+                  isActive === 'income' ? COLORS.purple : COLORS.lightGrey,
+              },
+            ]}>
             <Text
               style={{
                 color: isActive === 'income' ? 'white' : 'black',
@@ -74,10 +76,8 @@ export default function FinancialReport ()  {
             </Text>
           </TouchableOpacity>
         </View>
-        <View
-          style={styles.sortTransactions}>
-          <View
-          style={styles.monthButton}>
+        <View style={styles.sortTransactions}>
+          <View style={styles.monthButton}>
             <DownIcon />
             <Text style={{color: COLORS.black50}}>Month</Text>
           </View>
@@ -86,27 +86,23 @@ export default function FinancialReport ()  {
         <View style={{gap: 3}}>
           {isActive === 'expense'
             ? expenses.map((item, index) => (
-         
-              <SingleBar
+                <SingleBar
                   key={index}
                   total={Number(totalExpense)}
                   item={item}
-                  type='expense'
+                  type="expense"
                 />
-            ))
-              
+              ))
             : incomes.map((item, index) => (
-            
-            <SingleBar
-                key={index}
-                type='income'
-                item={item}
-                total={Number(totalIncome)}
-              />
-
+                <SingleBar
+                  key={index}
+                  type="income"
+                  item={item}
+                  total={Number(totalIncome)}
+                />
               ))}
         </View>
       </SafeAreaView>
     </ScrollView>
   );
-};
+}

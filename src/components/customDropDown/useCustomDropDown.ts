@@ -1,5 +1,4 @@
 import {useState} from 'react';
-import {voidFunction} from '../../types/types';
 
 export const useCustomDropdown = ({
   onSelect,

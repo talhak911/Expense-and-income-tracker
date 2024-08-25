@@ -80,7 +80,6 @@ export default function Transaction() {
                     category: transaction.category,
                   });
                 }}>
-                
                 <TransactionCard
                   amount={transaction.amount.toString()}
                   category={transaction.category}

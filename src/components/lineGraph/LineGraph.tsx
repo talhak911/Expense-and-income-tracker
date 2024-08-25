@@ -1,65 +1,42 @@
 import React from 'react';
-import { View } from 'react-native';
-import { LineChart } from 'react-native-chart-kit';
-import { Dimensions } from 'react-native';
-import { LineGraphProps, TransactionType } from '../../types/types';
+import {View} from 'react-native';
+import {LineChart} from 'react-native-chart-kit';
+import {LineGraphProps} from '../../types/types';
+import {useLineGraph} from './useLineGraph';
 
-export default function LineGraph({ transactions, filterBy }:LineGraphProps) {
-
-  const reversedTransactions = [...transactions].reverse();
-
-
-  const labels = reversedTransactions.map(transaction => {
-    const date = new Date(transaction.date as string);
-    
-    if (filterBy === 'today') {
-     
-      return date.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-    } else {
-    
-      return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-    }
+export default function LineGraph({transactions, filterBy}: LineGraphProps) {
+  const {chartWidth, dataPoints, labels} = useLineGraph({
+    transactions,
+    filterBy,
   });
-
-  const dataPoints = reversedTransactions.map(transaction => {
-    const amount =transaction.amount;
-    return isNaN(amount) ? 0 : amount; 
-  });
-
-  const chartWidth = Math.max(labels.length * 70, Dimensions.get('window').width);
-
   return (
-    <View>
+    <View style={{marginLeft:12}}>
       <LineChart
         data={{
-          labels: labels, 
+          labels: labels,
           datasets: [
             {
-              data: dataPoints.length>0?dataPoints:[0], 
-              color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`, 
+              data: dataPoints.length > 0 ? dataPoints : [0],
+              color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`,
               strokeWidth: 2,
             },
           ],
         }}
-        width={chartWidth} // Dynamically calculated width
+        width={chartWidth}
         height={320}
-        verticalLabelRotation={filterBy === 'today' ? 0 : 70} 
+        verticalLabelRotation={filterBy === 'today' ? 0 : 70}
         withInnerLines={false}
         chartConfig={{
-          backgroundGradientFrom: '#fff',
+          backgroundGradientFrom: 'white',
           backgroundGradientFromOpacity: 0,
-          backgroundGradientTo: '#fff',
+          backgroundGradientTo: 'white',
           backgroundGradientToOpacity: 0,
           color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`,
           labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
           strokeWidth: 6,
         }}
-        bezier            
+        bezier
       />
     </View>
   );
 }
-
-
-
-

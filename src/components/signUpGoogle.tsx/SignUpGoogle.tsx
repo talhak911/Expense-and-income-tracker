@@ -1,8 +1,8 @@
 import {Text, TouchableOpacity} from 'react-native';
 import GoogleIcon from '../../assets/icons/google';
 import {useSignUpGoogle} from './useSignUpGoogle';
-
 import {styles} from './styles';
+
 export const SignUpGoogle = ({
   loading,
   setLoading,

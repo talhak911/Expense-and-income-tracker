@@ -3,6 +3,7 @@ import {Modal, View, Text, StyleSheet} from 'react-native';
 import {FontSize, Width} from '../../utils/responsive';
 import CheckMark from '../../assets/icons/checkMark';
 import {TransactionStatusModalProps} from '../../types/types';
+import { styles } from './styles';
 
 export const TransactionStatusModal = ({
   transactionStatus,
@@ -24,25 +25,3 @@ export const TransactionStatusModal = ({
     </Modal>
   );
 };
-
-const styles = StyleSheet.create({
-  modalOverlay: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.16)',
-  },
-  modalContent: {
-    backgroundColor: 'white',
-    borderRadius: 16,
-    paddingHorizontal: Width(4),
-    marginHorizontal: Width(5),
-    paddingTop: 27,
-    paddingBottom: 19,
-    gap: 16,
-    alignItems: 'center',
-  },
-  text: {
-    fontSize: FontSize(14),
-    color: 'black',
-  },
-});

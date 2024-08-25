@@ -1,9 +1,9 @@
 import {Text, View} from 'react-native';
-import {FontSize, Height, Width} from '../../utils/responsive';
 import {COLORS} from '../../constants/colors';
 import {TransactionCardProps} from '../../types/types';
 import {CATEGORYICON} from '../../constants/categoryIcons';
-import { useAppSelector } from '../../hooks/useStore';
+import {useAppSelector} from '../../hooks/useStore';
+import {styles} from './styles';
 
 export const TransactionCard = ({
   category,
@@ -12,50 +12,31 @@ export const TransactionCard = ({
   time,
   amount,
 }: TransactionCardProps) => {
-  const currency = useAppSelector(state=>state.transactions.currency)
+  const currency = useAppSelector(state => state.transactions.currency);
   return (
-    <View
-      style={{
-        backgroundColor: COLORS.white,
-        borderRadius: 24,
-        flexDirection: 'row',
-        gap: Width(2),
-        paddingVertical: 14,
-        paddingHorizontal: Width(4),
-      }}>
+    <View style={styles.container}>
       {CATEGORYICON(category)}
-      <View
-        style={{
-          flex: 1,
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-        }}>
-        <View style={{flexDirection: 'column', gap: Height(1.4)}}>
-          <Text style={{fontSize:16, color: '#292B2D'}}>
-            {category}
-          </Text>
+      <View style={styles.containerContent}>
+        <View style={styles.category}>
+          <Text style={styles.categoryText}>{category}</Text>
           <Text
             numberOfLines={1}
             ellipsizeMode="tail"
-            style={{fontSize: 13, color: '#91919F', maxWidth: '70%'}}>
+            style={styles.description}>
             {description}
           </Text>
         </View>
-        <View
-          style={{
-            flexDirection: 'column',
-            gap: Height(1.4),
-            alignItems: 'flex-end',
-          }}>
+        <View style={styles.rightContent}>
           <Text
             style={{
-              fontSize: 16,
               color: type === 'income' ? COLORS.green : COLORS.red,
-              fontWeight: '600',
+              ...styles.amount,
             }}>
-            {type === 'income' ? '+' : '-'}{currency}{amount}
+            {type === 'income' ? '+' : '-'}
+            {currency}
+            {amount}
           </Text>
-          <Text style={{fontSize: 13, color: '#91919F'}}>{time}</Text>
+          <Text style={styles.time}>{time}</Text>
         </View>
       </View>
     </View>

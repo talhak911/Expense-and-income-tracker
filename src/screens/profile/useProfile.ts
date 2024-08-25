@@ -2,10 +2,10 @@ import {signOut} from '../../redux/slices/authSlice';
 import {useAppDispatch, useAppSelector} from '../../hooks/useStore';
 import {useNavigation} from '@react-navigation/native';
 import {useState} from 'react';
-import { BottomNavigationProp } from '../../types/types';
+import {StackNavigationProp} from '../../types/types';
 
 export const useProfile = () => {
-  const user = useAppSelector(state=>state.auth.user)
+  const user = useAppSelector(state => state.auth.user);
   const [logoutModalVisible, setLogoutModelVisible] = useState(false);
   const closeModal = () => {
     setLogoutModelVisible(false);
@@ -13,7 +13,7 @@ export const useProfile = () => {
   const showModal = () => {
     setLogoutModelVisible(true);
   };
-  const navigation = useNavigation<BottomNavigationProp>();
+  const navigation = useNavigation<StackNavigationProp>();
   const dispatch = useAppDispatch();
 
   const signOutUser = async () => {

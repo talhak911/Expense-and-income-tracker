@@ -11,11 +11,22 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  topView:{
+  topView: {
     flex: 1,
     flexDirection: 'row',
     gap: 16,
     alignItems: 'center',
+  },
+  name: {
+    fontWeight: '600',
+    color: COLORS.charcoal,
+    fontSize: 24,
+  },
+  buttonsContainer: {
+    flex: 1,
+    gap: 2,
+    marginTop: 40,
+    marginHorizontal: Width(5),
   },
   container: {flex: 1, backgroundColor: COLORS.almostWhite},
   imageBorder: {
@@ -27,7 +38,7 @@ export const styles = StyleSheet.create({
   image: {
     width: Width(19),
     height: Width(19),
-    overflow:"hidden",
+    overflow: 'hidden',
     backgroundColor: 'orange',
     borderRadius: Width(9.5),
   },

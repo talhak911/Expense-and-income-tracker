@@ -1,16 +1,10 @@
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  Modal,
-  Animated
-} from 'react-native';
+import {View, Text, TouchableOpacity, Modal, Animated} from 'react-native';
 import CameraIcon from '../../assets/icons/camera';
 import ImageIcon from '../../assets/icons/image';
 import DocumentIcon from '../../assets/icons/document';
-import { useAttachmentModel } from './useAttachmentModel';
-import { AttachmentModelProps } from '../../types/types';
-import { styles } from './styles';
+import {useAttachmentModel} from './useAttachmentModel';
+import {AttachmentModelProps} from '../../types/types';
+import {styles} from './styles';
 
 const AttachmentModel = ({
   visible,
@@ -18,8 +12,8 @@ const AttachmentModel = ({
   onCameraPress,
   onImagePress,
   onDocumentPress,
-}:AttachmentModelProps) => {
-  const {panResponder,translateY} = useAttachmentModel({visible,onClose})
+}: AttachmentModelProps) => {
+  const {panResponder, translateY} = useAttachmentModel({visible, onClose});
 
   return (
     <Modal
@@ -51,6 +45,5 @@ const AttachmentModel = ({
     </Modal>
   );
 };
-
 
 export default AttachmentModel;

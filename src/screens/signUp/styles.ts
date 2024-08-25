@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {Height, Width} from '../../utils/responsive';
+import { COLORS } from '../../constants/colors';
 export default StyleSheet.create({
   container: {
     flex: 1,
@@ -25,11 +26,11 @@ export default StyleSheet.create({
   },
   footerText: {
     marginRight: Width(1),
-    color: '#91919F',
+    color: COLORS.grey,
   },
   footerLink: {
     borderBottomWidth: 1,
-    borderBottomColor: '#7F3DFF',
-    color: '#7F3DFF',
+    borderBottomColor:  COLORS.purple,
+    color: COLORS.purple,
   },
 });

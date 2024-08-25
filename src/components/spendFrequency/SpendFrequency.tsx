@@ -1,6 +1,5 @@
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
-import {Height, FontSize, Width} from '../../utils/responsive';
 import {COLORS} from '../../constants/colors';
 import {useSpendFrequency} from './useSpendFrequency';
 import LineGraph from '../lineGraph/LineGraph';
@@ -12,11 +11,8 @@ export default function SpendFrequency() {
 
   return (
     <View>
-      <Text style={ styles.headingSmall}>
-        Spend Frequency
-      </Text>
+      <Text style={styles.headingSmall}>Spend Frequency</Text>
       <LineGraph transactions={filteredTransactions} filterBy={filterBy} />
-
       <View style={styles.alignCenter}>
         <View style={styles.menusContainer}>
           {spendFrequencyFilters.map((item, index) => (

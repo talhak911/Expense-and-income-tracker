@@ -3,6 +3,7 @@ import SalaryIcon from '../assets/icons/salary';
 import ShoppingIcon from '../assets/icons/shopping';
 import SubscriptionIcon from '../assets/icons/subscription';
 import TransportationIcon from '../assets/icons/transportation';
+import {FilterByType, SortByType} from '../types/types';
 
 export const Expenses = [
   {icon: <ShoppingIcon />, value: 'Shopping'},
@@ -15,6 +16,9 @@ export const Incomes = [
   {icon: <SalaryIcon />, value: 'Salary'},
   {icon: <SalaryIcon />, value: 'Passive Income'},
 ];
+
+export const FilterBy: FilterByType[] = ['income', 'expense'];
+export const SortBy: SortByType[] = ['highest', 'lowest', 'newest', 'oldest'];
 export const Currencies = [
   {currency: 'Pakistan (PKR)', symbol: 'Rs '},
   {currency: 'Japan (JPY)', symbol: '¥'},

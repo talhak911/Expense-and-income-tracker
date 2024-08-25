@@ -1,14 +1,11 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
-import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
+import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import Snackbar from 'react-native-snackbar';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {GOOGLE_API} from '@env';
-import {useAppDispatch} from '../../hooks/useStore';
-import {ChangePasswordPayload} from '../../types/types';
-export type AuthStateType = {
-  user: Partial<FirebaseAuthTypes.User> | null;
-};
+import {AuthStateType, ChangePasswordPayload} from '../../types/types';
+
 const initialState: AuthStateType = {
   user: null,
 };

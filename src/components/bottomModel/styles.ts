@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
     gap: 8,
   },
   modalContent: {
-    backgroundColor: 'white',
+    backgroundColor: 'white', 
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     paddingHorizontal: Width(4),
@@ -25,7 +25,7 @@ export const styles = StyleSheet.create({
     width: 40,
     height: 4,
     borderRadius: 2,
-    backgroundColor: '#ccc',
+    backgroundColor: COLORS.purple25,
     marginBottom: 20,
   },
   button: {

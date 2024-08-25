@@ -9,7 +9,7 @@ import {FontSize} from '../../utils/responsive';
 import BudgetIcon from '../../assets/icons/budget';
 import ProfileIcon from '../../assets/icons/profile';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Buget from '../../screens/buget/Buget';
+import Budget from '../../screens/budget/Budget';
 import {TabParamsList} from '../../types/types';
 
 export const TabNavigator = () => {
@@ -49,8 +49,8 @@ export const TabNavigator = () => {
       />
       <Tab.Screen
         options={{tabBarIcon: ({focused}) => <BudgetIcon focused={focused} />}}
-        name="Buget"
-        component={Buget}
+        name="Budget"
+        component={Budget}
       />
       <Tab.Screen
         options={{tabBarIcon: ({focused}) => <ProfileIcon focused={focused} />}}

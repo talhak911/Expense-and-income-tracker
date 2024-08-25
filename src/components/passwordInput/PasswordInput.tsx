@@ -1,10 +1,9 @@
 import React from 'react';
-import {Pressable, StyleSheet, Text, TextInput, View} from 'react-native';
+import {Pressable, TextInput, View} from 'react-native';
 import {usePasswordInput} from './usePasswordInput';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {FontSize, Height, Width} from '../../utils/responsive';
-import { COLORS } from '../../constants/colors';
-import { styles } from './styles';
+import {COLORS} from '../../constants/colors';
+import {styles} from './styles';
 
 export const PasswordInput = ({
   value,
@@ -21,7 +20,7 @@ export const PasswordInput = ({
       <TextInput
         style={styles.inputField}
         placeholder="Password"
-        placeholderTextColor={'#91919F'}
+        placeholderTextColor={COLORS.grey}
         autoCapitalize="none"
         autoCorrect={false}
         secureTextEntry={passwordVisibility}
@@ -32,7 +31,11 @@ export const PasswordInput = ({
         }}
       />
       <Pressable onPress={handlePasswordVisibility}>
-        <MaterialCommunityIcons name={rightIcon} size={22} color={COLORS.grey} />
+        <MaterialCommunityIcons
+          name={rightIcon}
+          size={22}
+          color={COLORS.grey}
+        />
       </Pressable>
     </View>
   );

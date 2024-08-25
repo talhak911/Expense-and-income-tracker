@@ -5,12 +5,10 @@ import {COLORS} from '../../constants/colors';
 import {FontInter} from '../../constants/fonts';
 import {BarGraphProps} from '../../types/types';
 import {styles} from './styles';
-const {width} = Dimensions.get('screen');
-function BarGraph({total, item, type}: BarGraphProps) {
-  const barWidth = width;
-  const barHeight = 12;
-  const innerBarWidth = (item.amount / total) * (barWidth - 12);
+import { useBarGraph } from './useBarGraph';
 
+function BarGraph({total, item, type}: BarGraphProps) {
+const {barHeight,barWidth,innerBarWidth}=useBarGraph(item.amount,total)
   return (
     <View>
       <View style={styles.container}>
@@ -34,7 +32,7 @@ function BarGraph({total, item, type}: BarGraphProps) {
         viewBox={`0 0 ${barWidth} ${barHeight}`}
         fill="none">
         <Path
-          stroke="#F1F1FA"
+          stroke={COLORS.lightGrey}
           strokeWidth={12}
           strokeLinecap="round"
           strokeLinejoin="round"

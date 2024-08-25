@@ -1,5 +1,4 @@
-import {ActivityIndicator, Text, TextInput, TouchableOpacity, View} from 'react-native';
-
+import {ActivityIndicator, Text, TouchableOpacity, View} from 'react-native';
 import styles from './styles';
 import {useSignIn} from './useSignIn';
 import {CustomInput} from '../../components/customInput/CustomInput';
@@ -23,14 +22,14 @@ export const SignIn = () => {
   } = useSignIn();
   return (
     <View style={styles.container}>
-      <View style={{gap: 24, marginHorizontal: Width(4)}}>
+      <View style={styles.containerContent}>
         <CustomInput value={email} placeHolder="E-mail" onChange={setEmail} />
         <PasswordInput onChange={setPassword} value={password} />
       </View>
       {loading ? (
-      <View style={{marginTop:16}}>
-      <ActivityIndicator size="large" color={COLORS.purple} />
-      </View>
+        <View style={{marginTop: 16}}>
+          <ActivityIndicator size="large" color={COLORS.purple} />
+        </View>
       ) : (
         <View style={{marginTop: 40, marginHorizontal: Width(4)}}>
           <View style={{alignItems: 'center'}}>
@@ -42,10 +41,8 @@ export const SignIn = () => {
           </View>
           <TouchableOpacity
             onPress={navigateToForgetPassword}
-            style={{marginTop: 16, alignSelf: 'flex-end', marginRight: 16}}>
-            <Text style={{fontWeight: 'bold', color: COLORS.purple}}>
-              Forgot Password?
-            </Text>
+            style={styles.forgetPasswordContainer}>
+            <Text style={styles.forgetPasswordText}>Forgot Password?</Text>
           </TouchableOpacity>
           <View style={{alignItems: 'center'}}>
             <SignUpGoogle loading={loading} setLoading={setLoading} />

@@ -4,6 +4,7 @@ import {useRecentTransactions} from './useRecentTransactions';
 import {FontSize, Height, Width} from '../../utils/responsive';
 import {TransactionCard} from '../transactionCard/TransactionCard';
 import { styles } from './styles';
+import { COLORS } from '../../constants/colors';
 
 export default function RecentTransactions() {
   const {navigateToDetailTransaction, transactions, navigateToTransactions} =
@@ -15,7 +16,7 @@ export default function RecentTransactions() {
         <TouchableOpacity
           onPress={navigateToTransactions}
           style={styles.button}>
-          <Text style={{color: '#7F3DFF'}}>See All</Text>
+          <Text style={{color: COLORS.purple}}>See All</Text>
         </TouchableOpacity>
       </View>
       <View style={{paddingHorizontal: 19, gap: 8}}>

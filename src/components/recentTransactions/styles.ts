@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
       backgroundColor: COLORS.lightPurple,
       paddingHorizontal: 16,
       paddingVertical: Height(1),
-      borderRadius: FontSize(16),
+      borderRadius: 16,
     },
   });
   

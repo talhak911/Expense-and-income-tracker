@@ -9,8 +9,7 @@ import {CustomInput} from '../../components/customInput/CustomInput';
 import {CustomButton} from '../../components/customButton/CustomButtom';
 import {SignUpGoogle} from '../../components/signUpGoogle.tsx/SignUpGoogle';
 import {Width} from '../../utils/responsive';
-import Loading from '../../assets/icons/loading';
-import { COLORS } from '../../constants/colors';
+import {COLORS} from '../../constants/colors';
 
 export const SignUp = () => {
   const {
@@ -29,17 +28,16 @@ export const SignUp = () => {
   } = useSignUp();
   return (
     <View style={styles.container}>
-      <KeyboardAwareScrollView
-        keyboardShouldPersistTaps="always">
+      <KeyboardAwareScrollView keyboardShouldPersistTaps="always">
         <View style={styles.gap}>
           <CustomInput onChange={setName} placeHolder="Name" value={name} />
           <CustomInput onChange={setEmail} placeHolder="E-mail" value={email} />
           <PasswordInput value={password} onChange={setPassword} />
         </View>
         {loading ? (
-<View style={{marginTop:16}}>
-<ActivityIndicator size="large" color={COLORS.purple} />
-</View>
+          <View style={{marginTop: 16}}>
+            <ActivityIndicator size="large" color={COLORS.purple} />
+          </View>
         ) : (
           <View style={{alignItems: 'center', marginHorizontal: Width(4)}}>
             <Checkbox checked={isChecked} onChange={setIsChecked} />

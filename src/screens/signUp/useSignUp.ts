@@ -1,5 +1,4 @@
 import {useState} from 'react';
-
 import {useNavigation} from '@react-navigation/native';
 import Snackbar from 'react-native-snackbar';
 import {useAppDispatch} from '../../hooks/useStore';

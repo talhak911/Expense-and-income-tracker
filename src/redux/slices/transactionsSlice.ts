@@ -2,11 +2,13 @@ import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import firestore, {Timestamp} from '@react-native-firebase/firestore';
 import {TransactionsSliceType, TransactionType} from '../../types/types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 const initialState: TransactionsSliceType = {
   loading: false,
   transactions: [],
   currency: 'Rs ',
 };
+
 export const fetchCurrency = createAsyncThunk(
   'transactions/fetchCurrency',
   async () => {
@@ -46,7 +48,7 @@ export const addTransaction = createAsyncThunk(
 
       dispatch(addTransactionToState(newTransaction));
     } catch (error) {
-      console.log("error while adding transaction ",error);
+      console.log('error while adding transaction ', error);
     }
   },
 );
@@ -70,7 +72,7 @@ export const fetchTransactions = createAsyncThunk(
 
       dispatch(setTransactions(transactions));
     } catch (error) {
-      console.log("error while fetching transaction ",error);
+      console.log('error while fetching transaction ', error);
     }
   },
 );
@@ -86,7 +88,7 @@ export const deleteTransaction = createAsyncThunk(
         .delete();
       return id;
     } catch (error) {
-      console.log("error while deleting transaction ",error);
+      console.log('error while deleting transaction ', error);
     }
   },
 );

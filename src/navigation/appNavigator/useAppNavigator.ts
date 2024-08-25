@@ -7,7 +7,7 @@ import {
 } from '../../redux/slices/transactionsSlice';
 import auth from '@react-native-firebase/auth';
 import SplashScreen from 'react-native-splash-screen';
-const useAppNavigator = () => {
+export const useAppNavigator = () => {
   const [initializing, setInitializing] = useState(true);
   const user = useAppSelector(state => state.auth.user);
   const dispatch = useAppDispatch();
@@ -41,4 +41,3 @@ const useAppNavigator = () => {
   };
 };
 
-export default useAppNavigator;

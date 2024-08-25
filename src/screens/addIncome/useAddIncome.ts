@@ -14,6 +14,8 @@ export const useAddIncome = () => {
   const [attachment, setAttachment] = useState<string | null>(null);
   const [category, setCategory] = useState('');
   const uid = useAppSelector(state => state.auth.user?.uid);
+  const currency = useAppSelector(state => state.transactions.currency);
+ 
   const closeModal = () => {
     setModalVisible(false);
   };
@@ -80,6 +82,7 @@ export const useAddIncome = () => {
     selectedFile,
     image,
     modalVisible,
+    currency,
     closeModal,
     setSelectedFile,
     setImage,

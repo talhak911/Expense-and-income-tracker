@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
   button: {
     padding: Width(4),
     flexDirection: 'row',
-    alignItems:"center",
+    alignItems: 'center',
     justifyContent: 'space-between',
   },
   buttonText: {
@@ -18,5 +18,4 @@ export const styles = StyleSheet.create({
     fontWeight: '500',
     color: COLORS.charcoal,
   },
-
 });

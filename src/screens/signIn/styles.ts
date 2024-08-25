@@ -1,11 +1,13 @@
 import {StyleSheet} from 'react-native';
-import {FontSize} from '../../utils/responsive';
+import {FontSize, Width} from '../../utils/responsive';
+import {COLORS} from '../../constants/colors';
 export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
     paddingTop: 56,
   },
+  containerContent: {gap: 24, marginHorizontal: Width(4)},
   logo: {
     flex: 1,
     height: 120,
@@ -13,6 +15,12 @@ export default StyleSheet.create({
     alignSelf: 'center',
     margin: 30,
   },
+  forgetPasswordContainer: {
+    marginTop: 16,
+    alignSelf: 'flex-end',
+    marginRight: 16,
+  },
+  forgetPasswordText: {fontWeight: 'bold', color: COLORS.purple},
   input: {
     height: 48,
     borderRadius: 5,
@@ -25,7 +33,7 @@ export default StyleSheet.create({
     paddingLeft: 16,
   },
   button: {
-    backgroundColor: '#788eec',
+    backgroundColor: COLORS.blue50,
     marginLeft: 30,
     marginRight: 30,
     marginTop: 20,
@@ -51,7 +59,7 @@ export default StyleSheet.create({
   },
   footerLink: {
     borderBottomWidth: 1,
-    borderBottomColor: '#7F3DFF',
-    color: '#7F3DFF',
+    borderBottomColor: COLORS.purple,
+    color: COLORS.purple,
   },
 });

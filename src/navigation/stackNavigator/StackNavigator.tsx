@@ -50,13 +50,9 @@ export default function StackNavigator() {
           name="Financial Report"
           component={FinancialReport}
         />
-        <Stack.Screen
-          name="Detail Transaction"
-          component={DetailTransaction}
-        />
+        <Stack.Screen name="Detail Transaction" component={DetailTransaction} />
         <Stack.Screen
           options={{
-
             headerStyle: {backgroundColor: 'white'},
             headerTitleStyle: {color: COLORS.black50},
             headerLeftContainerStyle: {paddingLeft: 16},
@@ -69,7 +65,7 @@ export default function StackNavigator() {
           options={{
             headerStyle: {backgroundColor: 'white'},
             headerTitleStyle: {color: COLORS.black50},
-            headerShadowVisible:true,
+            headerShadowVisible: true,
             headerLeftContainerStyle: {paddingLeft: 16},
             headerBackImage: () => <BackIcon currentColor="black" />,
           }}
@@ -80,7 +76,7 @@ export default function StackNavigator() {
           options={{
             headerStyle: {backgroundColor: 'white'},
             headerTitleStyle: {color: COLORS.black50},
-            headerShadowVisible:true,
+            headerShadowVisible: true,
             headerLeftContainerStyle: {paddingLeft: 16},
             headerBackImage: () => <BackIcon currentColor="black" />,
           }}

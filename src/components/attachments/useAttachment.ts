@@ -29,7 +29,7 @@ export const useAttachment = ({
           DocumentPicker.types.doc,
           DocumentPicker.types.pdf,
           DocumentPicker.types.docx,
-        ], 
+        ],
       });
 
       if (result) {
@@ -39,7 +39,7 @@ export const useAttachment = ({
         onAttachmentChange(result.uri);
       }
     } catch (err) {
-      console.log('eror in document picker ', err);
+      console.log('error in document picker ', err);
     }
   };
   const handleImagePicker = () => {

@@ -3,10 +3,9 @@ import {useState} from 'react';
 import Snackbar from 'react-native-snackbar';
 import {useAppDispatch} from '../../hooks/useStore';
 import {signIn} from '../../redux/slices/authSlice';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { AuthStackParamList } from '../../types/types';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {AuthStackParamList} from '../../types/types';
 export const useSignIn = () => {
-
   type SignInNavigationProp = NativeStackNavigationProp<AuthStackParamList>;
 
   const dispatch = useAppDispatch();
@@ -18,11 +17,11 @@ export const useSignIn = () => {
     navigation.navigate('ForgetPassword');
   };
   const [email, setEmail] = useState('');
-  const [loading,setLoading]=useState(false)
+  const [loading, setLoading] = useState(false);
   const [password, setPassword] = useState('');
   const onSignInPress = async () => {
     try {
-      setLoading(true)
+      setLoading(true);
       if (!email || !password) {
         Snackbar.show({
           text: 'Email and Password required',
@@ -34,9 +33,10 @@ export const useSignIn = () => {
         await dispatch(signIn({email, password}));
       }
     } catch (error: any) {
-      console.log("error while sign in ",error)
+      console.log('error while sign in ', error);
+    } finally {
+      setLoading(false);
     }
-    finally{setLoading(false)}
   };
 
   return {

@@ -6,6 +6,7 @@ import {COLORS} from '../../constants/colors';
 import {FontSize, Height} from '../../utils/responsive';
 import CrossIcon from '../../assets/icons/cross';
 import AttachmentModel from '../attachmentModel/AttachmentModel';
+import {styles} from './styles';
 
 export const Attachment = ({
   selectedFile,
@@ -28,9 +29,9 @@ export const Attachment = ({
     handleCamera,
     remove,
   } = useAttachment({
+    selectedFile,
     onAttachmentChange,
     setImage,
-    selectedFile,
     setSelectedFile,
   });
 
@@ -40,18 +41,7 @@ export const Attachment = ({
         onPress={() => {
           setModalVisible(!modalVisible);
         }}
-        style={{
-          flex: 1,
-          justifyContent: 'center',
-          alignItems: 'center',
-          flexDirection: 'row',
-          gap: 10,
-          borderStyle: 'dashed',
-          borderWidth: 3,
-          borderColor: '#F1F1FA',
-          height: Height(7),
-          borderRadius: 16,
-        }}>
+        style={styles.attachmentButton}>
         <AttachmentIcon />
         <Text style={{color: COLORS.grey, fontSize: FontSize(16)}}>
           Add attachment
@@ -67,18 +57,9 @@ export const Attachment = ({
         onImagePress={handleImagePicker}
       />
       {image && (
-        <View style={{position: 'relative', alignSelf: 'flex-start'}}>
-          <Image
-            source={{uri: image}}
-            style={{height: 112, width: 112, borderRadius: 8}}
-          />
-          <TouchableOpacity
-            onPress={remove}
-            style={{
-              position: 'absolute',
-              top: -5,
-              right: -5,
-            }}>
+        <View style={styles.imageContainer}>
+          <Image source={{uri: image}} style={styles.image} />
+          <TouchableOpacity onPress={remove} style={styles.remove}>
             <CrossIcon />
           </TouchableOpacity>
         </View>
@@ -86,13 +67,7 @@ export const Attachment = ({
       {selectedFile && (
         <View>
           <Text style={{color: 'black'}}>{selectedFile}</Text>
-          <TouchableOpacity
-            onPress={remove}
-            style={{
-              position: 'absolute',
-              top: -5,
-              right: -5,
-            }}>
+          <TouchableOpacity onPress={remove} style={styles.remove}>
             <CrossIcon />
           </TouchableOpacity>
         </View>

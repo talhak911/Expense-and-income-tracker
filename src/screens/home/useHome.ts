@@ -2,7 +2,7 @@ import {useAppSelector} from '../../hooks/useStore';
 import {getMonth} from '../../utils/utils';
 
 export const useHome = () => {
-  const userImage = useAppSelector(state=>state.auth.user?.photoURL)
+  const userImage = useAppSelector(state => state.auth.user?.photoURL);
   const month = getMonth();
   const transactionSlice = useAppSelector(state => state.transactions);
   const expenses = transactionSlice.transactions

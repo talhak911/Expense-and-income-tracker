@@ -1,4 +1,4 @@
-import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, Text, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {CustomButton} from '../../components/customButton/CustomButtom';
 import {BottomModel} from '../../components/bottomModel/BottomModel';
@@ -6,6 +6,7 @@ import {useDetailTransaction} from './useDetailTransaction';
 import {Image} from 'react-native';
 import {DetailTransactionProps} from '../../types/types';
 import {styles} from './styles';
+import { DeleteModal } from '../../components/deleteModal/DeleteModal';
 
 export default function DetailTransaction({
   route,
@@ -16,7 +17,6 @@ export default function DetailTransaction({
     currency,
     modalVisible,
     closeModal,
-    DeleteModal,
     deleteTransactionFunction,
     openAttachment,
   } = useDetailTransaction({
@@ -33,7 +33,7 @@ export default function DetailTransaction({
             <DeleteModal
               closeModal={closeModal}
               action={() => {
-                deleteTransactionFunction(id);
+                deleteTransactionFunction(id as string);
               }}
             />
           }
@@ -48,7 +48,10 @@ export default function DetailTransaction({
           },
         ]}>
         <View style={styles.topViewContent}>
-          <Text style={styles.amount}>{currency}{amount}</Text>
+          <Text style={styles.amount}>
+            {currency}
+            {amount}
+          </Text>
           <Text style={styles.descriptionInHeader}>{description}</Text>
           <Text style={styles.date}>{date}</Text>
         </View>

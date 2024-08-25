@@ -1,6 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {COLORS} from '../../constants/colors';
 import {Height, Width} from '../../utils/responsive';
+
 export const styles = StyleSheet.create({
   heading: {
     fontWeight: '600',

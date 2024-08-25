@@ -1,3 +1,4 @@
+import {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import {BottomTabNavigationProp} from '@react-navigation/bottom-tabs';
 import {
   NativeStackNavigationProp,
@@ -54,6 +55,9 @@ export type LineGraphProps = {
   transactions: TransactionType[];
   filterBy: 'today' | 'week' | 'month' | 'year';
 };
+export type AuthStateType = {
+  user: Partial<FirebaseAuthTypes.User> | null;
+};
 export type AuthStackParamList = {
   SignUp: undefined;
   SignIn: undefined;
@@ -106,7 +110,7 @@ export type TabParamsList = {
   Home: undefined;
   Transaction: undefined;
   AddTransaction: undefined;
-  Buget: undefined;
+  Budget: undefined;
   Profile: undefined;
 };
 export type AuthNavigationProp = NativeStackNavigationProp<AuthStackParamList>;

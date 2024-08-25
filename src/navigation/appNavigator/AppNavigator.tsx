@@ -1,7 +1,6 @@
-import React, {useEffect, useState} from 'react';
 import StackNavigator from '../stackNavigator/StackNavigator';
 import AuthNavigator from '../authNavigator/AuthNavigator';
-import useAppNavigator from './useAppNavigator';
+import {useAppNavigator} from './useAppNavigator';
 
 export default function AppNavigator() {
   const {initializing, user} = useAppNavigator();

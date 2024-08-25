@@ -26,10 +26,7 @@ export const useUpdateProfile = () => {
 
   const [loading, setLoading] = useState(false);
   const dispatch = useAppDispatch();
-
   const user = useAppSelector(state => state.auth.user);
-
-  console.log('user is in profile update ', user);
   const [email, setEmail] = useState(user?.email as string);
   const [name, setName] = useState(user?.displayName as string);
   const [image, setImage] = useState('');
