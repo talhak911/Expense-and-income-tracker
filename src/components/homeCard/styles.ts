@@ -7,8 +7,13 @@ export const styles = StyleSheet.create({
       paddingLeft: Width(4),
   
       fontSize: FontSize(18),
-      fontWeight: 'semibold',
+      fontWeight: '600',
       color: '#0D0E0F',
+    },
+    amount:{
+      fontSize:22,
+      fontWeight: '600',
+      color: COLORS.white,
     },
     icon: {
       height: 48,
@@ -22,11 +27,11 @@ export const styles = StyleSheet.create({
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
-      minWidth: 164,
-      gap: 10,
+      width:Width(44),
+      gap: Width(4),
       borderRadius: FontSize(32),
-      paddingHorizontal: Width(5),
-      paddingVertical: Width(5),
+      paddingHorizontal: 17,
+      paddingVertical: 17,
     },
   });
   
