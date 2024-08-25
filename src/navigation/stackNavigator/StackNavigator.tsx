@@ -1,26 +1,20 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
-import AddIncome from '../screens/addIncome/AddIncome';
-import AddExpense from '../screens/addExpense/AddExpense';
-import {COLORS} from '../constants/colors';
-import BackIcon from '../assets/icons/back';
-import Transaction from '../screens/transaction/Transaction';
-import FinancialReport from '../screens/financialReport/FinancialReport';
-import DetailTransaction from '../screens/detailTransaction/DetailTransaction';
-import UpdateProfile from '../screens/updateProfile/UpdateProfile';
-import ResetPassword from '../screens/resetPassword/ResetPassword';
-import HomeIcon from '../assets/icons/home';
-import TransactionBottomIcon from '../assets/icons/transactionBottom';
-import {FontSize} from '../utils/responsive';
-import BudgetIcon from '../assets/icons/budget';
-import ProfileIcon from '../assets/icons/profile';
-import { TabNavigator } from './TabNavigator';
+import AddIncome from '../../screens/addIncome/AddIncome';
+import AddExpense from '../../screens/addExpense/AddExpense';
+import {COLORS} from '../../constants/colors';
+import BackIcon from '../../assets/icons/back';
+import FinancialReport from '../../screens/financialReport/FinancialReport';
+import DetailTransaction from '../../screens/detailTransaction/DetailTransaction';
+import UpdateProfile from '../../screens/updateProfile/UpdateProfile';
+import ResetPassword from '../../screens/resetPassword/ResetPassword';
+import {TabNavigator} from '../tabNavigator/TabNavigator';
+import Settings from '../../screens/settings/Settings';
+import {StackNavigatorParamList} from '../../types/types';
+import Currency from '../../screens/currency/Currency';
 
-const Stack = createStackNavigator();
-
-
-
-export default function BottomNavigator() {
+export default function StackNavigator() {
+  const Stack = createStackNavigator<StackNavigatorParamList>();
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -56,9 +50,13 @@ export default function BottomNavigator() {
           name="Financial Report"
           component={FinancialReport}
         />
-        <Stack.Screen name="Detail Transaction" component={DetailTransaction} />
+        <Stack.Screen
+          name="Detail Transaction"
+          component={DetailTransaction}
+        />
         <Stack.Screen
           options={{
+
             headerStyle: {backgroundColor: 'white'},
             headerTitleStyle: {color: COLORS.black50},
             headerLeftContainerStyle: {paddingLeft: 16},
@@ -66,6 +64,28 @@ export default function BottomNavigator() {
           }}
           name="Update Profile"
           component={UpdateProfile}
+        />
+        <Stack.Screen
+          options={{
+            headerStyle: {backgroundColor: 'white'},
+            headerTitleStyle: {color: COLORS.black50},
+            headerShadowVisible:true,
+            headerLeftContainerStyle: {paddingLeft: 16},
+            headerBackImage: () => <BackIcon currentColor="black" />,
+          }}
+          name="Settings"
+          component={Settings}
+        />
+        <Stack.Screen
+          options={{
+            headerStyle: {backgroundColor: 'white'},
+            headerTitleStyle: {color: COLORS.black50},
+            headerShadowVisible:true,
+            headerLeftContainerStyle: {paddingLeft: 16},
+            headerBackImage: () => <BackIcon currentColor="black" />,
+          }}
+          name="Currency"
+          component={Currency}
         />
         <Stack.Screen
           options={{

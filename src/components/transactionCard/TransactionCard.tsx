@@ -3,20 +3,21 @@ import {FontSize, Height, Width} from '../../utils/responsive';
 import {COLORS} from '../../constants/colors';
 import {TransactionCardProps} from '../../types/types';
 import {CATEGORYICON} from '../../constants/categoryIcons';
+import { useAppSelector } from '../../hooks/useStore';
 
 export const TransactionCard = ({
-  icon,
   category,
   description,
   type,
   time,
   amount,
 }: TransactionCardProps) => {
+  const currency = useAppSelector(state=>state.transactions.currency)
   return (
     <View
       style={{
-        backgroundColor:COLORS.white,
-        borderRadius:24,
+        backgroundColor: COLORS.white,
+        borderRadius: 24,
         flexDirection: 'row',
         gap: Width(2),
         paddingVertical: 14,
@@ -30,13 +31,13 @@ export const TransactionCard = ({
           justifyContent: 'space-between',
         }}>
         <View style={{flexDirection: 'column', gap: Height(1.4)}}>
-          <Text style={{fontSize: FontSize(16), color: '#292B2D'}}>
+          <Text style={{fontSize:16, color: '#292B2D'}}>
             {category}
           </Text>
           <Text
             numberOfLines={1}
             ellipsizeMode="tail"
-            style={{fontSize: FontSize(13), color: '#91919F', maxWidth: '70%'}}>
+            style={{fontSize: 13, color: '#91919F', maxWidth: '70%'}}>
             {description}
           </Text>
         </View>
@@ -48,13 +49,13 @@ export const TransactionCard = ({
           }}>
           <Text
             style={{
-              fontSize: FontSize(16),
+              fontSize: 16,
               color: type === 'income' ? COLORS.green : COLORS.red,
-              fontWeight: 'semibold',
+              fontWeight: '600',
             }}>
-            {type === 'income' ? '+' : '-'} ${amount}
+            {type === 'income' ? '+' : '-'}{currency}{amount}
           </Text>
-          <Text style={{fontSize: FontSize(13), color: '#91919F'}}>{time}</Text>
+          <Text style={{fontSize: 13, color: '#91919F'}}>{time}</Text>
         </View>
       </View>
     </View>

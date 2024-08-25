@@ -1,4 +1,4 @@
-import {Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {ActivityIndicator, Text, TextInput, TouchableOpacity, View} from 'react-native';
 
 import styles from './styles';
 import {useSignIn} from './useSignIn';
@@ -6,7 +6,8 @@ import {CustomInput} from '../../components/customInput/CustomInput';
 import {PasswordInput} from '../../components/passwordInput/PasswordInput';
 import {CustomButton} from '../../components/customButton/CustomButtom';
 import {SignUpGoogle} from '../../components/signUpGoogle.tsx/SignUpGoogle';
-import { Width } from '../../utils/responsive';
+import {Width} from '../../utils/responsive';
+import {COLORS} from '../../constants/colors';
 
 export const SignIn = () => {
   const {
@@ -22,34 +23,33 @@ export const SignIn = () => {
   } = useSignIn();
   return (
     <View style={styles.container}>
-     <View style={{gap:24, marginHorizontal:Width(4)}}>
-     <CustomInput value={email} placeHolder="E-mail" onChange={setEmail} />
-     <PasswordInput onChange={setPassword} value={password} />
-     </View>
+      <View style={{gap: 24, marginHorizontal: Width(4)}}>
+        <CustomInput value={email} placeHolder="E-mail" onChange={setEmail} />
+        <PasswordInput onChange={setPassword} value={password} />
+      </View>
       {loading ? (
-        <Text style={{alignSelf: 'center', fontSize: 20, fontWeight: 'bold'}}>
-          Loading
-        </Text>
+      <View style={{marginTop:16}}>
+      <ActivityIndicator size="large" color={COLORS.purple} />
+      </View>
       ) : (
-        <View style={{marginTop:40,marginHorizontal:Width(4)}}>
-       <View style={{alignItems:'center',width:'100%'}}>
-
-       <CustomButton
-
-loading={loading}
-onPress={onSignInPress}
-title="Login"
-/>
-       </View>
-        <TouchableOpacity
-        onPress={navigateToForgetPassword}
-        style={{marginTop:16, alignSelf:"flex-end",marginRight:16}}
-        >
-          <Text
-          style={{fontWeight:"bold",color:"#7F3DFF"}}
-          >Forgot Password?</Text>
-        </TouchableOpacity>
-          <SignUpGoogle loading={loading} setLoading={setLoading} />
+        <View style={{marginTop: 40, marginHorizontal: Width(4)}}>
+          <View style={{alignItems: 'center'}}>
+            <CustomButton
+              loading={loading}
+              onPress={onSignInPress}
+              title="Login"
+            />
+          </View>
+          <TouchableOpacity
+            onPress={navigateToForgetPassword}
+            style={{marginTop: 16, alignSelf: 'flex-end', marginRight: 16}}>
+            <Text style={{fontWeight: 'bold', color: COLORS.purple}}>
+              Forgot Password?
+            </Text>
+          </TouchableOpacity>
+          <View style={{alignItems: 'center'}}>
+            <SignUpGoogle loading={loading} setLoading={setLoading} />
+          </View>
           <View style={styles.footerView}>
             <Text style={styles.footerText}>
               Do not have an account?{' '}

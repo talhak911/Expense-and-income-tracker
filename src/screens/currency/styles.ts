@@ -1,0 +1,22 @@
+import {StyleSheet} from 'react-native';
+import {COLORS} from '../../constants/colors';
+import {Width} from '../../utils/responsive';
+
+export const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
+  button: {
+    padding: Width(4),
+    flexDirection: 'row',
+    alignItems:"center",
+    justifyContent: 'space-between',
+  },
+  buttonText: {
+    fontSize: 16,
+    fontWeight: '500',
+    color: COLORS.charcoal,
+  },
+
+});

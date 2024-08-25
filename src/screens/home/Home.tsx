@@ -17,51 +17,51 @@ import Transaction from '../../assets/icons/transaction';
 
 import DownIcon from '../../assets/icons/down';
 import {COLORS} from '../../constants/colors';
-import {TransactionCard} from '../../components/transactionCard/TransactionCard';
-import FoodIcon from '../../assets/icons/food';
-import Graph from '../../components/graph/Graph';
-import {useNavigation} from '@react-navigation/native';
 import {useHome} from './useHome';
 import SpendFrequency from '../../components/spendFrequency/SpendFrequency';
 import HomeCard from '../../components/homeCard/HomeCard';
 import RecentTransactions from '../../components/recentTransactions/RecentTransactions';
-// import { RootStackParamsList } from "../../../App";
-// import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import {FontInter} from '../../constants/fonts';
 
-// type HomeProps = NativeStackScreenProps<RootStackParamsList,"Home">
-//{navigation}:HomeProps
 export default function Home() {
-  const {transactions, navigateToTransactions, navigateToDetailTransaction} =
-    useHome();
+  const {currency, expenses, incomes, balance,month,userImage} = useHome();
   return (
-    <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
+    <ScrollView style={styles.container}>
       <SafeAreaView>
         <View
-          style={{
-            height: Height(8),
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            paddingHorizontal: Width(4),
-          }}>
+          style={styles.topContainer}>
+          <View style={styles.imageBorder}>
+            <Image
+            source={{uri:userImage||"https://th.bing.com/th/id/OIP.7dTfyRneXPY5b7pj0NKuUgAAAA?rs=1&pid=ImgDetMain"}}
+              style={{
+                height: 32,
+                width: 32,
+                borderRadius: 16,
+                backgroundColor: 'red',
+              }}
+            />
+          </View>
           <View
             style={{
-              height: Width(9),
-              width: Width(9),
-              borderRadius: Width(4.5),
-              backgroundColor: 'red',
-            }}></View>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              borderWidth: 1,
+              borderRadius:40,
+              borderColor: COLORS.lightGrey,
+              paddingVertical: 8,
+              paddingLeft: 8,
+              paddingRight: 16,
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}>
             <Pressable>
               <DownIcon />
             </Pressable>
             <Text
               style={{
-                color: '#212325',
-                fontFamily: 'Inter-VariableFont_opsz,wght',
-                fontSize: 20,
+                color: COLORS.black50,
+                fontFamily: FontInter,
+                fontSize: 14,
               }}>
-              Octobar
+       {month}
             </Text>
           </View>
           <Pressable>
@@ -70,15 +70,16 @@ export default function Home() {
         </View>
 
         <View style={{alignItems: 'center'}}>
-          <Text style={{color: '#91919F'}}>Account Balance</Text>
+          <Text style={{color: COLORS.grey,fontSize:14}}>Account Balance</Text>
           <Text
             style={{
-              color: '#161719',
-              fontFamily: 'Inter-VariableFont_opsz,wght',
-              fontSize: FontSize(40),
-              fontWeight: 'semibold',
+              color: COLORS.black70,
+              fontFamily: FontInter,
+              fontSize: 40,
+              fontWeight: '600',
             }}>
-            $9400
+            {currency}
+            {balance}
           </Text>
         </View>
 
@@ -88,56 +89,38 @@ export default function Home() {
             flexDirection: 'row',
             justifyContent: 'center',
             gap: 16,
-            paddingHorizontal: Width(4),
           }}>
-          {/* <View style={[styles.card, {backgroundColor: COLORS.green}]}>
-            <View style={styles.icon}>
-              <Transaction isIncome={true} currentColor={COLORS.green} />
-            </View>
-            <View style={{gap: FontSize(1)}}>
-              <Text style={{color: COLORS.white}}>Income</Text>
-              <Text
-                style={{
-                  fontSize: FontSize(22),
-                  fontWeight: 'semibold',
-                  color: COLORS.white,
-                }}>
-                $500
-              </Text>
-            </View>
-          </View> */}
-          <HomeCard isIncome={true} amount='200'/>
-          <View style={[styles.card, {backgroundColor: COLORS.red}]}>
-            <View style={styles.icon}>
-              <Transaction isIncome={false} currentColor={COLORS.red} />
-            </View>
-            <View style={{gap: FontSize(1)}}>
-              <Text style={{color: COLORS.white}}>Expenses</Text>
-              <Text
-                style={{
-                  fontSize: FontSize(22),
-                  fontWeight: 'semibold',
-                  color: COLORS.white,
-                }}>
-                $120
-              </Text>
-            </View>
-          </View>
+          <HomeCard currency={currency} isIncome={true} amount={incomes} />
+          <HomeCard currency={currency} isIncome={false} amount={expenses} />
         </View>
         <SpendFrequency />
-      <RecentTransactions/>
+        <RecentTransactions />
       </SafeAreaView>
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
+  container:{flex: 1, backgroundColor: 'white'},
+  topContainer:{
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginHorizontal: 16,
+    marginVertical: 12,
+  },
   headingSmall: {
     paddingLeft: Width(4),
 
     fontSize: FontSize(18),
-    fontWeight: 'semibold',
+    fontWeight: '600',
     color: '#0D0E0F',
+  },
+  imageBorder: {
+    borderColor: COLORS.deepPurple,
+    borderRadius: 30,
+    borderWidth: 2,
+    padding: 3,
   },
   icon: {
     height: 48,

@@ -1,67 +1,47 @@
-
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
-import { Height, FontSize, Width } from '../../utils/responsive';
-import { COLORS } from '../../constants/colors';
-import { useSpendFrequency } from './useSpendFrequency';
-import LineGraph from '../graph/Graph';
-
-const HomeMenus = [
-  { name: 'Today', filter: 'today' },
-  { name: 'Week', filter: 'week' },
-  { name: 'Month', filter: 'month' },
-  { name: 'Year', filter: 'year' },
-];
+import {Height, FontSize, Width} from '../../utils/responsive';
+import {COLORS} from '../../constants/colors';
+import {useSpendFrequency} from './useSpendFrequency';
+import LineGraph from '../lineGraph/LineGraph';
+import {spendFrequencyFilters} from '../../constants/constants';
+import {styles} from './styles';
 
 export default function SpendFrequency() {
-  const { filterBy, setFilterBy, filteredTransactions } = useSpendFrequency();
+  const {filterBy, setFilterBy, filteredTransactions} = useSpendFrequency();
 
   return (
     <View>
-      <Text style={[{ marginTop: Height(5) }, styles.headingSmall]}>
+      <Text style={ styles.headingSmall}>
         Spend Frequency
       </Text>
-
-      {/* Pass the filtered transactions to LineGraph */}
       <LineGraph transactions={filteredTransactions} filterBy={filterBy} />
 
-      <View
-        style={{
-          flexDirection: 'row',
-          paddingHorizontal: Width(4),
-          paddingBottom: Height(1),
-          justifyContent: 'space-between',
-        }}>
-        {HomeMenus.map((item, index) => (
-          <TouchableOpacity
-            key={index}
-            onPress={() => setFilterBy(item.filter)}
-            style={{
-              paddingHorizontal: Width(6),
-              paddingVertical: Width(2),
-              borderRadius: FontSize(16),
-              backgroundColor: filterBy === item.filter ? COLORS.grey : '#FCEED4',
-            }}>
-            <Text
-              style={{
-                color: filterBy === item.filter ? COLORS.white : '#FCAC12',
-                fontWeight: 'bold',
-                fontSize: FontSize(14),
-              }}>
-              {item.name}
-            </Text>
-          </TouchableOpacity>
-        ))}
+      <View style={styles.alignCenter}>
+        <View style={styles.menusContainer}>
+          {spendFrequencyFilters.map((item, index) => (
+            <TouchableOpacity
+              key={index}
+              onPress={() => setFilterBy(item.filter)}
+              style={[
+                styles.button,
+                {
+                  backgroundColor:
+                    filterBy === item.filter ? COLORS.lightYellow : 'white',
+                },
+              ]}>
+              <Text
+                style={{
+                  color: filterBy === item.filter ? COLORS.yellow : COLORS.grey,
+                  fontWeight: filterBy === item.filter ? 'bold' : 'normal',
+                  fontSize: 14,
+                }}>
+                {item.name}
+              </Text>
+            </TouchableOpacity>
+          ))}
+        </View>
       </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  headingSmall: {
-    paddingLeft: Width(4),
-    fontSize: FontSize(18),
-    fontWeight: 'semibold',
-    color: '#0D0E0F',
-  },
-});

@@ -1,10 +1,10 @@
 import Svg, { Path } from "react-native-svg"
 
-function CheckMark() {
+function CheckMark({size}:{size?:number}) {
   return (
     <Svg
-      width={48}
-      height={48}
+      width={size?size:48}
+      height={size?size:48}
       viewBox="0 0 48 48"
       fill="none"
     >

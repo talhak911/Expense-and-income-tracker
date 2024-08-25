@@ -14,6 +14,7 @@ export const useAddExpense = () => {
   const [attachment, setAttachment] = useState<string | null>(null);
   const [category, setCategory] = useState('');
   const uid = useAppSelector(state => state.auth.user?.uid);
+  const currency = useAppSelector(state => state.transactions.currency);
   const closeModal = () => {
     setModalVisible(false);
   };
@@ -56,7 +57,6 @@ export const useAddExpense = () => {
             setAmount('');
             setDescription('');
             setCategory('');
-            // setUrl('');
             setAttachment('');
             setSelectedFile(null);
             setImage('');
@@ -66,7 +66,7 @@ export const useAddExpense = () => {
         }
       }
     } catch (error) {
-      console.log(error);
+      console.log("error while adding income ",error);
     } finally {
       setLoading(false);
     }
@@ -81,6 +81,7 @@ export const useAddExpense = () => {
     selectedFile,
     image,
     modalVisible,
+    currency,
     closeModal,
     setSelectedFile,
     setImage,

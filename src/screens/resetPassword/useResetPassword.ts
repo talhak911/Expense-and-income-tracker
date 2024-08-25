@@ -3,9 +3,10 @@ import {useAppDispatch, useAppSelector} from '../../hooks/useStore';
 import {changePassword} from '../../redux/slices/authSlice';
 import Snackbar from 'react-native-snackbar';
 import {useNavigation} from '@react-navigation/native';
+import {StackNavigationProp} from '../../types/types';
 
 export const useResetPassword = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigationProp>();
   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState(false);
   const [password, setPassword] = useState('');
@@ -26,7 +27,7 @@ export const useResetPassword = () => {
 
   const resetPassword = async () => {
     try {
-      setLoading(true)
+      setLoading(true);
       if (email) {
         if (!password || !confirmPassword || !newPassword) {
           Snackbar.show({
@@ -55,8 +56,8 @@ export const useResetPassword = () => {
       }
     } catch (error) {
       console.log(error);
-    }finally{
-      setLoading(false)
+    } finally {
+      setLoading(false);
     }
   };
   return {

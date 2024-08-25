@@ -1,80 +1,54 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import { Text, TouchableOpacity, View} from 'react-native';
 import React, {useState} from 'react';
 import {ScrollView} from 'react-native-gesture-handler';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {FontSize, Height, Width} from '../../utils/responsive';
+import {FontSize} from '../../utils/responsive';
 import {COLORS} from '../../constants/colors';
 import DownIcon from '../../assets/icons/down';
 import TimeIcon from '../../assets/icons/time';
 import SortIcon from '../../assets/icons/sort';
-import SingleBar from '../../assets/icons/singleBar';
-import  FilterIcon  from '../../assets/icons/filter';
-import { FontInter } from '../../constants/fonts';
+import SingleBar from '../../components/barGraph/BarGraph';
 import PieChart from '../../components/pieChart/PieChart';
+import {useFinancialReport} from './useFinancialReport';
+import { styles } from './styles';
 
-const FinancialReport = () => {
-  const data = [
-    { amount: 10, color: '#7F3DFF' },
-    { amount: 30, color: '#FCAC12' },
-    { amount: 20, color: '#FD3C4A' },
-  ];
-  const [isActive, setIsActive] = useState('expense');
+export default function FinancialReport ()  {
+  const {expenses, incomes, totalExpense, totalIncome} = useFinancialReport();
+  const [isActive, setIsActive] = useState<'expense' | 'income'>('expense');
 
-  const handleIsActive = (button: string) => {
+  const handleIsActive = (button: 'expense' | 'income') => {
     setIsActive(button);
   };
   return (
     <ScrollView style={styles.container}>
       <SafeAreaView>
         <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            paddingHorizontal: Width(5.5),
-            paddingVertical: Height(0.9),
-            alignItems: 'center',
-          }}>
+          style={[styles.topRow]}>
           <View
-            style={{
-              flexDirection: 'row',
-              gap: 3,
-              borderWidth: 1,
-              borderColor: COLORS.lightGrey,
-              alignItems: 'center',
-              borderRadius: 40,
-              paddingVertical: Height(0.7),
-              paddingHorizontal: 12,
-            }}>
+            style={styles.monthButton}>
             <DownIcon />
             <Text style={{color: COLORS.black50}}>Month</Text>
           </View>
           <TimeIcon />
         </View>
-             
-        <View style={{position:"relative",alignSelf:"center"}}>
-        <PieChart data={data} />
-        <Text style={{position:"absolute",alignSelf:"center",marginTop:95,fontSize:FontSize(32),fontFamily:FontInter,fontWeight:"bold",color:"black"}}>$332</Text>
+
+        <View style={{position: 'relative', alignSelf: 'center'}}>
+          <PieChart data={isActive==='expense'?expenses:incomes} />
+          <Text
+            style={styles.totalAmount}>
+            ${isActive==='expense'?totalExpense:totalIncome}
+          </Text>
         </View>
         <View
-          style={{
-            marginTop: Height(6.6),
-            flex: 1,
-            flexDirection: 'row',
-            borderRadius: FontSize(32),
-            backgroundColor: COLORS.lightGrey,
-          }}>
+          style={styles.toggleButtonsContainer}>
           <TouchableOpacity
             onPress={() => {
               handleIsActive('expense');
             }}
-            style={{
-              width: Width(46),
-              paddingVertical: Height(1.7),
-              alignItems: 'center',
-              borderRadius: FontSize(32),
+            style={[styles.toggleButton,{
               backgroundColor:
                 isActive === 'expense' ? COLORS.purple : COLORS.lightGrey,
-            }}>
+            }]}>
             <Text
               style={{
                 color: isActive === 'expense' ? 'white' : 'black',
@@ -87,14 +61,10 @@ const FinancialReport = () => {
             onPress={() => {
               handleIsActive('income');
             }}
-            style={{
-              width: Width(46),
-              alignItems: 'center',
-              paddingVertical: Height(1.7),
-              borderRadius: FontSize(32),
+            style={[styles.toggleButton,{
               backgroundColor:
                 isActive === 'income' ? COLORS.purple : COLORS.lightGrey,
-            }}>
+            }]}>
             <Text
               style={{
                 color: isActive === 'income' ? 'white' : 'black',
@@ -105,69 +75,38 @@ const FinancialReport = () => {
           </TouchableOpacity>
         </View>
         <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            paddingVertical: Height(2),
-            alignItems: 'center',
-          }}>
+          style={styles.sortTransactions}>
           <View
-            style={{
-              flexDirection: 'row',
-              gap: 3,
-              borderWidth: 1,
-              borderColor: COLORS.lightGrey,
-              alignItems: 'center',
-              borderRadius: 40,
-              paddingVertical: Height(0.7),
-              paddingHorizontal: 12,
-            }}>
+          style={styles.monthButton}>
             <DownIcon />
             <Text style={{color: COLORS.black50}}>Month</Text>
           </View>
-          <SortIcon/>
+          <SortIcon />
         </View>
         <View style={{gap: 3}}>
-          <View
-            style={{
-              marginTop: 21,
-              flex: 1,
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}>
-            <View
-              style={{
-                flexDirection: 'row',
-                gap: 7,
-                borderWidth: 1,
-                borderColor: COLORS.lightGrey,
-                alignItems: 'center',
-                borderRadius: 40,
-                paddingVertical: Height(0.7),
-                paddingHorizontal: 12,
-              }}>
-              <View
-                style={{
-                  height: 14,
-                  width: 14,
-                  borderRadius: 7,
-                  backgroundColor: COLORS.yellow,
-                }}
+          {isActive === 'expense'
+            ? expenses.map((item, index) => (
+         
+              <SingleBar
+                  key={index}
+                  total={Number(totalExpense)}
+                  item={item}
+                  type='expense'
+                />
+            ))
+              
+            : incomes.map((item, index) => (
+            
+            <SingleBar
+                key={index}
+                type='income'
+                item={item}
+                total={Number(totalIncome)}
               />
-              <Text style={{color: COLORS.black50}}>Shopping</Text>
-            </View>
-            <Text style={{color: COLORS.red, fontSize: 24,fontFamily:FontInter}}>- $120</Text>
-          </View>
-          <SingleBar color={COLORS.yellow} total={100} inner={30} />
+
+              ))}
         </View>
       </SafeAreaView>
     </ScrollView>
   );
 };
-
-export default FinancialReport;
-
-const styles = StyleSheet.create({
-  container: {flex: 1, backgroundColor: 'white', paddingHorizontal: Width(4)},
-});

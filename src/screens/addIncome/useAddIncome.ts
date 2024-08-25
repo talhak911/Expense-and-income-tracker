@@ -56,7 +56,6 @@ export const useAddIncome = () => {
             setAmount('');
             setDescription('');
             setCategory('');
-            // setUrl('');
             setAttachment('');
             setSelectedFile(null);
             setImage('');

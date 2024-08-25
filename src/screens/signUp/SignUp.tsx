@@ -1,9 +1,7 @@
-import {Button, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {ActivityIndicator, Text, TouchableOpacity, View} from 'react-native';
 import styles from './styles';
 import {useSignUp} from './useSignUp';
-
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-//import {useFocusEffect} from '@react-navigation/native';
 import React from 'react';
 import {PasswordInput} from '../../components/passwordInput/PasswordInput';
 import {Checkbox} from '../../components/checkBox/CheckBox';
@@ -11,9 +9,8 @@ import {CustomInput} from '../../components/customInput/CustomInput';
 import {CustomButton} from '../../components/customButton/CustomButtom';
 import {SignUpGoogle} from '../../components/signUpGoogle.tsx/SignUpGoogle';
 import {Width} from '../../utils/responsive';
-// import { NativeStackScreenProps } from '@react-navigation/native-stack';
-// import { AuthStackParamList } from '../../navigation/AuthNavigator';
-// type SignUpProps = NativeStackScreenProps<AuthStackParamList, 'SignUp'>;
+import Loading from '../../assets/icons/loading';
+import { COLORS } from '../../constants/colors';
 
 export const SignUp = () => {
   const {
@@ -33,7 +30,6 @@ export const SignUp = () => {
   return (
     <View style={styles.container}>
       <KeyboardAwareScrollView
-        // style={{flex: 1, width: '100%'}}
         keyboardShouldPersistTaps="always">
         <View style={styles.gap}>
           <CustomInput onChange={setName} placeHolder="Name" value={name} />
@@ -41,9 +37,9 @@ export const SignUp = () => {
           <PasswordInput value={password} onChange={setPassword} />
         </View>
         {loading ? (
-          <Text style={{alignSelf: 'center', fontSize: 20, fontWeight: 'bold'}}>
-            Loading
-          </Text>
+<View style={{marginTop:16}}>
+<ActivityIndicator size="large" color={COLORS.purple} />
+</View>
         ) : (
           <View style={{alignItems: 'center', marginHorizontal: Width(4)}}>
             <Checkbox checked={isChecked} onChange={setIsChecked} />

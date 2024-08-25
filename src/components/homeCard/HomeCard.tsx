@@ -5,7 +5,7 @@ import Transaction from '../../assets/icons/transaction'
 import { FontSize } from '../../utils/responsive'
 import { COLORS } from '../../constants/colors'
 
-export default function HomeCard ({amount,isIncome}:{amount:string,isIncome:boolean}){
+export default function HomeCard ({amount,isIncome,currency}:{currency:string,amount:string,isIncome:boolean}){
   return (
     <View style={[styles.card, {backgroundColor: isIncome?COLORS.green:COLORS.red}]}>
     <View style={styles.icon}>
@@ -14,12 +14,8 @@ export default function HomeCard ({amount,isIncome}:{amount:string,isIncome:bool
     <View style={{gap: FontSize(1)}}>
       <Text style={{color: COLORS.white}}>{isIncome?"income":"Expenses"}</Text>
       <Text
-        style={{
-          fontSize: FontSize(22),
-          fontWeight: 'semibold',
-          color: COLORS.white,
-        }}>
-   {amount}
+        style={styles.amount}>
+      {currency}{amount}
       </Text>
     </View>
   </View>

@@ -22,6 +22,7 @@ export default function AddExpense() {
     image,
     selectedFile,
     description,
+    currency,
     addIncome,
     closeModal,
     setSelectedFile,
@@ -43,20 +44,22 @@ export default function AddExpense() {
           style={{
             opacity: 0.64,
             color: COLORS.white,
-            fontSize: FontSize(18),
+            fontSize: 18,
             marginTop: Height(6.5),
           }}>
           How much?
         </Text>
-        <View style={{flexDirection: 'row', alignItems: 'flex-start'}}>
+
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <Text
             style={{
-              fontSize: FontSize(64),
+              fontSize: 64,
               color: COLORS.white,
-              fontWeight: 'semibold',
+              fontWeight: '600',
               fontFamily: FontInter,
+              lineHeight: 72,
             }}>
-            $
+            {currency}
           </Text>
           <TextInput
             keyboardType="numeric"
@@ -67,10 +70,11 @@ export default function AddExpense() {
             }}
             placeholderTextColor={COLORS.white}
             style={{
-              flex: 1,
-              fontSize: FontSize(64),
+              lineHeight: 75,
+              fontSize: 64,
               color: COLORS.white,
-              fontWeight: 'semibold',
+              fontWeight: '600',
+              textAlignVertical: 'center',
               fontFamily: FontInter,
             }}
           />
@@ -79,7 +83,6 @@ export default function AddExpense() {
       <View
         style={{
           flex: 4,
-
           backgroundColor: 'white',
           borderTopRightRadius: 30,
           borderTopLeftRadius: 30,

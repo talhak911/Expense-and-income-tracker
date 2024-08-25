@@ -1,8 +1,9 @@
 import {useNavigation} from '@react-navigation/native';
 import {useState} from 'react';
+import { StackNavigationProp } from '../../types/types';
 
 export const useAddButton = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigationProp>();
   const [buttonsVisible, setButtonsVisible] = useState(false);
   const navigateToAddIncome = () => {
     setButtonsVisible(false)

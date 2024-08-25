@@ -2,7 +2,9 @@ import React from 'react';
 import {Pressable, StyleSheet, Text, TextInput, View} from 'react-native';
 import {usePasswordInput} from './usePasswordInput';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { FontSize, Height, Width } from '../../utils/responsive';
+import {FontSize, Height, Width} from '../../utils/responsive';
+import { COLORS } from '../../constants/colors';
+import { styles } from './styles';
 
 export const PasswordInput = ({
   value,
@@ -18,12 +20,10 @@ export const PasswordInput = ({
     <View style={styles.inputContainer}>
       <TextInput
         style={styles.inputField}
-        //   name="password"
         placeholder="Password"
-        placeholderTextColor={"#91919F"}
+        placeholderTextColor={'#91919F'}
         autoCapitalize="none"
         autoCorrect={false}
-        // textContentType="newPassword"
         secureTextEntry={passwordVisibility}
         value={value}
         enablesReturnKeyAutomatically
@@ -32,36 +32,8 @@ export const PasswordInput = ({
         }}
       />
       <Pressable onPress={handlePasswordVisibility}>
-        <MaterialCommunityIcons name={rightIcon} size={22} color="#91919F" />
+        <MaterialCommunityIcons name={rightIcon} size={22} color={COLORS.grey} />
       </Pressable>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  inputContainer: {
-    height: Height(7),
-    borderRadius: 16,
-    flexDirection: 'row',
-    alignItems: 'center',
-    // overflow: 'hidden',
-     backgroundColor: 'white',
-    borderWidth: 1,
-    borderColor: '#F1F1FA',
-    // maxWidth:500,
-    // alignSelf:"center"
-   // marginTop: 24,
-    // marginLeft: 16,
-    // marginRight: 16,
-    // paddingLeft: 16,
-    // paddingRight: 16,
-    //marginHorizontal:Width(4),
-    //paddingHorizontal: Width(4), 
-  },
-  inputField: {
-    fontSize:FontSize(16),
-    width: '90%',
-    //color:"black",
-    paddingLeft: Width(5)
-  },
-});

@@ -1,16 +1,16 @@
 import {TextInput} from 'react-native';
+import {styles} from './styles';
+import {COLORS} from '../../constants/colors';
 
-import {StyleSheet} from 'react-native';
-
-import {styles} from "./styles"
-import { COLORS } from '../../constants/colors';
 export const CustomInput = ({
   value,
   placeHolder,
+  editable,
   onChange,
 }: {
+  editable?: boolean;
   value: string;
-  placeHolder:string,
+  placeHolder: string;
   onChange: (i: string) => void;
 }) => {
   return (
@@ -20,24 +20,9 @@ export const CustomInput = ({
       placeholderTextColor={COLORS.grey}
       onChangeText={text => onChange(text)}
       value={value}
+      editable={editable}
       underlineColorAndroid="transparent"
       autoCapitalize="none"
     />
   );
 };
-
-// const styles = StyleSheet.create({
-//   input: {
-//     height: 56,
-//     borderRadius: 16,
-//     overflow: 'hidden',
-//     backgroundColor: 'white',
-//     borderWidth: 1,
-//     borderColor: '#F1F1FA',
-//     //marginTop: 24,
-//     // marginBottom: 24,
-//     marginLeft: 16,
-//     marginRight: 16,
-//     paddingLeft: 16,
-//   },
-// });

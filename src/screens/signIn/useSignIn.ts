@@ -4,10 +4,10 @@ import Snackbar from 'react-native-snackbar';
 import {useAppDispatch} from '../../hooks/useStore';
 import {signIn} from '../../redux/slices/authSlice';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { AuthStackParamList } from '../../navigation/AuthNavigator';
+import { AuthStackParamList } from '../../types/types';
 export const useSignIn = () => {
 
-  type SignInNavigationProp = NativeStackNavigationProp<AuthStackParamList, 'SignIn'>;
+  type SignInNavigationProp = NativeStackNavigationProp<AuthStackParamList>;
 
   const dispatch = useAppDispatch();
   const navigation = useNavigation<SignInNavigationProp>();
@@ -34,19 +34,7 @@ export const useSignIn = () => {
         await dispatch(signIn({email, password}));
       }
     } catch (error: any) {
-      if (error.code === 'auth/invalid-email' || 'auth/wrong-password') {
-        Snackbar.show({
-          text: 'Invalid email or password',
-          duration: Snackbar.LENGTH_SHORT,
-          backgroundColor: 'red',
-        });
-      } else {
-        Snackbar.show({
-          text: error.message,
-          duration: Snackbar.LENGTH_SHORT,
-          backgroundColor: 'red',
-        });
-      }
+      console.log("error while sign in ",error)
     }
     finally{setLoading(false)}
   };

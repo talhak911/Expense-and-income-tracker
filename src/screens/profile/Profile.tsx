@@ -1,5 +1,6 @@
 import {
   Button,
+  Image,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -16,37 +17,21 @@ import ForgetIcon from '../../assets/icons/resetPassword';
 import ResetPasswordIcon from '../../assets/icons/resetPassword';
 import LogoutIcon from '../../assets/icons/logout';
 import { BottomModel } from '../../components/bottomModel/BottomModel';
+import { useState } from 'react';
+import { ConfirmLogoutModal } from '../../components/confirmLogoutModal/ConfirmLogoutModal.tsx';
+import { styles } from './styles.ts';
 
 export default function Profile() {
-  const {signOutUser, navigateToUpdateProfile,navigateToResetPassword,closeModal,logoutModalVisible,showModal,ConfirmLogoutModal} = useProfile();
-
+  const {logoutModalVisible,user,signOutUser,navigateToUpdateProfile,navigateToResetPassword,navigateToSettings,closeModal,showModal} = useProfile();
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: COLORS.almostWhite}}>
-      {/* <Button
-        title="signout"
-        onPress={() =>
-          signOutUser()
-        }
-      /> */}
+    <SafeAreaView style={styles.container}>
       <ScrollView>
         <View
-          style={{
-            marginTop: Height(4),
-            paddingLeft: Width(8),
-            paddingRight: Width(4),
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}>
+          style={styles.topContainer}>
           <View
-            style={{
-              flex: 1,
-              flexDirection: 'row',
-              gap: 16,
-              alignItems: 'center',
-            }}>
+            style={styles.topView}>
             <View style={styles.imageBorder}>
-              <View style={styles.image} />
+              <Image source={{uri:user?.photoURL || "https://th.bing.com/th/id/OIP.7dTfyRneXPY5b7pj0NKuUgAAAA?rs=1&pid=ImgDetMain"}} style={styles.image} />
             </View>
             <View>
               <Text style={{color: COLORS.grey}}>Username</Text>
@@ -56,7 +41,7 @@ export default function Profile() {
                   color: COLORS.charcoal,
                   fontSize: FontSize(24),
                 }}>
-                Username
+       {user?.displayName}
               </Text>
             </View>
           </View>
@@ -68,6 +53,7 @@ export default function Profile() {
         <View
           style={{flex: 1, gap: 2, marginTop: 40, marginHorizontal: Width(5)}}>
           <TouchableOpacity
+          onPress={navigateToSettings}
             style={[
               styles.menus,
               {borderTopLeftRadius: 24, borderTopRightRadius: 24},
@@ -90,42 +76,10 @@ export default function Profile() {
             <LogoutIcon />
             <Text style={styles.menuText}>Logout</Text>
           </TouchableOpacity>
-          {logoutModalVisible && <BottomModel onClose={closeModal} visible={logoutModalVisible} element={<ConfirmLogoutModal/>}/>}
+          {logoutModalVisible && <BottomModel onClose={closeModal} visible={logoutModalVisible} element={<ConfirmLogoutModal close={closeModal} action={signOutUser}/>}/>}
         </View>
       </ScrollView>
     </SafeAreaView>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  imageBorder: {
-    borderColor: COLORS.deepPurple,
-    borderRadius: Width(11),
-    borderWidth: 2,
-    padding: 3,
-  },
-  image: {
-    width: Width(19),
-    height: Width(19),
-    backgroundColor: 'orange',
-    borderRadius: Width(9.5),
-  },
-  menus: {
-    backgroundColor: 'white',
-    flex: 1,
-    alignItems: 'center',
-    flexDirection: 'row',
-    gap: 9,
-    paddingLeft: 17,
-    paddingTop: 18,
-    paddingBottom: 19,
-  },
-  menuText: {
-    color: COLORS.black25,
-    fontSize: 16,
-  },
-});

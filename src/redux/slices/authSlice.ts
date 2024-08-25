@@ -4,6 +4,8 @@ import firestore from '@react-native-firebase/firestore';
 import Snackbar from 'react-native-snackbar';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {GOOGLE_API} from '@env';
+import {useAppDispatch} from '../../hooks/useStore';
+import {ChangePasswordPayload} from '../../types/types';
 export type AuthStateType = {
   user: Partial<FirebaseAuthTypes.User> | null;
 };
@@ -37,17 +39,18 @@ export const signIn = createAsyncThunk(
             text: 'send verification email',
             onPress() {
               auth().currentUser?.sendEmailVerification();
-              auth().signOut();
             },
             textColor: 'yellow',
           },
         });
       }
     } catch (error: any) {
+      console.log('Error in signin ', error);
       if (error.code === 'auth/invalid-email' || 'auth/wrong-password') {
         Snackbar.show({
           text: 'Invalid email or password',
           duration: Snackbar.LENGTH_SHORT,
+          backgroundColor: 'red',
         });
       } else {
         Snackbar.show({
@@ -70,20 +73,10 @@ export const signUp = createAsyncThunk(
         email,
         password,
       );
-      const userToSave = response.user;
-      await userToSave.sendEmailVerification();
-      await firestore().collection('Users').doc(userToSave.uid).set({
-        name,
-      });
 
-      const user = {
-        uid: response.user.uid,
-        email: response.user.email,
-        displayName: response.user.displayName,
-        photoURL: response.user.photoURL,
-        emailVerified: response.user.emailVerified,
-      };
-      return user;
+      const userToSave = response.user;
+      await userToSave.updateProfile({displayName: name});
+      await auth().signOut();
     } catch (error: any) {
       if (error.code === 'auth/email-already-in-use') {
         Snackbar.show({
@@ -97,80 +90,117 @@ export const signUp = createAsyncThunk(
         Snackbar.show({
           text: 'That email address is invalid!',
           duration: Snackbar.LENGTH_LONG,
-           backgroundColor:"red"
+          backgroundColor: 'red',
         });
       }
       if (error.code === 'auth/weak-password') {
         Snackbar.show({
           text: 'Choose strong password',
           duration: Snackbar.LENGTH_LONG,
-           backgroundColor:"red"
+          backgroundColor: 'red',
         });
-      } else console.log(error);
+      } else console.log('Error while sign up ', error);
       return rejectWithValue('Error while sign up');
     }
   },
 );
 
-// export const changePassword = createAsyncThunk('auth/changePassword',async()=>{
-//  const user =await auth.EmailAuthProvider.credential("email","password")
-//  const response = await auth().signInWithEmailAndPassword(email, password);
-//  response.user.reauthenticateWithCredential(auth().currentUser)
-// })
-
-interface ChangePasswordPayload {
-  email: string;
-  currentPassword: string;
-  newPassword: string;
-}
+export const updateEmail = createAsyncThunk(
+  'auth/updateEmail',
+  async (email: string, {rejectWithValue, dispatch}) => {
+    try {
+      await auth().currentUser?.verifyBeforeUpdateEmail(email);
+    } catch (error: any) {
+      if (error.code === 'auth/requires-recent-login') {
+        Snackbar.show({
+          text: 'This operation requires recent authentication. Log in again before retrying this request.',
+          backgroundColor: 'red',
+          duration: Snackbar.LENGTH_INDEFINITE,
+          numberOfLines: 3,
+          action: {
+            text: 'Logout',
+            onPress() {
+              dispatch(signOut());
+            },
+            textColor: 'yellow',
+          },
+        });
+      }
+      console.log('Error updating email ', error);
+      return rejectWithValue('Failed to update email');
+    }
+  },
+);
+export const updateName = createAsyncThunk(
+  'auth/updateName',
+  async (name: string) => {
+    try {
+      await auth().currentUser?.updateProfile({displayName: name});
+      return name;
+    } catch (error) {
+      console.log('Error updating email ', error);
+    }
+  },
+);
+export const updateImage = createAsyncThunk(
+  'auth/updateImage',
+  async (uri: string) => {
+    try {
+      await auth().currentUser?.updateProfile({photoURL: uri});
+      return uri;
+    } catch (error) {
+      console.log('Error updating email ', error);
+    }
+  },
+);
 
 export const changePassword = createAsyncThunk(
   'auth/changePassword',
-  async ({ email, currentPassword, newPassword }: ChangePasswordPayload, { rejectWithValue }) => {
+  async (
+    {email, currentPassword, newPassword}: ChangePasswordPayload,
+    {rejectWithValue},
+  ) => {
     try {
-      const userCredential = await auth().signInWithEmailAndPassword(email, currentPassword);
+      const userCredential = await auth().signInWithEmailAndPassword(
+        email,
+        currentPassword,
+      );
       const user = userCredential.user;
       if (user) {
-        const credential = auth.EmailAuthProvider.credential(email, currentPassword);
+        const credential = auth.EmailAuthProvider.credential(
+          email,
+          currentPassword,
+        );
         await user.reauthenticateWithCredential(credential);
         await user.updatePassword(newPassword);
-        console.log("password changed")
-        return { success: true };
+        return {success: true};
       } else {
-        console.log("no change")
         throw new Error('User not found');
       }
     } catch (error: any) {
-      console.log(error)
+      console.log(error);
       if (error.code === 'auth/wrong-password' || 'auth/invalid-credential') {
         Snackbar.show({
           text: 'Invalid current password',
           duration: Snackbar.LENGTH_SHORT,
-          backgroundColor:"red"
+          backgroundColor: 'red',
         });
-      } 
+      }
       return rejectWithValue(error.message);
     }
-  }
+  },
 );
 
 export const signUpWithGoogle = createAsyncThunk(
   'auth/signUpWithGoogle',
   async (_, {rejectWithValue}) => {
     try {
-      console.log('running');
       GoogleSignin.configure({
         webClientId: GOOGLE_API,
       });
-      // Check if your device supports Google Play
       await GoogleSignin.hasPlayServices({showPlayServicesUpdateDialog: true});
-      // Get the users ID token
       const {idToken} = await GoogleSignin.signIn();
-
-      // Create a Google credential with the token
       const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-
-      // Sign-in the user with the credential
       const response = await auth().signInWithCredential(googleCredential);
       await firestore().collection('Users').doc(response.user.uid).set({
         name: response.user.displayName,
@@ -210,7 +240,6 @@ export const signUpWithGoogle = createAsyncThunk(
   },
 );
 
-
 export const signOut = createAsyncThunk('auth/signOut', async () => {
   await auth().signOut();
 });
@@ -219,23 +248,29 @@ export const authSlice = createSlice({
   name: 'authSlice',
   initialState,
   reducers: {
-    setUser:(state,action)=>{
-state.user=action.payload
-    }
+    setUser: (state, action) => {
+      state.user = action.payload;
+    },
   },
   extraReducers: builder => {
     builder.addCase(signIn.fulfilled, (state, action) => {
       state.user = action.payload;
     });
-    builder.addCase(signUp.fulfilled, (state, action) => {
-      state.user = action.payload;
-    });
     builder.addCase(signUpWithGoogle.fulfilled, (state, action) => {
       state.user = action.payload;
-      console.log(state.user)
     });
     builder.addCase(signOut.fulfilled, state => {
       state.user = null;
+    });
+    builder.addCase(updateName.fulfilled, (state, action) => {
+      if (state.user) {
+        state.user.displayName = action.payload;
+      }
+    });
+    builder.addCase(updateImage.fulfilled, (state, action) => {
+      if (state.user) {
+        state.user.photoURL = action.payload;
+      }
     });
   },
 });

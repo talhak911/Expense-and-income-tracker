@@ -48,12 +48,12 @@ export default function AddIncome() {
           }}>
           How much?
         </Text>
-        <View style={{flexDirection: 'row', alignItems: 'flex-start'}}>
+        <View style={{flexDirection: 'row', alignContent: 'center'}}>
           <Text
             style={{
               fontSize: FontSize(64),
               color: COLORS.white,
-              fontWeight: 'semibold',
+              fontWeight: '600',
               fontFamily: FontInter,
             }}>
             $
@@ -67,10 +67,10 @@ export default function AddIncome() {
             }}
             placeholderTextColor={COLORS.white}
             style={{
-              flex: 1,
+              lineHeight: 80,
               fontSize: FontSize(64),
               color: COLORS.white,
-              fontWeight: 'semibold',
+              fontWeight: '600',
               fontFamily: FontInter,
             }}
           />
