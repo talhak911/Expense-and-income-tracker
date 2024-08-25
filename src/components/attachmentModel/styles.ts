@@ -37,7 +37,7 @@ export const styles = StyleSheet.create({
     backgroundColor: COLORS.lightPurple,
   },
   buttonText: {
-    fontWeight: 'semibold',
+    fontWeight: '600',
     color: COLORS.purple,
     fontSize: FontSize(16),
   },

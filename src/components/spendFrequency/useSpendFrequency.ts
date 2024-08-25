@@ -1,21 +1,20 @@
-import { useState, useMemo } from 'react';
-import { useAppSelector } from '../../hooks/useStore';
+import {useState, useMemo} from 'react';
+import {useAppSelector} from '../../hooks/useStore';
 import dayjs from 'dayjs';
 
 export const useSpendFrequency = () => {
-  const [filterBy, setFilterBy] = useState<'today' | 'week' | 'month' | 'year'>('today');
+  const [filterBy, setFilterBy] = useState<'today' | 'week' | 'month' | 'year'>(
+    'today',
+  );
   const transaction = useAppSelector(state => state.transactions.transactions);
-  
-  // Filter transactions to include only expenses
+
   const transactions = transaction.filter(item => item.type === 'expense');
-  
-  // Convert date strings to Date objects
+
   const parsedTransactions = transactions.map(transaction => ({
     ...transaction,
     date: new Date(transaction.date as string),
   }));
 
-  // Filter transactions based on the selected date range
   const filteredTransactions = useMemo(() => {
     const now = dayjs();
     return parsedTransactions.filter(transaction => {
@@ -38,7 +37,7 @@ export const useSpendFrequency = () => {
 
   return {
     filterBy,
+    filteredTransactions,
     setFilterBy,
-    filteredTransactions, // Pass this to the LineGraph
   };
 };

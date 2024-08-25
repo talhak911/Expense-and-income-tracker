@@ -21,9 +21,9 @@ export const useAttachmentModel=({visible,onClose}:{visible:boolean,onClose:()=>
     }, [visible]);
   
     const panResponder = PanResponder.create({
-      onStartShouldSetPanResponder: (evt, gestureState) => true, // Always start tracking
+      onStartShouldSetPanResponder: () => true,
       onMoveShouldSetPanResponderCapture: (evt, gestureState) =>
-        gestureState.dy > 5, // Start capturing after a small movement
+        gestureState.dy > 5,
       onPanResponderMove: Animated.event([null, {dy: translateY}], {
         useNativeDriver: false,
       }),
@@ -37,7 +37,7 @@ export const useAttachmentModel=({visible,onClose}:{visible:boolean,onClose:()=>
         } else {
           Animated.spring(translateY, {
             toValue: 0,
-            bounciness: 8, // Adjust bounciness for a springy feel
+            bounciness: 8,
             useNativeDriver: false,
           }).start();
         }
