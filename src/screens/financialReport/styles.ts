@@ -28,6 +28,7 @@ export const styles = StyleSheet.create({
     paddingVertical: Height(0.7),
     paddingHorizontal: 12,
   },
+  pieChartContainer: {position: 'relative', alignSelf: 'center'},
   totalAmount: {
     position: 'absolute',
     alignSelf: 'center',

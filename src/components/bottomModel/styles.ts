@@ -1,6 +1,6 @@
-import { StyleSheet } from "react-native";
-import { COLORS } from "../../constants/colors";
-import { FontSize, Width } from "../../utils/responsive";
+import {StyleSheet} from 'react-native';
+import {COLORS} from '../../constants/colors';
+import {Width} from '../../utils/responsive';
 
 export const styles = StyleSheet.create({
   modalOverlay: {
@@ -14,11 +14,11 @@ export const styles = StyleSheet.create({
     gap: 8,
   },
   modalContent: {
-    backgroundColor: 'white', 
+    backgroundColor: 'white',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     paddingHorizontal: Width(4),
-    paddingVertical:Width(4),
+    paddingVertical: Width(4),
     alignItems: 'center',
   },
   line: {
@@ -40,6 +40,6 @@ export const styles = StyleSheet.create({
   buttonText: {
     fontWeight: '600',
     color: COLORS.purple,
-    fontSize: FontSize(16),
+    fontSize: 16,
   },
 });

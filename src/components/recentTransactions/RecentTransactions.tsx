@@ -1,10 +1,9 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {useRecentTransactions} from './useRecentTransactions';
-import {FontSize, Height, Width} from '../../utils/responsive';
 import {TransactionCard} from '../transactionCard/TransactionCard';
-import { styles } from './styles';
-import { COLORS } from '../../constants/colors';
+import {styles} from './styles';
+import {COLORS} from '../../constants/colors';
 
 export default function RecentTransactions() {
   const {navigateToDetailTransaction, transactions, navigateToTransactions} =

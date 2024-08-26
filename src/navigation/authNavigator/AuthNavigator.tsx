@@ -2,7 +2,6 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {SignUp} from '../../screens/signUp/SignUp';
 import {SignIn} from '../../screens/signIn/SignIn';
-import {VerifyEmail} from '../../screens/verifyEmail/VerifyEmail';
 import ForgetPassword from '../../screens/forgetPassword/ForgetPassword';
 import {AuthStackParamList} from '../../types/types';
 
@@ -32,11 +31,11 @@ export default function AuthNavigator() {
             headerTitleStyle: {fontSize: 18},
           }}
         />
-        <Stack.Screen
+        {/* <Stack.Screen
           name="VerifyEmail"
           component={VerifyEmail}
           options={{title: 'Verify Email'}}
-        />
+        /> */}
         <Stack.Screen
           name="ForgetPassword"
           component={ForgetPassword}

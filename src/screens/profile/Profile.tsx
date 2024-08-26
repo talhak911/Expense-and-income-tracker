@@ -3,7 +3,6 @@ import {useProfile} from './useProfile.ts';
 import {ScrollView} from 'react-native-gesture-handler';
 import {COLORS} from '../../constants/colors';
 import EditIcon from '../../assets/icons/edit';
-import {FontSize} from '../../utils/responsive';
 import SettingIcon from '../../assets/icons/setting';
 import ResetPasswordIcon from '../../assets/icons/resetPassword';
 import LogoutIcon from '../../assets/icons/logout';

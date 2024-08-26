@@ -4,6 +4,7 @@ import {COLORS} from '../../constants/colors';
 
 export const styles = StyleSheet.create({
   alignCenter: {
+    marginTop:-50,
     alignSelf: 'center',
   },
   headingSmall: {
@@ -18,7 +19,7 @@ export const styles = StyleSheet.create({
     borderRadius: FontSize(16),
     borderWidth: FontSize(1),
     flexDirection: 'row',
-    marginHorizontal: Width(4),
+    marginHorizontal:16,
     borderColor: COLORS.white,
     marginBottom: Height(1),
     justifyContent: 'space-between',

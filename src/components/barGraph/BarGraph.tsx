@@ -8,7 +8,7 @@ import {styles} from './styles';
 import { useBarGraph } from './useBarGraph';
 
 function BarGraph({total, item, type}: BarGraphProps) {
-const {barHeight,barWidth,innerBarWidth}=useBarGraph(item.amount,total)
+const {barHeight,barWidth,innerBarWidth,currency}=useBarGraph(item.amount,total)
   return (
     <View>
       <View style={styles.container}>
@@ -22,7 +22,7 @@ const {barHeight,barWidth,innerBarWidth}=useBarGraph(item.amount,total)
             fontSize: 24,
             fontFamily: FontInter,
           }}>
-          {type === 'expense' ? `- ` : ''}${item.amount}
+          {type === 'expense' ? `- ` : ''}{currency}{item.amount}
         </Text>
       </View>
 

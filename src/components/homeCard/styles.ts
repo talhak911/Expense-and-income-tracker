@@ -1,14 +1,8 @@
 import {StyleSheet} from 'react-native';
-import {Width, FontSize, Height} from '../../utils/responsive';
+import {Width} from '../../utils/responsive';
 import {COLORS} from '../../constants/colors';
 
 export const styles = StyleSheet.create({
-  headingSmall: {
-    paddingLeft: Width(4),
-    fontSize: FontSize(18),
-    fontWeight: '600',
-    color: COLORS.charcoal,
-  },
   amount: {
     fontSize: 22,
     fontWeight: '600',
@@ -27,8 +21,8 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: Width(44),
-    gap: Width(4),
-    borderRadius: FontSize(32),
+    gap: 10,
+    borderRadius: 32,
     paddingHorizontal: 17,
     paddingVertical: 17,
   },

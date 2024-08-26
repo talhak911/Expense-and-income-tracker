@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {COLORS} from '../../constants/colors';
-import {FontSize, Height, Width} from '../../utils/responsive';
+import { Height, Width} from '../../utils/responsive';
 import {FontInter} from '../../constants/fonts';
 
 export const styles = StyleSheet.create({
@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
   },
   headingSmall: {
     paddingLeft: Width(4),
-    fontSize: FontSize(18),
+    fontSize: 18,
     fontWeight: '600',
     color: COLORS.charcoal,
   },

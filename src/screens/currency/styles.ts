@@ -8,7 +8,9 @@ export const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   button: {
-    padding: Width(4),
+    paddingLeft:16,
+    paddingRight:20,
+    paddingVertical:14,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',

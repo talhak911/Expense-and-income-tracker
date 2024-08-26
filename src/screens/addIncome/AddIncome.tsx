@@ -76,11 +76,13 @@ export default function AddIncome() {
             onAttachmentChange={onChangeAttachment}
           />
 
+<View style={{alignItems:"center"}}>
           <CustomButton
-            loading={loading}
-            onPress={addIncome}
-            title="Continue"
-          />
+              loading={loading}
+              onPress={addIncome}
+              title="Continue"
+            />
+          </View>
         </View>
       </KeyboardAwareScrollView>
     </View>

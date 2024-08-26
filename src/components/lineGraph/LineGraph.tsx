@@ -1,42 +1,49 @@
-import React from 'react';
-import {View} from 'react-native';
 import {LineChart} from 'react-native-chart-kit';
 import {LineGraphProps} from '../../types/types';
 import {useLineGraph} from './useLineGraph';
+import {COLORS} from '../../constants/colors';
 
 export default function LineGraph({transactions, filterBy}: LineGraphProps) {
-  const {chartWidth, dataPoints, labels} = useLineGraph({
+  const {dataPoints, labels, chartWidth} = useLineGraph({
     transactions,
     filterBy,
   });
+
   return (
-    <View style={{marginLeft:12}}>
       <LineChart
         data={{
           labels: labels,
           datasets: [
             {
               data: dataPoints.length > 0 ? dataPoints : [0],
-              color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`,
-              strokeWidth: 2,
+              color: () => COLORS.purple,
+              strokeWidth: 6,
             },
           ],
         }}
         width={chartWidth}
-        height={320}
-        verticalLabelRotation={filterBy === 'today' ? 0 : 70}
+        height={290}
+        fromZero
+        withDots={dataPoints.length===1}
+        withOuterLines={false}
+        withHorizontalLabels={false}
+        withVerticalLabels={false}
         withInnerLines={false}
         chartConfig={{
           backgroundGradientFrom: 'white',
           backgroundGradientFromOpacity: 0,
           backgroundGradientTo: 'white',
           backgroundGradientToOpacity: 0,
-          color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`,
-          labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+          color: () => COLORS.purple,
           strokeWidth: 6,
         }}
         bezier
+        style={{
+          marginLeft: 5,
+          paddingRight: 0,
+          paddingBottom: 0,
+          marginBottom: 0, 
+        }}
       />
-    </View>
   );
 }

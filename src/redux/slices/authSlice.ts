@@ -14,7 +14,7 @@ export const signIn = createAsyncThunk(
   'auth/signIn',
   async (
     {email, password}: {email: string; password: string},
-    {rejectWithValue, dispatch},
+    {rejectWithValue},
   ) => {
     try {
       const response = await auth().signInWithEmailAndPassword(email, password);

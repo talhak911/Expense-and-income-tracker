@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
-import {FontSize, Height, Width} from '../../utils/responsive';
 import {COLORS} from '../../constants/colors';
 import DownIcon from '../../assets/icons/down';
 import {useCustomDropdown} from './useCustomDropDown';

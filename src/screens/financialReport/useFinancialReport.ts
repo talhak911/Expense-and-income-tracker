@@ -1,13 +1,10 @@
 import {categoryColors} from '../../constants/colors';
 import {useAppSelector} from '../../hooks/useStore';
-import {
-  CategoryData,
-  FinancialReportResult,
-} from '../../types/types';
+import {CategoryData, FinancialReportResult} from '../../types/types';
 
 export const useFinancialReport = (): FinancialReportResult => {
   const transactions = useAppSelector(state => state.transactions.transactions);
-
+  const currency = useAppSelector(state => state.transactions.currency);
   const totalExpense = transactions
     .filter(item => item.type === 'expense')
     .map(item => item.amount)
@@ -51,5 +48,5 @@ export const useFinancialReport = (): FinancialReportResult => {
 
   const expenses = Object.values(expensesByCategory);
   const incomes = Object.values(incomesByCategory);
-  return {expenses, incomes, totalExpense, totalIncome};
+  return {expenses, incomes, totalExpense, currency, totalIncome};
 };

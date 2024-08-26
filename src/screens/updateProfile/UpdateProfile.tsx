@@ -63,12 +63,14 @@ export default function UpdateProfile() {
             />
           </View>
         </View>
-        <View style={styles.buttonContainer}>
-          <CustomButton
-            title="Update Profile"
-            loading={loading}
-            onPress={onPressUpdate}
-          />
+        <View style={styles.buttonEnd}>
+          <View style={styles.buttonContainer}>
+            <CustomButton
+              title="Update Profile"
+              loading={loading}
+              onPress={onPressUpdate}
+            />
+          </View>
         </View>
       </KeyboardAwareScrollView>
     </SafeAreaView>

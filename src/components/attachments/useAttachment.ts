@@ -1,13 +1,10 @@
 import {useState} from 'react';
-import {PermissionsAndroid, Platform} from 'react-native';
-import FilePickerManager from 'react-native-file-picker';
 import DocumentPicker from 'react-native-document-picker';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
 export const useAttachment = ({
   onAttachmentChange,
   setImage,
-  selectedFile,
   setSelectedFile,
 }: {
   setImage: (e: string | null) => void;
@@ -26,9 +23,7 @@ export const useAttachment = ({
     try {
       const result = await DocumentPicker.pickSingle({
         type: [
-          DocumentPicker.types.doc,
           DocumentPicker.types.pdf,
-          DocumentPicker.types.docx,
         ],
       });
 

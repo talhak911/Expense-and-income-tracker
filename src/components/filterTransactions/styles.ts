@@ -21,6 +21,9 @@ export const styles = StyleSheet.create({
     borderRadius: 40,
     paddingVertical: 7,
   },
+  buttonContainer:{
+    alignItems:"center"
+  },
   button: {
     paddingHorizontal: 24,
     borderRadius: 24,

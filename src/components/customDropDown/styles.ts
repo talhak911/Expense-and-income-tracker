@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native";
-import { FontSize, Height, Width } from "../../utils/responsive";
 import { COLORS } from "../../constants/colors";
 
 export const styles = StyleSheet.create({
@@ -7,14 +6,12 @@ export const styles = StyleSheet.create({
         flex:1,
         flexDirection:"row",
         alignItems:"center",
-        height: Height(7),
-        width:'100%',
+        height: 56,
         borderRadius: 16,
         overflow: 'hidden',
         backgroundColor: 'white',
-        borderWidth: FontSize(1),
+        borderWidth:1,
         borderColor: COLORS.lightGrey,
-        maxWidth:500,
         justifyContent:"space-between",
         paddingHorizontal: 16, 
       },

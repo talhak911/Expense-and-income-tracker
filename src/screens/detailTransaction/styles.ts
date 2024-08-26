@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {COLORS} from '../../constants/colors';
-import {FontSize, Height, Width} from '../../utils/responsive';
+import { Height, Width} from '../../utils/responsive';
 export const styles = StyleSheet.create({
   greyText: {
     color: COLORS.grey,
@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
   floatingCardTextContainer: {gap: 5, alignItems: 'center'},
   bold_16: {
     textTransform: 'capitalize',
-    fontSize: FontSize(16),
+    fontSize: 16,
     fontWeight: '600',
     color: COLORS.charcoal,
   },
@@ -19,14 +19,14 @@ export const styles = StyleSheet.create({
     marginHorizontal: Width(4),
     marginTop: -26,
     borderRadius: 12,
-    borderWidth: FontSize(1),
+    borderWidth:1,
     borderColor: COLORS.lightGrey,
     backgroundColor: 'white',
     paddingVertical: 12,
   },
   border: {
     borderColor: COLORS.lightBlack,
-    borderWidth: 2,
+    borderWidth: 1,
     borderStyle: 'dashed',
   },
   details: {
@@ -35,11 +35,11 @@ export const styles = StyleSheet.create({
     gap: Height(1.6),
   },
   description: {
-    fontSize: FontSize(16),
+    fontSize: 16,
     color: COLORS.charcoal,
   },
   heading: {
-    fontSize: FontSize(16),
+    fontSize: 16,
     color: COLORS.grey,
     fontWeight: '600',
   },
@@ -58,15 +58,15 @@ export const styles = StyleSheet.create({
     marginTop: Height(0.7),
     marginBottom: Height(7),
     color: COLORS.white,
-    fontSize: FontSize(13),
+    fontSize: 13,
   },
   descriptionInHeader: {
     marginTop: Height(0.8),
     color: COLORS.white,
-    fontSize: FontSize(16),
+    fontSize: 16,
   },
   amount: {
-    fontSize: FontSize(48),
+    fontSize: 48,
     color: COLORS.white,
     fontWeight: 'bold',
   },

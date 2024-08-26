@@ -31,16 +31,16 @@ export const styles = StyleSheet.create({
   container: {flex: 1, backgroundColor: COLORS.almostWhite},
   imageBorder: {
     borderColor: COLORS.deepPurple,
-    borderRadius: Width(11),
+    borderRadius: 50,
     borderWidth: 2,
     padding: 3,
   },
   image: {
-    width: Width(19),
-    height: Width(19),
+    width: 80,
+    height: 80,
     overflow: 'hidden',
     backgroundColor: 'orange',
-    borderRadius: Width(9.5),
+    borderRadius: 40,
   },
   menus: {
     backgroundColor: 'white',

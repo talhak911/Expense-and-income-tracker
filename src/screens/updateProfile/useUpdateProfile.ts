@@ -16,13 +16,11 @@ export const useUpdateProfile = () => {
     try {
       await auth().currentUser?.reload();
       const user = await auth().currentUser;
-      console.log('user after refresh ', user);
     } catch (error) {
       console.log('Error in reloading user ', error);
     }
   };
   refresh();
-  console.log('email edit or not ', emailEditable);
 
   const [loading, setLoading] = useState(false);
   const dispatch = useAppDispatch();
@@ -44,8 +42,6 @@ export const useUpdateProfile = () => {
         response.assets.length > 0
       ) {
         setImage(response.assets[0].uri);
-
-        console.log('image uri  ', response.assets[0].uri);
       }
     });
   };

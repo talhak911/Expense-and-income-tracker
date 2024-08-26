@@ -4,15 +4,17 @@ import { COLORS } from '../../constants/colors';
 
 export const styles = StyleSheet.create({
   attachmentButton: {
+    maxWidth:400,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
     gap: 10,
+    width:'100%',
     borderStyle: 'dashed',
     borderWidth: 3,
     borderColor: COLORS.lightGrey,
-    height: Height(7),
+    height: 56,
     borderRadius: 16,
   },
   imageContainer: {position: 'relative', alignSelf: 'flex-start'},

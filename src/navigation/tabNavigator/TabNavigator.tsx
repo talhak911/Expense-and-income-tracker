@@ -5,7 +5,6 @@ import {COLORS} from '../../constants/colors';
 import Transaction from '../../screens/transaction/Transaction';
 import HomeIcon from '../../assets/icons/home';
 import TransactionBottomIcon from '../../assets/icons/transactionBottom';
-import {FontSize} from '../../utils/responsive';
 import BudgetIcon from '../../assets/icons/budget';
 import ProfileIcon from '../../assets/icons/profile';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -20,7 +19,7 @@ export const TabNavigator = () => {
         tabBarLabelStyle: {
           marginBottom: 12,
           marginTop: -10,
-          fontSize: FontSize(10),
+          fontSize: 10,
         },
         tabBarStyle: {height: 70, borderTopWidth: 0, elevation: 0},
         tabBarActiveTintColor: COLORS.purple,

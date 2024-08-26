@@ -51,8 +51,9 @@ export const FilterTransactions = ({
 
       <Text style={styles.headingsText}>Sort By</Text>
       <View style={styles.menus}>
-        {SortBy.map(sort => (
+        {SortBy.map((sort,index) => (
           <TouchableOpacity
+          key={index}
             style={{
               ...styles.button,
               backgroundColor: sortBy === sort ? COLORS.lightPurple : 'white',
@@ -69,7 +70,9 @@ export const FilterTransactions = ({
           </TouchableOpacity>
         ))}
       </View>
+      <View style={styles.buttonContainer}>
       <CustomButton loading={false} onPress={close} title="Apply" />
+      </View>
     </View>
   );
 };

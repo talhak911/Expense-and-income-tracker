@@ -2,7 +2,6 @@ import {Text, TouchableOpacity, View} from 'react-native';
 import React, {useState} from 'react';
 import {ScrollView} from 'react-native-gesture-handler';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {FontSize} from '../../utils/responsive';
 import {COLORS} from '../../constants/colors';
 import DownIcon from '../../assets/icons/down';
 import TimeIcon from '../../assets/icons/time';
@@ -13,7 +12,8 @@ import {useFinancialReport} from './useFinancialReport';
 import {styles} from './styles';
 
 export default function FinancialReport() {
-  const {expenses, incomes, totalExpense, totalIncome} = useFinancialReport();
+  const {expenses, incomes, totalExpense, totalIncome, currency} =
+    useFinancialReport();
   const [isActive, setIsActive] = useState<'expense' | 'income'>('expense');
 
   const handleIsActive = (button: 'expense' | 'income') => {
@@ -30,10 +30,11 @@ export default function FinancialReport() {
           <TimeIcon />
         </View>
 
-        <View style={{position: 'relative', alignSelf: 'center'}}>
+        <View style={styles.pieChartContainer}>
           <PieChart data={isActive === 'expense' ? expenses : incomes} />
           <Text style={styles.totalAmount}>
-            ${isActive === 'expense' ? totalExpense : totalIncome}
+            {currency}
+            {isActive === 'expense' ? totalExpense : totalIncome}
           </Text>
         </View>
         <View style={styles.toggleButtonsContainer}>
@@ -51,7 +52,7 @@ export default function FinancialReport() {
             <Text
               style={{
                 color: isActive === 'expense' ? 'white' : 'black',
-                fontSize: FontSize(16),
+                fontSize: 16,
               }}>
               Expense
             </Text>
@@ -70,7 +71,7 @@ export default function FinancialReport() {
             <Text
               style={{
                 color: isActive === 'income' ? 'white' : 'black',
-                fontSize: FontSize(16),
+                fontSize: 16,
               }}>
               Income
             </Text>

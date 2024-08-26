@@ -137,6 +137,7 @@ export type CategoryData = {
 };
 
 export type FinancialReportResult = {
+  currency:string|number
   expenses: CategoryData[];
   incomes: CategoryData[];
   totalExpense: string;

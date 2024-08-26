@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {FontSize, Width} from '../../utils/responsive';
+import { Width} from '../../utils/responsive';
 import {COLORS} from '../../constants/colors';
 export default StyleSheet.create({
   container: {
@@ -53,7 +53,7 @@ export default StyleSheet.create({
     marginTop: 20,
   },
   footerText: {
-    fontSize: FontSize(14),
+    fontSize: 14,
     color: 'black',
     marginRight: 5,
   },

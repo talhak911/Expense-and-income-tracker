@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {Width, Height, FontSize} from '../../utils/responsive';
+import {Width, Height} from '../../utils/responsive';
 import {COLORS} from '../../constants/colors';
 export const styles = StyleSheet.create({
   containerContent: {
@@ -20,13 +20,13 @@ export const styles = StyleSheet.create({
     borderColor: COLORS.lightGrey,
     alignItems: 'center',
     borderRadius: 40,
-    paddingVertical: Height(0.7),
+    paddingVertical: 10,
     paddingHorizontal: 12,
   },
   financialReport: {
     marginVertical: Height(1),
     backgroundColor: COLORS.lightPurple,
-    paddingLeft: Width(4),
+    paddingLeft: 16,
     paddingRight: Width(2),
     flex: 1,
     flexDirection: 'row',

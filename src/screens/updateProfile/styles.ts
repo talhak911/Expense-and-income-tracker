@@ -9,7 +9,6 @@ export const styles = StyleSheet.create({
   },
   scrollViewContent: {
     flexGrow: 1,
-    justifyContent: 'space-between',
   },
   imageContainer: {
     marginTop: Height(4),
@@ -20,6 +19,7 @@ export const styles = StyleSheet.create({
     borderWidth: 2,
     padding: 3,
   },
+  buttonEnd:{flex: 1, justifyContent: 'flex-end'},
   image: {
     width: 120,
     height: 120,
@@ -32,7 +32,7 @@ export const styles = StyleSheet.create({
     right: 0,
   },
   bottomView: {
-    marginTop: 51,
+    marginTop: 50,
     paddingHorizontal: Width(4),
     gap: 24,
   },
@@ -40,7 +40,7 @@ export const styles = StyleSheet.create({
     color: COLORS.black50,
     fontSize: 18,
     fontWeight: '600',
-    paddingLeft: Width(3),
+    paddingLeft:12,
     marginBottom: 8,
   },
   buttonContainer: {
@@ -49,7 +49,6 @@ export const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     width: '100%',
     paddingHorizontal: Width(4),
-    paddingBottom: 16,
-    backgroundColor: 'white',
+    paddingBottom: 16
   },
 });

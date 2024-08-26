@@ -16,6 +16,7 @@ export const styles = StyleSheet.create({
   },
   inputField: {
     fontSize: 16,
+    color:"black",
     width: '90%',
     paddingLeft: 16,
   },
