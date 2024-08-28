@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
-import {COLORS} from '../../constants/colors';
+import {COLORS} from '../../constants/color';
+import { Width } from '../../utils/responsive';
 
 export const styles = StyleSheet.create({
   modalOverlay: {
@@ -8,7 +9,7 @@ export const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.16)',
   },
   buttonsContainer: {
-    paddingTop: 48,
+    paddingTop: 32,
     flexDirection: 'row',
     gap: 8,
   },
@@ -16,7 +17,7 @@ export const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    padding: 20,
+    padding: 16,
     alignItems: 'center',
   },
   line: {
@@ -32,7 +33,8 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 16,
     paddingVertical: 16,
-    paddingHorizontal: 16,
+    // paddingHorizontal: 16,
+    // width:Width(30),
     backgroundColor: COLORS.lightPurple,
   },
   buttonText: {

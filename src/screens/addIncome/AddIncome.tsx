@@ -1,6 +1,6 @@
 import {Text, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {COLORS} from '../../constants/colors';
+import {COLORS} from '../../constants/color';
 import {CustomInput} from '../../components/customInput/CustomInput';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {TextInput} from 'react-native-gesture-handler';

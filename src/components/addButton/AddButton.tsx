@@ -4,7 +4,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {useAddButton} from './useAddButton';
 import AddIcon from '../../assets/icons/add';
 import TransactionIcon from '../../assets/icons/transaction';
-import {COLORS} from '../../constants/colors';
+import {COLORS} from '../../constants/color';
 import {BottomTabBarButtonProps} from '@react-navigation/bottom-tabs';
 import {styles} from './styles';
 

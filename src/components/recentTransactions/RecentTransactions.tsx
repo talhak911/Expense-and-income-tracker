@@ -3,7 +3,7 @@ import React from 'react';
 import {useRecentTransactions} from './useRecentTransactions';
 import {TransactionCard} from '../transactionCard/TransactionCard';
 import {styles} from './styles';
-import {COLORS} from '../../constants/colors';
+import {COLORS} from '../../constants/color';
 
 export default function RecentTransactions() {
   const {navigateToDetailTransaction, transactions, navigateToTransactions} =

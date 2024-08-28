@@ -1,18 +1,16 @@
 import {Image, Pressable, ScrollView, Text, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import BellIcon from '../../assets/icons/bell';
-
 import DownIcon from '../../assets/icons/down';
-
 import {useHome} from './useHome';
 import SpendFrequency from '../../components/spendFrequency/SpendFrequency';
 import HomeCard from '../../components/homeCard/HomeCard';
 import RecentTransactions from '../../components/recentTransactions/RecentTransactions';
-import {FontInter} from '../../constants/fonts';
 import {styles} from './styles';
 
 export default function Home() {
   const {currency, expenses, incomes, balance, month, userImage} = useHome();
+  console.log("user imaege is the ",userImage)
   return (
     <ScrollView style={styles.container}>
       <SafeAreaView>

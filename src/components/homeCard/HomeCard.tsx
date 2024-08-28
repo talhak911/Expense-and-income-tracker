@@ -2,7 +2,7 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import { styles } from './styles'
 import Transaction from '../../assets/icons/transaction'
-import { COLORS } from '../../constants/colors'
+import { COLORS } from '../../constants/color'
 
 export default function HomeCard ({amount,isIncome,currency}:{currency:string,amount:string,isIncome:boolean}){
   return (

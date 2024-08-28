@@ -2,7 +2,7 @@ import {Text, TouchableOpacity, View} from 'react-native';
 import React, {useState} from 'react';
 import {ScrollView} from 'react-native-gesture-handler';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {COLORS} from '../../constants/colors';
+import {COLORS} from '../../constants/color';
 import DownIcon from '../../assets/icons/down';
 import TimeIcon from '../../assets/icons/time';
 import SortIcon from '../../assets/icons/sort';

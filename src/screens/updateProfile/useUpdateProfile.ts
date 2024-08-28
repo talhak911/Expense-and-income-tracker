@@ -9,13 +9,18 @@ import auth from '@react-native-firebase/auth';
 import Snackbar from 'react-native-snackbar';
 import {launchImageLibrary} from 'react-native-image-picker';
 import {isValidEmail} from '../../utils/utils';
+import {uploadAttachment} from '../../utils/uploadAttachment';
 
 export const useUpdateProfile = () => {
   const emailEditable = !(auth().currentUser?.providerId === 'google.com');
+  const uid = useAppSelector(state => state.auth.user?.uid);
+  const [imageLoading, setImageLoading] = useState(false);
+  const handleImageLoad = (load:boolean) => {setImageLoading(load)}
   const refresh = async () => {
     try {
       await auth().currentUser?.reload();
-      const user = await auth().currentUser;
+      const userimg = await auth().currentUser?.photoURL;
+      console.log('user ismage is ', userimg);
     } catch (error) {
       console.log('Error in reloading user ', error);
     }
@@ -78,13 +83,16 @@ export const useUpdateProfile = () => {
         }
       }
     }
-    if (image) {
-      const res = await dispatch(updateImage(image));
-      if (res.meta.requestStatus === 'fulfilled') {
-        Snackbar.show({
-          text: 'Information Updated',
-          backgroundColor: 'green',
-        });
+    if (image&& uid) {
+      const uploadedUrl = await uploadAttachment(image, uid);
+      if (uploadedUrl) {
+        const res = await dispatch(updateImage(uploadedUrl));
+        if (res.meta.requestStatus === 'fulfilled') {
+          Snackbar.show({
+            text: 'Information Updated',
+            backgroundColor: 'green',
+          });
+        }
       }
     }
     setLoading(false);
@@ -94,6 +102,8 @@ export const useUpdateProfile = () => {
     onChangeEmail,
     onChangeName,
     handleImagePicker,
+    handleImageLoad,
+    imageLoading,
     image,
     emailEditable,
     loading,

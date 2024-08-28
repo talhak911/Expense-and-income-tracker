@@ -10,7 +10,4 @@ export const Width = (w: number) => {
   return size;
 };
 
-export const FontSize = (f: number) => {
-  const size = PixelRatio.roundToNearestPixel((width / 375) * f);
-  return size;
-};
+

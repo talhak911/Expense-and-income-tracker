@@ -1,5 +1,5 @@
 import {Text, TouchableOpacity, View} from 'react-native';
-import {COLORS} from '../../constants/colors';
+import {COLORS} from '../../constants/color';
 import {voidFunction} from '../../types/types';
 import {styles} from './styles';
 

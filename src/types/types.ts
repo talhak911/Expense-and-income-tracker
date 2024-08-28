@@ -4,6 +4,7 @@ import {
   NativeStackNavigationProp,
   NativeStackScreenProps,
 } from '@react-navigation/native-stack';
+import { StackNavigationOptions } from '@react-navigation/stack';
 import dayjs from 'dayjs';
 
 export type AttachmentModelProps = {
@@ -58,6 +59,11 @@ export type LineGraphProps = {
 export type AuthStateType = {
   user: Partial<FirebaseAuthTypes.User> | null;
 };
+export type ScreenConfig ={
+  name: keyof StackNavigatorParamList;
+  component: React.ComponentType<any>;
+  options?: StackNavigationOptions;
+}
 export type AuthStackParamList = {
   SignUp: undefined;
   SignIn: undefined;

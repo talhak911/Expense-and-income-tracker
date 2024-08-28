@@ -23,7 +23,7 @@ export const useLineGraph = ({transactions, filterBy}: LineGraphProps) => {
     return isNaN(amount) ? 0 : amount;
   });
 
-  const chartWidth =Dimensions.get('screen').width
+  const chartWidth = Dimensions.get('screen').width;
 
   return {
     labels,

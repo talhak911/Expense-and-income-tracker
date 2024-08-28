@@ -2,7 +2,7 @@ import {Image, TouchableOpacity, View} from 'react-native';
 import {useAttachment} from './useAttachment';
 import AttachmentIcon from '../../assets/icons/attachment';
 import {Text} from 'react-native';
-import {COLORS} from '../../constants/colors';
+import {COLORS} from '../../constants/color';
 import CrossIcon from '../../assets/icons/cross';
 import AttachmentModel from '../attachmentModel/AttachmentModel';
 import {styles} from './styles';
@@ -36,18 +36,16 @@ export const Attachment = ({
 
   return (
     <View style={{gap: 16}}>
- <View style={{alignItems:"center"}}>
- <TouchableOpacity
-        onPress={() => {
-          setModalVisible(!modalVisible);
-        }}
-        style={styles.attachmentButton}>
-        <AttachmentIcon />
-        <Text style={{color: COLORS.grey, fontSize:16}}>
-          Add attachment
-        </Text>
-      </TouchableOpacity>
- </View>
+      <View style={{alignItems: 'center'}}>
+        <TouchableOpacity
+          onPress={() => {
+            setModalVisible(!modalVisible);
+          }}
+          style={styles.attachmentButton}>
+          <AttachmentIcon />
+          <Text style={{color: COLORS.grey, fontSize: 16}}>Add attachment</Text>
+        </TouchableOpacity>
+      </View>
       <AttachmentModel
         visible={modalVisible}
         onCameraPress={handleCamera}

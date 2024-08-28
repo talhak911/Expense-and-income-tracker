@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
-import {FontSize, Height, Width} from '../../utils/responsive';
-import {COLORS} from '../../constants/colors';
+import {Height, Width} from '../../utils/responsive';
+import {COLORS} from '../../constants/color';
 import {FontInter} from '../../constants/fonts';
 
 export const styles = StyleSheet.create({
@@ -42,13 +42,14 @@ export const styles = StyleSheet.create({
     marginTop: Height(6.6),
     flex: 1,
     flexDirection: 'row',
-    borderRadius: FontSize(32),
+    borderRadius: 32,
     backgroundColor: COLORS.lightGrey,
   },
   toggleButton: {
-    width: Width(46),
-    paddingVertical: Height(1.7),
+    width:'50%',
+    height: 48,
+    justifyContent:"center",
     alignItems: 'center',
-    borderRadius: FontSize(32),
+    borderRadius: 32,
   },
 });

@@ -2,7 +2,7 @@ import React from 'react';
 import {Pressable, TextInput, View} from 'react-native';
 import {usePasswordInput} from './usePasswordInput';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {COLORS} from '../../constants/colors';
+import {COLORS} from '../../constants/color';
 import {styles} from './styles';
 
 export const PasswordInput = ({

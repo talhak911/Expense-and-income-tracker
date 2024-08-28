@@ -6,7 +6,7 @@ import {PasswordInput} from '../../components/passwordInput/PasswordInput';
 import {CustomButton} from '../../components/customButton/CustomButtom';
 import {SignUpGoogle} from '../../components/signUpGoogle.tsx/SignUpGoogle';
 import {Width} from '../../utils/responsive';
-import {COLORS} from '../../constants/colors';
+import {COLORS} from '../../constants/color';
 
 export const SignIn = () => {
   const {

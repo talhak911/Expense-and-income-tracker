@@ -1,5 +1,5 @@
 import {Text, TouchableOpacity, View} from 'react-native';
-import {COLORS} from '../../constants/colors';
+import {COLORS} from '../../constants/color';
 import {CustomButton} from '../customButton/CustomButtom';
 import {styles} from './styles';
 import {FilterTransactionsProps} from '../../types/types';

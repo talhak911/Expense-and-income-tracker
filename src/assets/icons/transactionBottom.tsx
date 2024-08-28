@@ -1,5 +1,5 @@
 import Svg, { Path } from "react-native-svg"
-import { COLORS } from "../../constants/colors"
+import { COLORS } from "../../constants/color"
 
 function TransactionBottomIcon({focused}:{focused:boolean}) {
   return (

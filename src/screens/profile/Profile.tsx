@@ -1,7 +1,7 @@
-import {Image, SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
+import {ActivityIndicator, Image, SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
 import {useProfile} from './useProfile.ts';
 import {ScrollView} from 'react-native-gesture-handler';
-import {COLORS} from '../../constants/colors';
+import {COLORS} from '../../constants/color.ts';
 import EditIcon from '../../assets/icons/edit';
 import SettingIcon from '../../assets/icons/setting';
 import ResetPasswordIcon from '../../assets/icons/resetPassword';
@@ -9,11 +9,14 @@ import LogoutIcon from '../../assets/icons/logout';
 import {BottomModel} from '../../components/bottomModel/BottomModel';
 import {ConfirmLogoutModal} from '../../components/confirmLogoutModal/ConfirmLogoutModal.tsx';
 import {styles} from './styles.ts';
+import { Images } from '../../constants/constants.tsx';
 
 export default function Profile() {
   const {
     logoutModalVisible,
     user,
+    imageLoading,
+handleImageLoad,
     signOutUser,
     navigateToUpdateProfile,
     navigateToResetPassword,
@@ -26,17 +29,21 @@ export default function Profile() {
       <ScrollView>
         <View style={styles.topContainer}>
           <View style={styles.topView}>
+            {imageLoading &&
+              <ActivityIndicator size={'small'} color={COLORS.purple}/>}
             <View style={styles.imageBorder}>
+            {imageLoading ? (
+              <ActivityIndicator size={'small'} color={COLORS.purple}/>
+            ) : (
               <Image
-                source={{
-                  uri:
-                    user?.photoURL ||
-                    'https://th.bing.com/th/id/OIP.7dTfyRneXPY5b7pj0NKuUgAAAA?rs=1&pid=ImgDetMain',
-                }}
+              
+                onLoadEnd={()=>{handleImageLoad(false)}}
+                source={{uri: user?.photoURL || ''} || Images.profile}
                 style={styles.image}
               />
+            )}
             </View>
-            <View>
+            <View style={{gap:6}}>
               <Text style={{color: COLORS.grey}}>Username</Text>
               <Text style={styles.name}>{user?.displayName}</Text>
             </View>
@@ -81,6 +88,7 @@ export default function Profile() {
             />
           )}
         </View>
+
       </ScrollView>
     </SafeAreaView>
   );

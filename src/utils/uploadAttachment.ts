@@ -9,7 +9,6 @@ export const uploadAttachment = async (
     if (!uri) {
       return null;
     }
-
     let filePath = uri;
     if (uri.startsWith('content://')) {
       const tempFilePath = `${RNFS.TemporaryDirectoryPath}/file`;

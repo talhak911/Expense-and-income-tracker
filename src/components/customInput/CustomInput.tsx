@@ -1,6 +1,6 @@
 import {TextInput} from 'react-native';
 import {styles} from './styles';
-import {COLORS} from '../../constants/colors';
+import {COLORS} from '../../constants/color';
 
 export const CustomInput = ({
   value,

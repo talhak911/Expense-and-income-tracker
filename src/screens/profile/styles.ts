@@ -1,12 +1,11 @@
 import {StyleSheet} from 'react-native';
-import {Height, Width} from '../../utils/responsive';
-import {COLORS} from '../../constants/colors';
+import {COLORS} from '../../constants/color';
 
 export const styles = StyleSheet.create({
   topContainer: {
-    marginTop: Height(4),
-    paddingLeft: Width(8),
-    paddingRight: Width(4),
+    marginTop: 30,
+    paddingLeft: 34,
+    paddingRight: 16,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -21,12 +20,13 @@ export const styles = StyleSheet.create({
     fontWeight: '600',
     color: COLORS.charcoal,
     fontSize: 24,
+    lineHeight:29
   },
   buttonsContainer: {
     flex: 1,
     gap: 2,
     marginTop: 40,
-    marginHorizontal: Width(5),
+    marginHorizontal: 20,
   },
   container: {flex: 1, backgroundColor: COLORS.almostWhite},
   imageBorder: {

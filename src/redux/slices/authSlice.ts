@@ -143,6 +143,7 @@ export const updateImage = createAsyncThunk(
   'auth/updateImage',
   async (uri: string) => {
     try {
+
       await auth().currentUser?.updateProfile({photoURL: uri});
       return uri;
     } catch (error) {

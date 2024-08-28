@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import {useAppSelector} from '../../hooks/useStore';
-import {COLORS} from '../../constants/colors';
+import {COLORS} from '../../constants/color';
 import {StackNavigationProp, TabNavigationProps} from '../../types/types';
 
 export const useRecentTransactions = () => {

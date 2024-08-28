@@ -2,7 +2,7 @@ import {Text, TouchableOpacity, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import DownIcon from '../../assets/icons/down';
-import {COLORS} from '../../constants/colors';
+import {COLORS} from '../../constants/color';
 import FilterIcon from '../../assets/icons/filter';
 import {TransactionCard} from '../../components/transactionCard/TransactionCard';
 import {BottomModel} from '../../components/bottomModel/BottomModel';

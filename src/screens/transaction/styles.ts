@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {Width, Height} from '../../utils/responsive';
-import {COLORS} from '../../constants/colors';
+import {COLORS} from '../../constants/color';
 export const styles = StyleSheet.create({
   containerContent: {
     flex: 1,
@@ -20,19 +20,19 @@ export const styles = StyleSheet.create({
     borderColor: COLORS.lightGrey,
     alignItems: 'center',
     borderRadius: 40,
-    paddingVertical: 10,
+    paddingVertical: 6,
     paddingHorizontal: 12,
   },
   financialReport: {
-    marginVertical: Height(1),
+    marginVertical: 6,
     backgroundColor: COLORS.lightPurple,
     paddingLeft: 16,
-    paddingRight: Width(2),
+    paddingRight: 10,
     flex: 1,
     flexDirection: 'row',
     borderRadius: 8,
     justifyContent: 'space-between',
-    paddingVertical: Height(1.5),
+    paddingVertical: 12,
   },
   icon: {
     transform: [{rotate: '-90deg'}, {scale: 1.5}],

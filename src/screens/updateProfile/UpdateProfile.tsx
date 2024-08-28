@@ -1,4 +1,4 @@
-import {Image, SafeAreaView, Text, View} from 'react-native';
+import {ActivityIndicator, Image, SafeAreaView, Text, View} from 'react-native';
 import React from 'react';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {TouchableOpacity} from 'react-native-gesture-handler';
@@ -7,15 +7,18 @@ import {CustomInput} from '../../components/customInput/CustomInput';
 import {CustomButton} from '../../components/customButton/CustomButtom';
 import {useUpdateProfile} from './useUpdateProfile';
 import {styles} from './styles';
-
+import {Images} from '../../constants/constants';
+import { COLORS } from '../../constants/color';
 export default function UpdateProfile() {
   const {
     user,
     emailEditable,
     name,
     email,
+    imageLoading,
     image,
     loading,
+    handleImageLoad,
     handleImagePicker,
     onChangeEmail,
     onChangeName,
@@ -27,15 +30,15 @@ export default function UpdateProfile() {
       <KeyboardAwareScrollView contentContainerStyle={styles.scrollViewContent}>
         <View style={styles.imageContainer}>
           <View>
-            <Image
-              source={{
-                uri:
-                  image ||
-                  user?.photoURL ||
-                  'https://th.bing.com/th/id/OIP.7dTfyRneXPY5b7pj0NKuUgAAAA?rs=1&pid=ImgDetMain',
-              }}
-              style={styles.image}
-            />
+            {imageLoading ? (
+              <ActivityIndicator size={'small'} color={COLORS.purple}/>
+            ) : (
+              <Image
+                onLoadEnd={()=>{handleImageLoad(false)}}
+                source={{uri: image || user?.photoURL || ''} || Images.profile}
+                style={styles.image}
+              />
+            )}
             <View style={styles.editIcon}>
               <TouchableOpacity onPress={handleImagePicker}>
                 <EditPictureIcon />

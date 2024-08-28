@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {COLORS} from '../../constants/colors';
+import {COLORS} from '../../constants/color';
 import {Height, Width} from '../../utils/responsive';
 
 export const styles = StyleSheet.create({
@@ -23,6 +23,7 @@ export const styles = StyleSheet.create({
   image: {
     width: 120,
     height: 120,
+    resizeMode:"cover",
     borderRadius: 60,
     backgroundColor: 'grey',
   },

@@ -1,7 +1,7 @@
 import {useState, useMemo} from 'react';
 import {useAppSelector} from '../../hooks/useStore';
 import {useNavigation} from '@react-navigation/native';
-import {COLORS} from '../../constants/colors';
+import {COLORS} from '../../constants/color';
 import dayjs from 'dayjs';
 import {
   DetailTransactionProps,

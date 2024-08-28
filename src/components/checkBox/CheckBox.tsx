@@ -1,7 +1,7 @@
 import {Text, View, TouchableOpacity} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {styles} from './styles';
-import {COLORS} from '../../constants/colors';
+import {COLORS} from '../../constants/color';
 
 export const Checkbox = ({
   checked,

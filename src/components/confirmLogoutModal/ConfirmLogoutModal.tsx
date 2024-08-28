@@ -1,7 +1,7 @@
 import {Text, TouchableOpacity, View} from 'react-native';
 import {styles} from './styles';
 import {voidFunction} from '../../types/types';
-import {COLORS} from '../../constants/colors';
+import {COLORS} from '../../constants/color';
 
 export const ConfirmLogoutModal = ({
   action,

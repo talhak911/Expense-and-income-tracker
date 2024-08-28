@@ -1,7 +1,7 @@
 import {LineChart} from 'react-native-chart-kit';
 import {LineGraphProps} from '../../types/types';
 import {useLineGraph} from './useLineGraph';
-import {COLORS} from '../../constants/colors';
+import {COLORS} from '../../constants/color';
 
 export default function LineGraph({transactions, filterBy}: LineGraphProps) {
   const {dataPoints, labels, chartWidth} = useLineGraph({
@@ -39,7 +39,8 @@ export default function LineGraph({transactions, filterBy}: LineGraphProps) {
         }}
         bezier
         style={{
-          marginLeft: 5,
+          marginLeft: 0,
+          marginRight:0,
           paddingRight: 0,
           paddingBottom: 0,
           marginBottom: 0, 

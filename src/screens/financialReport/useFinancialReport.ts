@@ -1,4 +1,4 @@
-import {categoryColors} from '../../constants/colors';
+import {categoryColors} from '../../constants/color';
 import {useAppSelector} from '../../hooks/useStore';
 import {CategoryData, FinancialReportResult} from '../../types/types';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Dimensions, Text, View} from 'react-native';
 import Svg, {Path} from 'react-native-svg';
-import {COLORS} from '../../constants/colors';
+import {COLORS} from '../../constants/color';
 import {FontInter} from '../../constants/fonts';
 import {BarGraphProps} from '../../types/types';
 import {styles} from './styles';
@@ -43,7 +43,7 @@ const {barHeight,barWidth,innerBarWidth,currency}=useBarGraph(item.amount,total)
           strokeWidth={12}
           strokeLinecap="round"
           strokeLinejoin="round"
-          d={`M 6 ${barHeight / 2} L ${innerBarWidth -15} ${barHeight / 2}`}
+          d={`M 6 ${barHeight / 2} L ${innerBarWidth -10} ${barHeight / 2}`}
         />
       </Svg>
     </View>

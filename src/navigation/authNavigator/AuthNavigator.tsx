@@ -31,11 +31,7 @@ export default function AuthNavigator() {
             headerTitleStyle: {fontSize: 18},
           }}
         />
-        {/* <Stack.Screen
-          name="VerifyEmail"
-          component={VerifyEmail}
-          options={{title: 'Verify Email'}}
-        /> */}
+
         <Stack.Screen
           name="ForgetPassword"
           component={ForgetPassword}
