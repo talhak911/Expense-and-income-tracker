@@ -38,8 +38,6 @@ export const styles = StyleSheet.create({
   image: {
     width: 80,
     height: 80,
-    // overflow: 'hidden',
-    // backgroundColor: 'grey',
     borderRadius: 40,
   },
   menus: {

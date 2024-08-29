@@ -175,7 +175,7 @@ export const TabConfigs: TabConfig[] = [
   },
   {
     name: 'AddTransaction',
-    component: HomeScreen, // or any placeholder component
+    component: HomeScreen,
     options: {
       tabBarButton: (props: any) => <AddButton props={props} />,
     },
