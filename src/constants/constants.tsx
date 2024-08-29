@@ -84,7 +84,7 @@ export const Days = [
 ];
 
 export const Images = {
-  profile: require('../assets/images/profile.png'),
+  profile: require('../assets/images/profile.jpg'),
 };
 
 export const ScreenConfigs: ScreenConfig[] = [

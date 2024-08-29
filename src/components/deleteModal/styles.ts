@@ -17,7 +17,6 @@ export const styles = StyleSheet.create({
   buttonsContainer: {
     flexDirection: 'row',
     gap: 16,
-    // justifyContent: 'space-around',
     width: '100%',
     marginTop: 16,
   },

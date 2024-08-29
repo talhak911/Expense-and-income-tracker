@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
     height: 32,
     width: 32,
     borderRadius: 16,
-    backgroundColor: 'red',
+    // backgroundColor: 'grey', 
   },
   monthContainer: {
     borderWidth: 1,

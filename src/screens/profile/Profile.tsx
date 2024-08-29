@@ -1,4 +1,11 @@
-import {ActivityIndicator, Image, SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
+import {
+  ActivityIndicator,
+  Image,
+  SafeAreaView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {useProfile} from './useProfile.ts';
 import {ScrollView} from 'react-native-gesture-handler';
 import {COLORS} from '../../constants/color.ts';
@@ -9,14 +16,13 @@ import LogoutIcon from '../../assets/icons/logout';
 import {BottomModel} from '../../components/bottomModel/BottomModel';
 import {ConfirmLogoutModal} from '../../components/confirmLogoutModal/ConfirmLogoutModal.tsx';
 import {styles} from './styles.ts';
-import { Images } from '../../constants/constants.tsx';
+import {Images} from '../../constants/constants.tsx';
+import { BlinkingImage } from '../../components/loading/Loading.tsx';
 
 export default function Profile() {
   const {
     logoutModalVisible,
     user,
-    imageLoading,
-handleImageLoad,
     signOutUser,
     navigateToUpdateProfile,
     navigateToResetPassword,
@@ -29,21 +35,17 @@ handleImageLoad,
       <ScrollView>
         <View style={styles.topContainer}>
           <View style={styles.topView}>
-            {imageLoading &&
-              <ActivityIndicator size={'small'} color={COLORS.purple}/>}
             <View style={styles.imageBorder}>
-            {imageLoading ? (
-              <ActivityIndicator size={'small'} color={COLORS.purple}/>
-            ) : (
-              <Image
-              
-                onLoadEnd={()=>{handleImageLoad(false)}}
+              {/* <Image
                 source={{uri: user?.photoURL || ''} || Images.profile}
                 style={styles.image}
-              />
-            )}
+              /> */}
+                <BlinkingImage
+              uri={user?.photoURL || Images.profile}
+              style={styles.image}
+            />
             </View>
-            <View style={{gap:6}}>
+            <View style={{gap: 6}}>
               <Text style={{color: COLORS.grey}}>Username</Text>
               <Text style={styles.name}>{user?.displayName}</Text>
             </View>
@@ -88,7 +90,6 @@ handleImageLoad,
             />
           )}
         </View>
-
       </ScrollView>
     </SafeAreaView>
   );

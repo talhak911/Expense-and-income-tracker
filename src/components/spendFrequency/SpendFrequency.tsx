@@ -5,7 +5,6 @@ import {useSpendFrequency} from './useSpendFrequency';
 import LineGraph from '../lineGraph/LineGraph';
 import {spendFrequencyFilters} from '../../constants/constants';
 import {styles} from './styles';
-import Graph from '../graph/Graph';
 
 export default function SpendFrequency() {
   const {filterBy, setFilterBy, filteredTransactions} = useSpendFrequency();
@@ -14,7 +13,6 @@ export default function SpendFrequency() {
     <View>
       <Text style={styles.headingSmall}>Spend Frequency</Text>
       <LineGraph transactions={filteredTransactions} filterBy={filterBy} />
-     {/* <Graph transactions={filteredTransactions} /> */}
       <View style={styles.alignCenter}>
         <View style={styles.menusContainer}>
           {spendFrequencyFilters.map((item, index) => (

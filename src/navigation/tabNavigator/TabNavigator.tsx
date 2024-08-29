@@ -2,7 +2,6 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {TabParamsList} from '../../types/types';
 import {TabConfigs, TabscreenOptions} from '../../constants/constants';
 
-
 export const TabNavigator = () => {
   const Tab = createBottomTabNavigator<TabParamsList>();
 

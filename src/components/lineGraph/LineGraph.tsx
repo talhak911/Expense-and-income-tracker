@@ -2,6 +2,7 @@ import {LineChart} from 'react-native-chart-kit';
 import {LineGraphProps} from '../../types/types';
 import {useLineGraph} from './useLineGraph';
 import {COLORS} from '../../constants/color';
+import {Text, View} from 'react-native';
 
 export default function LineGraph({transactions, filterBy}: LineGraphProps) {
   const {dataPoints, labels, chartWidth} = useLineGraph({
@@ -10,6 +11,12 @@ export default function LineGraph({transactions, filterBy}: LineGraphProps) {
   });
 
   return (
+    <View>
+      {transactions.length < 1 && (
+        <View style={{alignSelf: 'center'}}>
+          <Text style={{color: COLORS.charcoal}}>No Data</Text>
+        </View>
+      )}
       <LineChart
         data={{
           labels: labels,
@@ -24,8 +31,7 @@ export default function LineGraph({transactions, filterBy}: LineGraphProps) {
         width={chartWidth}
         height={290}
         fromZero
-        withDots={dataPoints.length===1}
-        withOuterLines={false}
+        withDots={dataPoints.length === 1}
         withHorizontalLabels={false}
         withVerticalLabels={false}
         withInnerLines={false}
@@ -40,11 +46,12 @@ export default function LineGraph({transactions, filterBy}: LineGraphProps) {
         bezier
         style={{
           marginLeft: 0,
-          marginRight:0,
+          marginRight: 0,
           paddingRight: 0,
           paddingBottom: 0,
-          marginBottom: 0, 
+          marginBottom: 0,
         }}
       />
+    </View>
   );
 }

@@ -4,6 +4,7 @@ import {useRecentTransactions} from './useRecentTransactions';
 import {TransactionCard} from '../transactionCard/TransactionCard';
 import {styles} from './styles';
 import {COLORS} from '../../constants/color';
+import { formatDate } from '../../utils/utils';
 
 export default function RecentTransactions() {
   const {navigateToDetailTransaction, transactions, navigateToTransactions} =
@@ -26,7 +27,7 @@ export default function RecentTransactions() {
               navigateToDetailTransaction({
                 url: item.attachment_url,
                 type: item.type,
-                date: item?.date?.toDateString() as string,
+                date: formatDate(item.date),
                 id: item.id,
                 description: item.description,
                 amount: item.amount,
@@ -37,7 +38,11 @@ export default function RecentTransactions() {
               amount={item.amount.toString()}
               category={item.category}
               description={item.description}
-              time={item.date.toDateString()}
+              time={item.date.toLocaleTimeString('en-US', {
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: true,
+              })}
               type={item.type}
             />
           </TouchableOpacity>

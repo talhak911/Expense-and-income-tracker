@@ -1,5 +1,6 @@
 import Svg, { Path } from "react-native-svg"
-import { COLORS } from "../../constants/colors"
+import { COLORS } from "../../src/constants/color"
+
 
 function ProfileIcon({focused}:{focused:boolean}) {
   return (

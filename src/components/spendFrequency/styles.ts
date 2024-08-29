@@ -4,7 +4,7 @@ import {COLORS} from '../../constants/color';
 
 export const styles = StyleSheet.create({
   alignCenter: {
-    // marginTop:-50,
+    marginTop:-50,
     alignSelf: 'center',
   },
   headingSmall: {

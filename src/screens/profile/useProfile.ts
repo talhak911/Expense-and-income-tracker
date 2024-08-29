@@ -13,8 +13,6 @@ export const useProfile = () => {
   const showModal = () => {
     setLogoutModelVisible(true);
   };
-  const [imageLoading, setImageLoading] = useState(true);
-  const handleImageLoad = (load:boolean) => {setImageLoading(load)}
   const navigation = useNavigation<StackNavigationProp>();
   const dispatch = useAppDispatch();
 
@@ -37,9 +35,7 @@ export const useProfile = () => {
     showModal,
     navigateToSettings,
     closeModal,
-handleImageLoad,
     user,
-    imageLoading,
     logoutModalVisible,
   };
 };

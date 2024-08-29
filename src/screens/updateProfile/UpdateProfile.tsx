@@ -1,4 +1,4 @@
-import {ActivityIndicator, Image, SafeAreaView, Text, View} from 'react-native';
+import {Image, SafeAreaView, Text, View} from 'react-native';
 import React from 'react';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {TouchableOpacity} from 'react-native-gesture-handler';
@@ -8,17 +8,13 @@ import {CustomButton} from '../../components/customButton/CustomButtom';
 import {useUpdateProfile} from './useUpdateProfile';
 import {styles} from './styles';
 import {Images} from '../../constants/constants';
-import { COLORS } from '../../constants/color';
 export default function UpdateProfile() {
   const {
     user,
-    emailEditable,
     name,
     email,
-    imageLoading,
     image,
     loading,
-    handleImageLoad,
     handleImagePicker,
     onChangeEmail,
     onChangeName,
@@ -30,15 +26,11 @@ export default function UpdateProfile() {
       <KeyboardAwareScrollView contentContainerStyle={styles.scrollViewContent}>
         <View style={styles.imageContainer}>
           <View>
-            {imageLoading ? (
-              <ActivityIndicator size={'small'} color={COLORS.purple}/>
-            ) : (
-              <Image
-                onLoadEnd={()=>{handleImageLoad(false)}}
-                source={{uri: image || user?.photoURL || ''} || Images.profile}
-                style={styles.image}
-              />
-            )}
+            <Image
+              source={{uri: image || user?.photoURL || Images.profile } }
+              style={styles.image}
+            />
+
             <View style={styles.editIcon}>
               <TouchableOpacity onPress={handleImagePicker}>
                 <EditPictureIcon />
@@ -51,7 +43,6 @@ export default function UpdateProfile() {
           <View>
             <Text style={styles.headingText}>Email</Text>
             <CustomInput
-              editable={emailEditable}
               onChange={onChangeEmail}
               placeHolder="youremail@xyz.com"
               value={email}

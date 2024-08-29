@@ -1,5 +1,5 @@
 import Svg, { Path } from "react-native-svg"
-import { COLORS } from "../../constants/colors"
+import { COLORS } from "../../src/constants/color"
 
 function BudgetIcon({focused}:{focused:boolean}) {
   return (

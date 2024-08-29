@@ -33,8 +33,6 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 16,
     paddingVertical: 16,
-    // paddingHorizontal: 16,
-    // width:Width(30),
     backgroundColor: COLORS.lightPurple,
   },
   buttonText: {

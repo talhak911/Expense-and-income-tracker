@@ -7,21 +7,24 @@ import SpendFrequency from '../../components/spendFrequency/SpendFrequency';
 import HomeCard from '../../components/homeCard/HomeCard';
 import RecentTransactions from '../../components/recentTransactions/RecentTransactions';
 import {styles} from './styles';
+import {Images} from '../../constants/constants';
+import { BlinkingImage } from '../../components/loading/Loading';
 
 export default function Home() {
   const {currency, expenses, incomes, balance, month, userImage} = useHome();
-  console.log("user imaege is the ",userImage)
   return (
     <ScrollView style={styles.container}>
       <SafeAreaView>
         <View style={styles.topContainer}>
           <View style={styles.imageBorder}>
-            <Image
+            {/* <Image
               source={{
-                uri:
-                  userImage ||
-                  'https://th.bing.com/th/id/OIP.7dTfyRneXPY5b7pj0NKuUgAAAA?rs=1&pid=ImgDetMain',
+                uri: userImage || Images.profile,
               }}
+              style={styles.image}
+            /> */}
+              <BlinkingImage
+              uri={userImage || Images.profile}
               style={styles.image}
             />
           </View>

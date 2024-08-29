@@ -5,28 +5,13 @@ import {
   updateImage,
   updateName,
 } from '../../redux/slices/authSlice';
-import auth from '@react-native-firebase/auth';
 import Snackbar from 'react-native-snackbar';
 import {launchImageLibrary} from 'react-native-image-picker';
 import {isValidEmail} from '../../utils/utils';
 import {uploadAttachment} from '../../utils/uploadAttachment';
 
 export const useUpdateProfile = () => {
-  const emailEditable = !(auth().currentUser?.providerId === 'google.com');
   const uid = useAppSelector(state => state.auth.user?.uid);
-  const [imageLoading, setImageLoading] = useState(false);
-  const handleImageLoad = (load:boolean) => {setImageLoading(load)}
-  const refresh = async () => {
-    try {
-      await auth().currentUser?.reload();
-      const userimg = await auth().currentUser?.photoURL;
-      console.log('user ismage is ', userimg);
-    } catch (error) {
-      console.log('Error in reloading user ', error);
-    }
-  };
-  refresh();
-
   const [loading, setLoading] = useState(false);
   const dispatch = useAppDispatch();
   const user = useAppSelector(state => state.auth.user);
@@ -83,7 +68,7 @@ export const useUpdateProfile = () => {
         }
       }
     }
-    if (image&& uid) {
+    if (image && uid) {
       const uploadedUrl = await uploadAttachment(image, uid);
       if (uploadedUrl) {
         const res = await dispatch(updateImage(uploadedUrl));
@@ -102,10 +87,7 @@ export const useUpdateProfile = () => {
     onChangeEmail,
     onChangeName,
     handleImagePicker,
-    handleImageLoad,
-    imageLoading,
     image,
-    emailEditable,
     loading,
     user,
     name,
