@@ -70,9 +70,10 @@ export const signUp = createAsyncThunk(
         email,
         password,
       );
-
+      await response.user.sendEmailVerification()
       const userToSave = response.user;
       await userToSave.updateProfile({displayName: name});
+
       await auth().signOut();
     } catch (error: any) {
       if (error.code === 'auth/email-already-in-use') {
