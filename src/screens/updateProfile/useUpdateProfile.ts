@@ -17,7 +17,7 @@ export const useUpdateProfile = () => {
   const user = useAppSelector(state => state.auth.user);
   const [email, setEmail] = useState(user?.email as string);
   const [name, setName] = useState(user?.displayName as string);
-  const [image, setImage] = useState('');
+  const [image, setImage] = useState<string|null>(null);
   const onChangeName = (e: string) => {
     setName(e);
   };
