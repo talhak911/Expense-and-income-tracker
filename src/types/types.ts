@@ -1,5 +1,5 @@
 import {FirebaseAuthTypes} from '@react-native-firebase/auth';
-import {BottomTabNavigationProp} from '@react-navigation/bottom-tabs';
+import {BottomTabNavigationOptions, BottomTabNavigationProp} from '@react-navigation/bottom-tabs';
 import {
   NativeStackNavigationProp,
   NativeStackScreenProps,
@@ -85,6 +85,12 @@ export type TransactionType = {
   attachment_url?: string | null;
   description: string;
 };
+export type TabConfig= {
+  name: keyof TabParamsList;
+  component: React.ComponentType<any>;
+  options?: BottomTabNavigationOptions 
+}
+
 export type StackNavigatorParamList = {
   Tab: undefined;
   Income: undefined;

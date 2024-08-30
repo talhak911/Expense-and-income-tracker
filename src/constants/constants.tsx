@@ -3,7 +3,7 @@ import SalaryIcon from '../assets/icons/salary';
 import ShoppingIcon from '../assets/icons/shopping';
 import SubscriptionIcon from '../assets/icons/subscription';
 import TransportationIcon from '../assets/icons/transportation';
-import {FilterByType, ScreenConfig, SortByType, TabParamsList} from '../types/types';
+import {FilterByType, ScreenConfig, SortByType, TabConfig, TabParamsList} from '../types/types';
 import AddIncome from '../screens/addIncome/AddIncome';
 import AddExpense from '../screens/addExpense/AddExpense';
 import FinancialReport from '../screens/financialReport/FinancialReport';
@@ -24,8 +24,6 @@ import HomeIcon from '../../assets/icons/home';
 import TransactionBottomIcon from '../../assets/icons/transactionBottom';
 import BudgetIcon from '../../assets/icons/budget';
 import ProfileIcon from '../../assets/icons/profile';
-import { RouteProp, TabRouterOptions } from '@react-navigation/native';
-import { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
 
 export const Expenses = [
   {icon: <ShoppingIcon />, value: 'Shopping'},
@@ -153,11 +151,7 @@ export const ScreenConfigs: ScreenConfig[] = [
     },
   },
 ];
-export type TabConfig= {
-  name: keyof TabParamsList;
-  component: React.ComponentType<any>;
-  options?: BottomTabNavigationOptions 
-}
+
 export const TabConfigs: TabConfig[] = [
   {
     name: 'Home',
