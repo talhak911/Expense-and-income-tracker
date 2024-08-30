@@ -28,7 +28,7 @@ export default function UpdateProfile() {
           <View>
             <Image
               source={
-                image
+                image||user?.photoURL
                   ? {uri: image || user?.photoURL}
                   : Images.profile.toString()
               }
