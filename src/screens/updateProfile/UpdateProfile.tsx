@@ -27,7 +27,11 @@ export default function UpdateProfile() {
         <View style={styles.imageContainer}>
           <View>
             <Image
-              source={{uri: image || user?.photoURL || Images.profile } }
+              source={
+                image
+                  ? {uri: image || user?.photoURL}
+                  : Images.profile.toString()
+              }
               style={styles.image}
             />
 
@@ -38,7 +42,6 @@ export default function UpdateProfile() {
             </View>
           </View>
         </View>
-
         <View style={styles.bottomView}>
           <View>
             <Text style={styles.headingText}>Email</Text>

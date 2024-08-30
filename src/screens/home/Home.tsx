@@ -17,14 +17,8 @@ export default function Home() {
       <SafeAreaView>
         <View style={styles.topContainer}>
           <View style={styles.imageBorder}>
-            {/* <Image
-              source={{
-                uri: userImage || Images.profile,
-              }}
-              style={styles.image}
-            /> */}
               <BlinkingImage
-              uri={userImage || Images.profile}
+              uri={userImage}
               style={styles.image}
             />
           </View>

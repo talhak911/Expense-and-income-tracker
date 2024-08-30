@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Image, View, Animated, StyleSheet, StyleProp } from 'react-native';
 import { useLoading } from './useLoading';
+import { Images } from '../../constants/constants';
 
-export const BlinkingImage = ({ uri, style }:{uri:string,style:{}}) => {
+export const BlinkingImage = ({ uri, style }:{uri?:string|null,style:{}}) => {
    const {isLoading,fadeAnim,setIsLoading}=useLoading()
   
     return (
@@ -16,9 +17,9 @@ export const BlinkingImage = ({ uri, style }:{uri:string,style:{}}) => {
           />
         )}
         <Image
-          source={{ uri }}
+              source={uri?{uri}:Images.profile.toString()}
           style={[style, isLoading && { opacity: 0 }]}
-          onLoad={() => setIsLoading(false)}
+          onLoadEnd={() => setIsLoading(false)}
         />
       </View>
     );

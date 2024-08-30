@@ -1,6 +1,4 @@
 import {
-  ActivityIndicator,
-  Image,
   SafeAreaView,
   Text,
   TouchableOpacity,
@@ -16,8 +14,7 @@ import LogoutIcon from '../../assets/icons/logout';
 import {BottomModel} from '../../components/bottomModel/BottomModel';
 import {ConfirmLogoutModal} from '../../components/confirmLogoutModal/ConfirmLogoutModal.tsx';
 import {styles} from './styles.ts';
-import {Images} from '../../constants/constants.tsx';
-import { BlinkingImage } from '../../components/loading/Loading.tsx';
+import {BlinkingImage} from '../../components/loading/Loading.tsx';
 
 export default function Profile() {
   const {
@@ -36,14 +33,7 @@ export default function Profile() {
         <View style={styles.topContainer}>
           <View style={styles.topView}>
             <View style={styles.imageBorder}>
-              {/* <Image
-                source={{uri: user?.photoURL || ''} || Images.profile}
-                style={styles.image}
-              /> */}
-                <BlinkingImage
-              uri={user?.photoURL || Images.profile}
-              style={styles.image}
-            />
+              <BlinkingImage uri={user?.photoURL} style={styles.image} />
             </View>
             <View style={{gap: 6}}>
               <Text style={{color: COLORS.grey}}>Username</Text>
