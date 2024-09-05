@@ -1,9 +1,7 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {SignUp} from '../../screens/signUp/SignUp';
-import {SignIn} from '../../screens/signIn/SignIn';
-import ForgetPassword from '../../screens/forgetPassword/ForgetPassword';
 import {AuthStackParamList} from '../../types/types';
+import {authScreens} from '../../constants/constants';
 
 export default function AuthNavigator() {
   const Stack = createNativeStackNavigator<AuthStackParamList>();
@@ -11,36 +9,14 @@ export default function AuthNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShadowVisible: false}}>
-        <Stack.Screen
-          name="SignUp"
-          component={SignUp}
-          key={'SignUp'}
-          options={{
-            title: 'Sign Up',
-            headerTitleAlign: 'center',
-            headerTitleStyle: {fontSize: 18},
-          }}
-        />
-
-        <Stack.Screen
-          name="SignIn"
-          component={SignIn}
-          options={{
-            title: 'Login',
-            headerTitleAlign: 'center',
-            headerTitleStyle: {fontSize: 18},
-          }}
-        />
-
-        <Stack.Screen
-          name="ForgetPassword"
-          component={ForgetPassword}
-          options={{
-            title: 'Forget Password',
-            headerTitleAlign: 'center',
-            headerTitleStyle: {fontSize: 18},
-          }}
-        />
+        {authScreens.map(screen => (
+          <Stack.Screen
+            key={screen.name}
+            name={screen.name as keyof AuthStackParamList}
+            component={screen.component}
+            options={screen.options}
+          />
+        ))}
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -3,7 +3,12 @@ import SalaryIcon from '../assets/icons/salary';
 import ShoppingIcon from '../assets/icons/shopping';
 import SubscriptionIcon from '../assets/icons/subscription';
 import TransportationIcon from '../assets/icons/transportation';
-import {FilterByType, ScreenConfig, SortByType, TabConfig} from '../types/types';
+import {
+  FilterByType,
+  ScreenConfig,
+  SortByType,
+  TabConfig,
+} from '../types/types';
 import AddIncome from '../screens/addIncome/AddIncome';
 import AddExpense from '../screens/addExpense/AddExpense';
 import FinancialReport from '../screens/financialReport/FinancialReport';
@@ -19,11 +24,14 @@ import HomeScreen from '../screens/home/Home';
 import ProfileScreen from '../screens/profile/Profile';
 import Transaction from '../screens/transaction/Transaction';
 import Budget from '../screens/budget/Budget';
-import { AddButton } from '../components/addButton/AddButton';
+import {AddButton} from '../components/addButton/AddButton';
 import HomeIcon from '../assets/icons/home';
 import TransactionBottomIcon from '../assets/icons/transactionBottom';
 import BudgetIcon from '../assets/icons/budget';
 import ProfileIcon from '../assets/icons/profile';
+import {SignUp} from '../screens/signUp/SignUp';
+import {SignIn} from '../screens/signIn/SignIn';
+import ForgetPassword from '../screens/forgetPassword/ForgetPassword';
 
 export const Expenses = [
   {icon: <ShoppingIcon />, value: 'Shopping'},
@@ -157,14 +165,18 @@ export const TabConfigs: TabConfig[] = [
     name: 'Home',
     component: HomeScreen,
     options: {
-      tabBarIcon: ({ focused }: { focused: boolean }) => <HomeIcon focused={focused} />,
+      tabBarIcon: ({focused}: {focused: boolean}) => (
+        <HomeIcon focused={focused} />
+      ),
     },
   },
   {
     name: 'Transaction',
     component: Transaction,
     options: {
-      tabBarIcon: ({ focused }: { focused: boolean }) => <TransactionBottomIcon focused={focused} />,
+      tabBarIcon: ({focused}: {focused: boolean}) => (
+        <TransactionBottomIcon focused={focused} />
+      ),
     },
   },
   {
@@ -178,18 +190,61 @@ export const TabConfigs: TabConfig[] = [
     name: 'Budget',
     component: Budget,
     options: {
-      tabBarIcon: ({ focused }: { focused: boolean }) => <BudgetIcon focused={focused} />,
+      tabBarIcon: ({focused}: {focused: boolean}) => (
+        <BudgetIcon focused={focused} />
+      ),
     },
   },
   {
     name: 'Profile',
     component: ProfileScreen,
     options: {
-      tabBarIcon: ({ focused }: { focused: boolean }) => <ProfileIcon focused={focused} />,
+      tabBarIcon: ({focused}: {focused: boolean}) => (
+        <ProfileIcon focused={focused} />
+      ),
     },
   },
 ];
-
+export type AuthScreenOptions = {
+  name: string;
+  component: () => React.JSX.Element;
+  options: {
+    title: string;
+    headerTitleAlign: 'center' | 'left' | undefined;
+    headerTitleStyle: {
+      fontSize: number;
+    };
+  };
+}[];
+export const authScreens: AuthScreenOptions = [
+  {
+    name: 'SignUp',
+    component: SignUp,
+    options: {
+      title: 'Sign Up',
+      headerTitleAlign: 'center',
+      headerTitleStyle: {fontSize: 18},
+    },
+  },
+  {
+    name: 'SignIn',
+    component: SignIn,
+    options: {
+      title: 'Login',
+      headerTitleAlign: 'center',
+      headerTitleStyle: {fontSize: 18},
+    },
+  },
+  {
+    name: 'ForgetPassword',
+    component: ForgetPassword,
+    options: {
+      title: 'Forget Password',
+      headerTitleAlign: 'center',
+      headerTitleStyle: {fontSize: 18},
+    },
+  },
+];
 export const TabscreenOptions = {
   tabBarLabelStyle: {
     marginBottom: 12,
