@@ -4,7 +4,6 @@ import {useNavigation} from '@react-navigation/native';
 import {COLORS} from '../../constants/color';
 import dayjs from 'dayjs';
 import {
-  DetailTransactionProps,
   FilterByType,
   NavigateToDetailTransaction,
   SortByType,

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { Image, View, Animated, StyleSheet, StyleProp } from 'react-native';
 import { useLoading } from './useLoading';
 import { Images } from '../../constants/constants';

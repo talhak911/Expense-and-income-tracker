@@ -3,7 +3,7 @@ import SalaryIcon from '../assets/icons/salary';
 import ShoppingIcon from '../assets/icons/shopping';
 import SubscriptionIcon from '../assets/icons/subscription';
 import TransportationIcon from '../assets/icons/transportation';
-import {FilterByType, ScreenConfig, SortByType, TabConfig, TabParamsList} from '../types/types';
+import {FilterByType, ScreenConfig, SortByType, TabConfig} from '../types/types';
 import AddIncome from '../screens/addIncome/AddIncome';
 import AddExpense from '../screens/addExpense/AddExpense';
 import FinancialReport from '../screens/financialReport/FinancialReport';

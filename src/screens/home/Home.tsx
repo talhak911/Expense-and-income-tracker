@@ -1,4 +1,4 @@
-import {Image, Pressable, ScrollView, Text, View} from 'react-native';
+import {Pressable, ScrollView, Text, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import BellIcon from '../../assets/icons/bell';
 import DownIcon from '../../assets/icons/down';

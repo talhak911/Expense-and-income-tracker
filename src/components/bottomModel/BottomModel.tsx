@@ -1,4 +1,4 @@
-import {Animated, Modal, Text, View} from 'react-native';
+import {Animated, Modal, View} from 'react-native';
 import {useBottomModel} from './useBottomModel';
 import {styles} from './styles';
 

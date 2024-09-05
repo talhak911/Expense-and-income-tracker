@@ -1,6 +1,5 @@
 import {StyleSheet} from 'react-native';
 import {COLORS} from '../../constants/color';
-import {Height} from '../../utils/responsive';
 
 export const styles = StyleSheet.create({
   separator: {
