@@ -20,10 +20,10 @@ import ProfileScreen from '../screens/profile/Profile';
 import Transaction from '../screens/transaction/Transaction';
 import Budget from '../screens/budget/Budget';
 import { AddButton } from '../components/addButton/AddButton';
-import HomeIcon from '../../assets/icons/home';
-import TransactionBottomIcon from '../../assets/icons/transactionBottom';
-import BudgetIcon from '../../assets/icons/budget';
-import ProfileIcon from '../../assets/icons/profile';
+import HomeIcon from '../assets/icons/home';
+import TransactionBottomIcon from '../assets/icons/transactionBottom';
+import BudgetIcon from '../assets/icons/budget';
+import ProfileIcon from '../assets/icons/profile';
 
 export const Expenses = [
   {icon: <ShoppingIcon />, value: 'Shopping'},
