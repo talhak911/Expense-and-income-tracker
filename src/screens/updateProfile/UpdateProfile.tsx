@@ -7,7 +7,7 @@ import {CustomInput} from '../../components/customInput/CustomInput';
 import {CustomButton} from '../../components/customButton/CustomButtom';
 import {useUpdateProfile} from './useUpdateProfile';
 import {styles} from './styles';
-import {Images} from '../../constants/constants';
+import {IMAGES} from '../../constants/constants';
 export default function UpdateProfile() {
   const {
     user,
@@ -30,7 +30,7 @@ export default function UpdateProfile() {
               source={
                 image||user?.photoURL
                   ? {uri: image || user?.photoURL}
-                  : Images.profile.toString()
+                  : IMAGES.profile.toString()
               }
               style={styles.image}
             />

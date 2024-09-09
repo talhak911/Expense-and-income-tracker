@@ -4,7 +4,7 @@ import {CustomButton} from '../customButton/CustomButtom';
 import {styles} from './styles';
 import {FilterTransactionsProps} from '../../types/types';
 import {useFilterTransactions} from './useFilterTransactions';
-import {FilterBy, SortBy} from '../../constants/constants';
+import {FILTER_BY, SORT_BY} from '../../constants/constants';
 
 export const FilterTransactions = ({
   filterBy,
@@ -28,7 +28,7 @@ export const FilterTransactions = ({
 
       <Text style={styles.headingsText}>Filter By</Text>
       <View style={styles.filter}>
-        {FilterBy.map((filter, index) => (
+        {FILTER_BY.map((filter, index) => (
           <TouchableOpacity
             key={index}
             style={{
@@ -51,7 +51,7 @@ export const FilterTransactions = ({
 
       <Text style={styles.headingsText}>Sort By</Text>
       <View style={styles.menus}>
-        {SortBy.map((sort,index) => (
+        {SORT_BY.map((sort,index) => (
           <TouchableOpacity
           key={index}
             style={{

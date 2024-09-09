@@ -7,7 +7,6 @@ import SpendFrequency from '../../components/spendFrequency/SpendFrequency';
 import HomeCard from '../../components/homeCard/HomeCard';
 import RecentTransactions from '../../components/recentTransactions/RecentTransactions';
 import {styles} from './styles';
-import {Images} from '../../constants/constants';
 import { BlinkingImage } from '../../components/loading/Loading';
 
 export default function Home() {

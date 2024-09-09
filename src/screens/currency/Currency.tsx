@@ -3,13 +3,13 @@ import React from 'react';
 import {styles} from './styles';
 import CheckMark from '../../assets/icons/checkMark';
 import {useCurrency} from './useCurrency';
-import {Currencies} from '../../constants/constants';
+import {CURRENCIES} from '../../constants/constants';
 
 export default function Currency() {
   const {selectedCurrency, setCurrency} = useCurrency();
   return (
     <SafeAreaView style={styles.container}>
-      {Currencies.map((item, index) => (
+      {CURRENCIES.map((item, index) => (
         <TouchableOpacity
           key={index}
           onPress={() => {

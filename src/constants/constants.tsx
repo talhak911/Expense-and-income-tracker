@@ -4,6 +4,7 @@ import ShoppingIcon from '../assets/icons/shopping';
 import SubscriptionIcon from '../assets/icons/subscription';
 import TransportationIcon from '../assets/icons/transportation';
 import {
+  AuthScreenOptions,
   FilterByType,
   ScreenConfig,
   SortByType,
@@ -33,21 +34,21 @@ import {SignUp} from '../screens/signUp/SignUp';
 import {SignIn} from '../screens/signIn/SignIn';
 import ForgetPassword from '../screens/forgetPassword/ForgetPassword';
 
-export const Expenses = [
+export const EXPENSES = [
   {icon: <ShoppingIcon />, value: 'Shopping'},
   {icon: <SubscriptionIcon />, value: 'Subscription'},
   {icon: <FoodIcon />, value: 'Food'},
   {icon: <TransportationIcon />, value: 'Transportation'},
 ];
 
-export const Incomes = [
+export const INCOMES = [
   {icon: <SalaryIcon />, value: 'Salary'},
   {icon: <SalaryIcon />, value: 'Passive Income'},
 ];
 
-export const FilterBy: FilterByType[] = ['income', 'expense'];
-export const SortBy: SortByType[] = ['highest', 'lowest', 'newest', 'oldest'];
-export const Currencies = [
+export const FILTER_BY: FilterByType[] = ['income', 'expense'];
+export const SORT_BY: SortByType[] = ['highest', 'lowest', 'newest', 'oldest'];
+export const CURRENCIES = [
   {currency: 'Pakistan (PKR)', symbol: 'Rs '},
   {currency: 'Japan (JPY)', symbol: '¥'},
   {currency: 'United States (USD)', symbol: '$'},
@@ -55,7 +56,7 @@ export const Currencies = [
   {currency: 'Germany (EUR)', symbol: '€'},
   {currency: 'Korea (WON)', symbol: '₩'},
 ];
-export const spendFrequencyFilters: {
+export const SPEND_FREQUENCY_FILTERS: {
   name: string;
   filter: 'today' | 'week' | 'month' | 'year';
 }[] = [
@@ -65,7 +66,7 @@ export const spendFrequencyFilters: {
   {name: 'Year', filter: 'year'},
 ];
 
-export const Months = [
+export const MONTHS = [
   'January',
   'February',
   'March',
@@ -79,7 +80,7 @@ export const Months = [
   'November',
   'December',
 ];
-export const Days = [
+export const DAYS = [
   'Sunday',
   'Monday',
   'Tuesday',
@@ -89,11 +90,11 @@ export const Days = [
   'Saturday',
 ];
 
-export const Images = {
+export const IMAGES = {
   profile: require('../assets/images/profile.jpg'),
 };
 
-export const ScreenConfigs: ScreenConfig[] = [
+export const SCREEN_CONFIGS: ScreenConfig[] = [
   {name: 'Tab', component: TabNavigator, options: {headerShown: false}},
   {
     name: 'Income',
@@ -160,7 +161,7 @@ export const ScreenConfigs: ScreenConfig[] = [
   },
 ];
 
-export const TabConfigs: TabConfig[] = [
+export const TAB_CONFIGS: TabConfig[] = [
   {
     name: 'Home',
     component: HomeScreen,
@@ -205,18 +206,8 @@ export const TabConfigs: TabConfig[] = [
     },
   },
 ];
-export type AuthScreenOptions = {
-  name: string;
-  component: () => React.JSX.Element;
-  options: {
-    title: string;
-    headerTitleAlign: 'center' | 'left' | undefined;
-    headerTitleStyle: {
-      fontSize: number;
-    };
-  };
-}[];
-export const authScreens: AuthScreenOptions = [
+
+export const AUTH_SCREENS: AuthScreenOptions = [
   {
     name: 'SignUp',
     component: SignUp,
@@ -245,7 +236,7 @@ export const authScreens: AuthScreenOptions = [
     },
   },
 ];
-export const TabscreenOptions = {
+export const TAB_SCREEN_OPTIONS = {
   tabBarLabelStyle: {
     marginBottom: 12,
     marginTop: -10,

@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import {Days, Months} from '../constants/constants';
+import {DAYS, MONTHS} from '../constants/constants';
 
 export const getTransactionLabel = (date: dayjs.ConfigType) => {
   if (dayjs(date).isSame(dayjs(), 'day')) {
@@ -25,9 +25,9 @@ export const isValidEmail = (email: string): boolean => {
 };
 
 export const formatDate = (date: Date) => {
-  const weekday = Days[date.getDay()];
+  const weekday = DAYS[date.getDay()];
   const day = date.getDate();
-  const month = Months[date.getMonth()];
+  const month = MONTHS[date.getMonth()];
   const year = date.getFullYear();
   const hour = date.getHours().toString().padStart(2, '0');
   const minute = date.getMinutes().toString().padStart(2, '0');
@@ -36,6 +36,6 @@ export const formatDate = (date: Date) => {
 };
 
 export const getMonth = () => {
-  const month = Months[new Date().getMonth()];
+  const month = MONTHS[new Date().getMonth()];
   return month;
 };

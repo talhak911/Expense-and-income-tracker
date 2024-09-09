@@ -7,7 +7,7 @@ import {TextInput} from 'react-native-gesture-handler';
 import {Attachment} from '../../components/attachments/Attachment';
 import {CustomButton} from '../../components/customButton/CustomButtom';
 import CustomDropdown from '../../components/customDropDown/CustomDropDown';
-import {Incomes} from '../../constants/constants';
+import {INCOMES} from '../../constants/constants';
 import {useAddIncome} from './useAddIncome';
 import {TransactionStatusModal} from '../../components/transactionStatusModal/TransactionStatusModal';
 import { styles } from '../addExpense/styles';
@@ -61,7 +61,7 @@ export default function AddIncome() {
           <CustomDropdown
             selectedValue={category}
             onSelect={onChangeCategory}
-            items={Incomes.filter(item => item.value)}
+            items={INCOMES.filter(item => item.value)}
           />
           <CustomInput
             onChange={onChangeDescription}

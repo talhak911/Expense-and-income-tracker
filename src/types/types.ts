@@ -25,6 +25,17 @@ export type NavigateToDetailTransaction = {
 };
 export type voidFunction = () => void;
 
+export type AuthScreenOptions = {
+  name: string;
+  component: () => React.JSX.Element;
+  options: {
+    title: string;
+    headerTitleAlign: 'center' | 'left' | undefined;
+    headerTitleStyle: {
+      fontSize: number;
+    };
+  };
+}[];
 export type TransactionCardProps = {
   icon?: React.JSX.Element;
   category: string;

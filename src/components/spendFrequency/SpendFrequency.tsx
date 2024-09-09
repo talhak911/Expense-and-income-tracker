@@ -3,7 +3,7 @@ import React from 'react';
 import {COLORS} from '../../constants/color';
 import {useSpendFrequency} from './useSpendFrequency';
 import LineGraph from '../lineGraph/LineGraph';
-import {spendFrequencyFilters} from '../../constants/constants';
+import {SPEND_FREQUENCY_FILTERS} from '../../constants/constants';
 import {styles} from './styles';
 
 export default function SpendFrequency() {
@@ -15,7 +15,7 @@ export default function SpendFrequency() {
       <LineGraph transactions={filteredTransactions} filterBy={filterBy} />
       <View style={styles.alignCenter}>
         <View style={styles.menusContainer}>
-          {spendFrequencyFilters.map((item, index) => (
+          {SPEND_FREQUENCY_FILTERS.map((item, index) => (
             <TouchableOpacity
               key={index}
               onPress={() => setFilterBy(item.filter)}
