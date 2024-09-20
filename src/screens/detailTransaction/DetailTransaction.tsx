@@ -6,7 +6,7 @@ import {useDetailTransaction} from './useDetailTransaction';
 import {Image} from 'react-native';
 import {DetailTransactionProps} from '../../types/types';
 import {styles} from './styles';
-import { DeleteModal } from '../../components/deleteModal/DeleteModal';
+import {ConfirmModal} from '../../components/confirmModal/confirmModal';
 
 export default function DetailTransaction({
   route,
@@ -30,11 +30,13 @@ export default function DetailTransaction({
         <BottomModel
           visible={modalVisible}
           element={
-            <DeleteModal
-              closeModal={closeModal}
+            <ConfirmModal
+              close={closeModal}
               action={() => {
                 deleteTransactionFunction(id as string);
               }}
+              description="Are you sure do you wanna remove this transaction"
+              title="Remove This transaction?"
             />
           }
           onClose={closeModal}

@@ -1,9 +1,4 @@
-import {
-  SafeAreaView,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
 import {useProfile} from './useProfile.ts';
 import {ScrollView} from 'react-native-gesture-handler';
 import {COLORS} from '../../constants/color.ts';
@@ -12,9 +7,9 @@ import SettingIcon from '../../assets/icons/setting';
 import ResetPasswordIcon from '../../assets/icons/resetPassword';
 import LogoutIcon from '../../assets/icons/logout';
 import {BottomModel} from '../../components/bottomModel/BottomModel';
-import {ConfirmLogoutModal} from '../../components/confirmLogoutModal/ConfirmLogoutModal.tsx';
 import {styles} from './styles.ts';
 import {BlinkingImage} from '../../components/loading/Loading.tsx';
+import {ConfirmModal} from '../../components/confirmModal/confirmModal.tsx';
 
 export default function Profile() {
   const {
@@ -75,7 +70,12 @@ export default function Profile() {
               onClose={closeModal}
               visible={logoutModalVisible}
               element={
-                <ConfirmLogoutModal close={closeModal} action={signOutUser} />
+                <ConfirmModal
+                  close={closeModal}
+                  action={signOutUser}
+                  title="Logout?"
+                  description="Are you sure do you wanna logout?"
+                />
               }
             />
           )}
