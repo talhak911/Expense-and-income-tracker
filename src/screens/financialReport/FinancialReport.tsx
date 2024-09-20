@@ -9,7 +9,7 @@ import SortIcon from '../../assets/icons/sort';
 import SingleBar from '../../components/barGraph/BarGraph';
 import PieChart from '../../components/pieChart/PieChart';
 import {useFinancialReport} from './useFinancialReport';
-import {styles} from './styles';
+import {styles} from './FinancialReportStyles';
 
 export default function FinancialReport() {
   const {expenses, incomes, totalExpense, totalIncome, currency} =

@@ -1,6 +1,6 @@
 import {Text, SafeAreaView, TouchableOpacity} from 'react-native';
 import React from 'react';
-import {styles} from './styles';
+import {styles} from './CurrencyStyles';
 import CheckMark from '../../assets/icons/checkMark';
 import {useCurrency} from './useCurrency';
 import {CURRENCIES} from '../../constants/constants';

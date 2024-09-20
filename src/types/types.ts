@@ -1,10 +1,13 @@
 import {FirebaseAuthTypes} from '@react-native-firebase/auth';
-import {BottomTabNavigationOptions, BottomTabNavigationProp} from '@react-navigation/bottom-tabs';
+import {
+  BottomTabNavigationOptions,
+  BottomTabNavigationProp,
+} from '@react-navigation/bottom-tabs';
 import {
   NativeStackNavigationProp,
   NativeStackScreenProps,
 } from '@react-navigation/native-stack';
-import { StackNavigationOptions } from '@react-navigation/stack';
+import {StackNavigationOptions} from '@react-navigation/stack';
 import dayjs from 'dayjs';
 
 export type AttachmentModelProps = {
@@ -24,6 +27,12 @@ export type NavigateToDetailTransaction = {
   category: string;
 };
 export type voidFunction = () => void;
+export type PieChartProps = {
+  data: {
+    amount: number;
+    color: string;
+  }[];
+};
 
 export type AuthScreenOptions = {
   name: string;
@@ -70,11 +79,11 @@ export type LineGraphProps = {
 export type AuthStateType = {
   user: Partial<FirebaseAuthTypes.User> | null;
 };
-export type ScreenConfig ={
+export type ScreenConfig = {
   name: keyof StackNavigatorParamList;
   component: React.ComponentType<any>;
   options?: StackNavigationOptions;
-}
+};
 export type AuthStackParamList = {
   SignUp: undefined;
   SignIn: undefined;
@@ -96,11 +105,11 @@ export type TransactionType = {
   attachment_url?: string | null;
   description: string;
 };
-export type TabConfig= {
+export type TabConfig = {
   name: keyof TabParamsList;
   component: React.ComponentType<any>;
-  options?: BottomTabNavigationOptions 
-}
+  options?: BottomTabNavigationOptions;
+};
 
 export type StackNavigatorParamList = {
   Tab: undefined;
@@ -160,7 +169,7 @@ export type CategoryData = {
 };
 
 export type FinancialReportResult = {
-  currency:string|number
+  currency: string | number;
   expenses: CategoryData[];
   incomes: CategoryData[];
   totalExpense: string;

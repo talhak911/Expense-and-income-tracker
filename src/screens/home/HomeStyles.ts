@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {COLORS} from '../../constants/color';
 import { Height, Width} from '../../utils/responsive';
-import {FontInter} from '../../constants/fonts';
+import {FONT_INTER} from '../../constants/fonts';
 
 export const styles = StyleSheet.create({
   container: {flex: 1, backgroundColor: 'white'},
@@ -41,12 +41,12 @@ export const styles = StyleSheet.create({
   },
   monthText: {
     color: COLORS.black50,
-    fontFamily: FontInter,
+    fontFamily: FONT_INTER,
     fontSize: 14,
   },
   amount: {
     color: COLORS.black70,
-    fontFamily: FontInter,
+    fontFamily: FONT_INTER,
     fontSize: 40,
     fontWeight: '600',
   },

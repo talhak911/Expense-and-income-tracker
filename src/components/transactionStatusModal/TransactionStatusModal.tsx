@@ -2,7 +2,7 @@ import React from 'react';
 import {Modal, View, Text} from 'react-native';
 import CheckMark from '../../assets/icons/checkMark';
 import {TransactionStatusModalProps} from '../../types/types';
-import { styles } from './styles';
+import { styles } from './TransactionStatusModalStyles';
 
 export const TransactionStatusModal = ({
   transactionStatus,

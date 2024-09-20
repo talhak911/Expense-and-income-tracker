@@ -7,7 +7,7 @@ import SettingIcon from '../../assets/icons/setting';
 import ResetPasswordIcon from '../../assets/icons/resetPassword';
 import LogoutIcon from '../../assets/icons/logout';
 import {BottomModel} from '../../components/bottomModel/BottomModel';
-import {styles} from './styles.ts';
+import {styles} from './ProfileStyles.ts';
 import {BlinkingImage} from '../../components/loading/Loading.tsx';
 import {ConfirmModal} from '../../components/confirmModal/confirmModal.tsx';
 

@@ -1,4 +1,4 @@
-import {PieChartProps} from './PieChart';
+import {PieChartProps} from '../../types/types';
 
 export const usePieChart = ({data}: PieChartProps) => {
   const total = data.reduce((sum, item) => sum + item.amount, 0);

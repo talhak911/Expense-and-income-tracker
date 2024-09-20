@@ -4,7 +4,7 @@ import ImageIcon from '../../assets/icons/image';
 import DocumentIcon from '../../assets/icons/document';
 import {useAttachmentModel} from './useAttachmentModel';
 import {AttachmentModelProps} from '../../types/types';
-import {styles} from './styles';
+import {styles} from './AttachmentModelStyles';
 
 const AttachmentModel = ({
   visible,

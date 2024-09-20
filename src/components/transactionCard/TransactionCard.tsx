@@ -3,7 +3,7 @@ import {COLORS} from '../../constants/color';
 import {TransactionCardProps} from '../../types/types';
 import {CATEGORY_ICON} from '../../constants/categoryIcons';
 import {useAppSelector} from '../../hooks/useStore';
-import {styles} from './styles';
+import {styles} from './TransactionCardStyles';
 
 export const TransactionCard = ({
   category,

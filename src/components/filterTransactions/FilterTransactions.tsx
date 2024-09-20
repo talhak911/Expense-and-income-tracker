@@ -1,7 +1,7 @@
 import {Text, TouchableOpacity, View} from 'react-native';
 import {COLORS} from '../../constants/color';
 import {CustomButton} from '../customButton/CustomButtom';
-import {styles} from './styles';
+import {styles} from './FilterTransactionsStyles';
 import {FilterTransactionsProps} from '../../types/types';
 import {useFilterTransactions} from './useFilterTransactions';
 import {FILTER_BY, SORT_BY} from '../../constants/constants';

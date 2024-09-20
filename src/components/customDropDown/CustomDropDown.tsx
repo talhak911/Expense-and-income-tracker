@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import DownIcon from '../../assets/icons/down';
 import {useCustomDropdown} from './useCustomDropDown';
-import {styles} from './styles';
+import {styles} from './CustomDropDownStyles';
 
 const CustomDropdown = ({
   items,

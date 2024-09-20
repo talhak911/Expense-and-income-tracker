@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {COLORS} from '../../constants/color';
 import {Height, Width} from '../../utils/responsive';
-import { FontInter } from '../../constants/fonts';
+import { FONT_INTER } from '../../constants/fonts';
 
 export const styles = StyleSheet.create({
 
@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
     fontSize: 64,
     color: COLORS.white,
     fontWeight: '600',
-    fontFamily: FontInter,
+    fontFamily: FONT_INTER,
     lineHeight: 72,
   },
   amountInput:{
@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
     color: COLORS.white,
     fontWeight: '600',
     textAlignVertical: 'center',
-    fontFamily: FontInter,
+    fontFamily: FONT_INTER,
   },
   bottomView:{
     flex: 4,

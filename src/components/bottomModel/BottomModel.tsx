@@ -1,6 +1,6 @@
 import {Animated, Modal, View} from 'react-native';
 import {useBottomModel} from './useBottomModel';
-import {styles} from './styles';
+import {styles} from './BottomModelStyles';
 
 export const BottomModel = ({
   visible,

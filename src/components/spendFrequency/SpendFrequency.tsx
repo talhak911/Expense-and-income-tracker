@@ -4,7 +4,7 @@ import {COLORS} from '../../constants/color';
 import {useSpendFrequency} from './useSpendFrequency';
 import LineGraph from '../lineGraph/LineGraph';
 import {SPEND_FREQUENCY_FILTERS} from '../../constants/constants';
-import {styles} from './styles';
+import {styles} from './SpendFrequencyStyles';
 
 export default function SpendFrequency() {
   const {filterBy, setFilterBy, filteredTransactions} = useSpendFrequency();

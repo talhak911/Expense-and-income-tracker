@@ -2,7 +2,7 @@ import {View, Text} from 'react-native';
 import React from 'react';
 import {SafeAreaView} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import {styles} from './styles';
+import {styles} from './SettingsStyles';
 import DownIcon from '../../assets/icons/down';
 import {useSettings} from './useSettings';
 

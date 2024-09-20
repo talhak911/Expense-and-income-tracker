@@ -1,1 +1,1 @@
-export const FontInter='Inter-VariableFont_opsz,wght'
+export const FONT_INTER='Inter-VariableFont_opsz,wght'

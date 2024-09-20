@@ -1,5 +1,5 @@
 import {ActivityIndicator, Text, TouchableOpacity, View} from 'react-native';
-import styles from './styles';
+import styles from './SignUpStyles';
 import {useSignUp} from './useSignUp';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import React from 'react';

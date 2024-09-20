@@ -2,9 +2,9 @@ import React from 'react';
 import { Text, View} from 'react-native';
 import Svg, {Path} from 'react-native-svg';
 import {COLORS} from '../../constants/color';
-import {FontInter} from '../../constants/fonts';
+import {FONT_INTER} from '../../constants/fonts';
 import {BarGraphProps} from '../../types/types';
-import {styles} from './styles';
+import {styles} from './BarGraphStyles';
 import { useBarGraph } from './useBarGraph';
 
 function BarGraph({total, item, type}: BarGraphProps) {
@@ -20,7 +20,7 @@ const {barHeight,barWidth,innerBarWidth,currency}=useBarGraph(item.amount,total)
           style={{
             color: type === 'expense' ? COLORS.red : COLORS.green,
             fontSize: 24,
-            fontFamily: FontInter,
+            fontFamily: FONT_INTER,
           }}>
           {type === 'expense' ? `- ` : ''}{currency}{item.amount}
         </Text>

@@ -8,7 +8,7 @@ import {TransactionCard} from '../../components/transactionCard/TransactionCard'
 import {BottomModel} from '../../components/bottomModel/BottomModel';
 import {useTransaction} from './useTransaction';
 import {FilterTransactions} from '../../components/filterTransactions/FilterTransactions';
-import {styles} from './styles';
+import {styles} from './TransactionStyles';
 import {formatDate} from '../../utils/utils';
 
 export default function Transaction() {

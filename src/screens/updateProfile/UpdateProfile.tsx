@@ -6,7 +6,7 @@ import EditPictureIcon from '../../assets/icons/editPicture';
 import {CustomInput} from '../../components/customInput/CustomInput';
 import {CustomButton} from '../../components/customButton/CustomButtom';
 import {useUpdateProfile} from './useUpdateProfile';
-import {styles} from './styles';
+import {styles} from './UpdateProfileStyles';
 import {IMAGES} from '../../constants/constants';
 export default function UpdateProfile() {
   const {

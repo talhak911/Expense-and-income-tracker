@@ -5,7 +5,7 @@ import {Text} from 'react-native';
 import {COLORS} from '../../constants/color';
 import CrossIcon from '../../assets/icons/cross';
 import AttachmentModel from '../attachmentModel/AttachmentModel';
-import {styles} from './styles';
+import {styles} from './AttachmentsStyles';
 
 export const Attachment = ({
   selectedFile,

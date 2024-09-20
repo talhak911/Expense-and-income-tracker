@@ -6,7 +6,7 @@ import AddIcon from '../../assets/icons/add';
 import TransactionIcon from '../../assets/icons/transaction';
 import {COLORS} from '../../constants/color';
 import {BottomTabBarButtonProps} from '@react-navigation/bottom-tabs';
-import {styles} from './styles';
+import {styles} from './AddButtonStyles';
 
 export const AddButton = ({props}: {props: BottomTabBarButtonProps}) => {
   const {

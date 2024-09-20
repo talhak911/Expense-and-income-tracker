@@ -1,5 +1,5 @@
 import {ActivityIndicator, Text, TouchableOpacity, View} from 'react-native';
-import styles from './styles';
+import styles from './SignInStyles';
 import {useSignIn} from './useSignIn';
 import {CustomInput} from '../../components/customInput/CustomInput';
 import {PasswordInput} from '../../components/passwordInput/PasswordInput';

@@ -1,15 +1,9 @@
 import React from 'react';
 import Svg, {G, Path} from 'react-native-svg';
 import {usePieChart} from './usePieChart';
+import { PieChartProps } from 'react-native-chart-kit/dist/PieChart';
 
-export type PieChartProps = {
-  data: {
-    amount: number;
-    color: string;
-  }[];
-};
-
-const Chart: React.FC<PieChartProps> = ({data}) => {
+const PieChart: React.FC<PieChartProps> = ({data}) => {
   const {createDonutSlice, total, centerX, centerY, radius} = usePieChart({
     data,
   });
@@ -49,4 +43,4 @@ const Chart: React.FC<PieChartProps> = ({data}) => {
   );
 };
 
-export default Chart;
+export default PieChart;

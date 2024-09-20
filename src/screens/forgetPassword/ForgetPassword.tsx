@@ -2,7 +2,7 @@ import {Text, View} from 'react-native';
 import {CustomButton} from '../../components/customButton/CustomButtom';
 import {CustomInput} from '../../components/customInput/CustomInput';
 import {useForgetPassword} from './useForgetPassword';
-import {styles} from './styles';
+import {styles} from './ForgetPasswordStyles';
 
 export default function ForgetPassword() {
   const {email, loading, setEmail, forgetPasswordPress} = useForgetPassword();

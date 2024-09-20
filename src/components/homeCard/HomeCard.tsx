@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import { styles } from './styles'
+import { styles } from './HomeCardStyles'
 import Transaction from '../../assets/icons/transaction'
 import { COLORS } from '../../constants/color'
 

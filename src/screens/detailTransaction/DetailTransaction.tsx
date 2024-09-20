@@ -5,7 +5,7 @@ import {BottomModel} from '../../components/bottomModel/BottomModel';
 import {useDetailTransaction} from './useDetailTransaction';
 import {Image} from 'react-native';
 import {DetailTransactionProps} from '../../types/types';
-import {styles} from './styles';
+import {styles} from './DetailTransactionStyles';
 import {ConfirmModal} from '../../components/confirmModal/confirmModal';
 
 export default function DetailTransaction({

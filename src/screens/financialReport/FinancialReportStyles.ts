@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {Height, Width} from '../../utils/responsive';
 import {COLORS} from '../../constants/color';
-import {FontInter} from '../../constants/fonts';
+import {FONT_INTER} from '../../constants/fonts';
 
 export const styles = StyleSheet.create({
   container: {flex: 1, backgroundColor: 'white', paddingHorizontal: Width(4)},
@@ -34,7 +34,7 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: 95,
     fontSize: 32,
-    fontFamily: FontInter,
+    fontFamily: FONT_INTER,
     fontWeight: 'bold',
     color: 'black',
   },

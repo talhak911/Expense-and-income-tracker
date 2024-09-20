@@ -1,5 +1,5 @@
 import {View, Text} from 'react-native';
-import {styles} from './styles';
+import {styles} from './BudgetStyles';
 
 export default function Budget() {
   return (
