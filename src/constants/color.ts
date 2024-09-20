@@ -24,7 +24,7 @@ export const COLORS = {
   gradientEffetPurple1: 'rgba(139, 80, 255, 0.2)',
 };
 
-export const categoryColors: CategoryColors = {
+export const CATEGORY_COLORS: CategoryColors = {
   Shopping: COLORS.yellow,
   Food: COLORS.red,
   Subscription: COLORS.purple,

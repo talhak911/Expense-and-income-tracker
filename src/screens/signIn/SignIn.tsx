@@ -4,7 +4,7 @@ import {useSignIn} from './useSignIn';
 import {CustomInput} from '../../components/customInput/CustomInput';
 import {PasswordInput} from '../../components/passwordInput/PasswordInput';
 import {CustomButton} from '../../components/customButton/CustomButtom';
-import {SignUpGoogle} from '../../components/signUpGoogle.tsx/SignUpGoogle';
+import {SignUpGoogle} from '../../components/signUpGoogle/SignUpGoogle';
 import {Width} from '../../utils/responsive';
 import {COLORS} from '../../constants/color';
 

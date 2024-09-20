@@ -1,7 +1,7 @@
 import {Text, View} from 'react-native';
 import {COLORS} from '../../constants/color';
 import {TransactionCardProps} from '../../types/types';
-import {CATEGORYICON} from '../../constants/categoryIcons';
+import {CATEGORY_ICON} from '../../constants/categoryIcons';
 import {useAppSelector} from '../../hooks/useStore';
 import {styles} from './styles';
 
@@ -15,7 +15,7 @@ export const TransactionCard = ({
   const currency = useAppSelector(state => state.transactions.currency);
   return (
     <View style={styles.container}>
-      {CATEGORYICON(category)}
+      {CATEGORY_ICON(category)}
       <View style={styles.containerContent}>
         <View style={styles.category}>
           <Text style={styles.categoryText}>{category}</Text>

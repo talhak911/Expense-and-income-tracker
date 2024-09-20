@@ -4,7 +4,7 @@ import ShoppingIcon from '../assets/icons/shopping';
 import SubscriptionIcon from '../assets/icons/subscription';
 import TransportationIcon from '../assets/icons/transportation';
 
-export const CATEGORYICON = (category: string) => {
+export const CATEGORY_ICON = (category: string) => {
   switch (category) {
     case 'Salary' || 'Passive Income':
       return <SalaryIcon />;

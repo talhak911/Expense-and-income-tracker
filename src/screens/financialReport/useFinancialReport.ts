@@ -1,4 +1,4 @@
-import {categoryColors} from '../../constants/color';
+import {CATEGORY_COLORS} from '../../constants/color';
 import {useAppSelector} from '../../hooks/useStore';
 import {CategoryData, FinancialReportResult} from '../../types/types';
 
@@ -24,7 +24,7 @@ export const useFinancialReport = (): FinancialReportResult => {
       if (!acc[category]) {
         acc[category] = {
           amount: 0,
-          color: categoryColors[category] || 'blue',
+          color: CATEGORY_COLORS[category] || 'blue',
           category,
         };
       }
@@ -38,7 +38,7 @@ export const useFinancialReport = (): FinancialReportResult => {
       if (!acc[category]) {
         acc[category] = {
           amount: 0,
-          color: categoryColors[category] || 'blue',
+          color: CATEGORY_COLORS[category] || 'blue',
           category,
         };
       }

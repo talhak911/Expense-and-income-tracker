@@ -7,7 +7,7 @@ import {PasswordInput} from '../../components/passwordInput/PasswordInput';
 import {Checkbox} from '../../components/checkBox/CheckBox';
 import {CustomInput} from '../../components/customInput/CustomInput';
 import {CustomButton} from '../../components/customButton/CustomButtom';
-import {SignUpGoogle} from '../../components/signUpGoogle.tsx/SignUpGoogle';
+import {SignUpGoogle} from '../../components/signUpGoogle/SignUpGoogle';
 import {Width} from '../../utils/responsive';
 import {COLORS} from '../../constants/color';
 
