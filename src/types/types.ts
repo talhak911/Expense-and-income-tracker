@@ -33,7 +33,22 @@ export type PieChartProps = {
     color: string;
   }[];
 };
+export type FIELDS_TYPE = {
+  label?: string;
+  value: string;
+  onChange: (text: string) => void;
+  placeholder: string;
+  secureInput?: boolean;
+  keyboardType?: 'default' | 'numeric' | 'email-address';
+}
 
+export type CustomInputProps = {
+  secureInput?:boolean,
+  editable?: boolean;
+  value: string;
+  placeHolder: string;
+  onChange: (i: string) => void;
+};
 export type AuthScreenOptions = {
   name: string;
   component: () => React.JSX.Element;

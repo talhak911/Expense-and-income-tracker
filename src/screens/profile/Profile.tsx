@@ -9,7 +9,7 @@ import LogoutIcon from '../../assets/icons/logout';
 import {BottomModel} from '../../components/bottomModel/BottomModel';
 import {styles} from './ProfileStyles.ts';
 import {BlinkingImage} from '../../components/loading/Loading.tsx';
-import {ConfirmModal} from '../../components/confirmModal/confirmModal.tsx';
+import { ConfirmModal } from '../../components/confirmModal/ConfirmModal.tsx';
 
 export default function Profile() {
   const {

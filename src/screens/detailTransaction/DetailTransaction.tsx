@@ -6,7 +6,7 @@ import {useDetailTransaction} from './useDetailTransaction';
 import {Image} from 'react-native';
 import {DetailTransactionProps} from '../../types/types';
 import {styles} from './DetailTransactionStyles';
-import {ConfirmModal} from '../../components/confirmModal/confirmModal';
+import { ConfirmModal } from '../../components/confirmModal/ConfirmModal';
 
 export default function DetailTransaction({
   route,
