@@ -22,7 +22,7 @@ export default function AddExpense() {
     selectedFile,
     description,
     currency,
-    addIncome,
+    addExpense,
     closeModal,
     setSelectedFile,
     setImage,
@@ -79,7 +79,7 @@ export default function AddExpense() {
           <View style={{alignItems:"center"}}>
           <CustomButton
               loading={loading}
-              onPress={addIncome}
+              onPress={addExpense}
               title="Continue"
             />
           </View>
