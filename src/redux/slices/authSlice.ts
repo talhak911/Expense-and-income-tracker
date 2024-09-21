@@ -70,9 +70,12 @@ export const signUp = createAsyncThunk(
         email,
         password,
       );
-      await response.user.sendEmailVerification()
+      await response.user.sendEmailVerification();
       const userToSave = response.user;
       await userToSave.updateProfile({displayName: name});
+      await firestore().collection('Users').doc(userToSave.uid).set({
+        email: userToSave.email,
+      });
 
       await auth().signOut();
     } catch (error: any) {
@@ -103,6 +106,33 @@ export const signUp = createAsyncThunk(
   },
 );
 
+export const forgetPassword = createAsyncThunk(
+  'auth/forgetPassword',
+  async (email: string, {rejectWithValue}) => {
+    try {
+      const userSnapshot = await firestore()
+        .collection('Users')
+        .where('email', '==', email)
+        .get();
+
+      if (userSnapshot.empty) {
+        Snackbar.show({
+          text: 'No user found',
+          backgroundColor: 'red',
+        });
+        return rejectWithValue('No user Found');
+      } else {
+        await auth().sendPasswordResetEmail(email);
+        Snackbar.show({
+          text: 'Email sent',
+          backgroundColor: 'green',
+        });
+      }
+    } catch (error: any) {
+      return rejectWithValue('Failed to send email');
+    }
+  },
+);
 export const updateEmail = createAsyncThunk(
   'auth/updateEmail',
   async (email: string, {rejectWithValue, dispatch}) => {
@@ -144,7 +174,6 @@ export const updateImage = createAsyncThunk(
   'auth/updateImage',
   async (uri: string) => {
     try {
-
       await auth().currentUser?.updateProfile({photoURL: uri});
       return uri;
     } catch (error) {
@@ -203,6 +232,7 @@ export const signUpWithGoogle = createAsyncThunk(
       const response = await auth().signInWithCredential(googleCredential);
       await firestore().collection('Users').doc(response.user.uid).set({
         name: response.user.displayName,
+        email: response.user.email,
       });
 
       const user = {
