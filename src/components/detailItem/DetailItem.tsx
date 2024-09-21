@@ -1,10 +1,5 @@
 import {View, Text} from 'react-native';
-
-export type DetailItemProps= {
-  label: string;
-  value: string;
-  styles: any;
-}
+import { DetailItemProps } from '../../types/types';
 
 export const DetailItem: React.FC<DetailItemProps> = ({label, value, styles}) => {
   return (

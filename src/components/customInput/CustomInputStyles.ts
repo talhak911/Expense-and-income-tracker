@@ -1,17 +1,21 @@
 import {StyleSheet} from 'react-native';
 import {COLORS} from '../../constants/color';
 export const styles = StyleSheet.create({
-  input: {
+  inputContainer: {
     height: 56,
-    alignSelf: 'center',
-    color: 'black',
-    width: '100%',
     borderRadius: 16,
-    overflow: 'hidden',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    paddingRight: 16,
+    alignItems: 'center',
     backgroundColor: 'white',
     borderWidth: 1,
-    fontSize: 16,
     borderColor: COLORS.lightGrey,
+  },
+  inputField: {
+    fontSize: 16,
+    color: 'black',
+    width: '90%',
     paddingLeft: 16,
   },
 });

@@ -40,6 +40,13 @@ export type FIELDS_TYPE = {
   placeholder: string;
   secureInput?: boolean;
   keyboardType?: 'default' | 'numeric' | 'email-address';
+  secureTextEntry?:boolean
+}
+
+export type DetailItemProps= {
+  label: string;
+  value: string;
+  styles: any;
 }
 
 export type CustomInputProps = {

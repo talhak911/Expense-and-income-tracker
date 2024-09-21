@@ -2,14 +2,13 @@ import {ActivityIndicator, Text, TouchableOpacity, View} from 'react-native';
 import styles from './SignUpStyles';
 import {useSignUp} from './useSignUp';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import React from 'react';
-import {PasswordInput} from '../../components/passwordInput/PasswordInput';
 import {Checkbox} from '../../components/checkBox/CheckBox';
 import {CustomInput} from '../../components/customInput/CustomInput';
 import {CustomButton} from '../../components/customButton/CustomButtom';
 import {SignUpGoogle} from '../../components/signUpGoogle/SignUpGoogle';
 import {Width} from '../../utils/responsive';
 import {COLORS} from '../../constants/color';
+import {SIGN_UP_FIELDS} from '../../constants/inputFields';
 
 export const SignUp = () => {
   const {
@@ -30,9 +29,22 @@ export const SignUp = () => {
     <View style={styles.container}>
       <KeyboardAwareScrollView keyboardShouldPersistTaps="always">
         <View style={styles.gap}>
-          <CustomInput onChange={setName} placeHolder="Name" value={name} />
-          <CustomInput onChange={setEmail} placeHolder="E-mail" value={email} />
-          <PasswordInput value={password} onChange={setPassword} />
+          {SIGN_UP_FIELDS(
+            name,
+            setName,
+            email,
+            setEmail,
+            password,
+            setPassword,
+          ).map((field, index) => (
+            <CustomInput
+              key={index}
+              value={field.value}
+              onChange={field.onChange}
+              placeHolder={field.placeholder}
+              secureInput={field.secureTextEntry}
+            />
+          ))}
         </View>
         {loading ? (
           <View style={{marginTop: 16}}>

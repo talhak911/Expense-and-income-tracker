@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-export const usePasswordInput = () => {
+export const useCustomInput = () => {
   const [passwordVisibility, setPasswordVisibility] = useState(true);
   const [rightIcon, setRightIcon] = useState('eye');
   const handlePasswordVisibility = () => {

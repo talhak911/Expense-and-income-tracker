@@ -2,11 +2,11 @@ import {ActivityIndicator, Text, TouchableOpacity, View} from 'react-native';
 import styles from './SignInStyles';
 import {useSignIn} from './useSignIn';
 import {CustomInput} from '../../components/customInput/CustomInput';
-import {PasswordInput} from '../../components/passwordInput/PasswordInput';
 import {CustomButton} from '../../components/customButton/CustomButtom';
 import {SignUpGoogle} from '../../components/signUpGoogle/SignUpGoogle';
 import {Width} from '../../utils/responsive';
 import {COLORS} from '../../constants/color';
+import {SIGN_IN_FIELDS} from '../../constants/inputFields';
 
 export const SignIn = () => {
   const {
@@ -23,8 +23,17 @@ export const SignIn = () => {
   return (
     <View style={styles.container}>
       <View style={styles.containerContent}>
-        <CustomInput value={email} placeHolder="E-mail" onChange={setEmail} />
-        <PasswordInput onChange={setPassword} value={password} />
+        {SIGN_IN_FIELDS(email, setEmail, password, setPassword).map(
+          (field, index) => (
+            <CustomInput
+              key={index}
+              value={field.value}
+              onChange={field.onChange}
+              placeHolder={field.placeholder}
+              secureInput={field.secureTextEntry}
+            />
+          ),
+        )}
       </View>
       {loading ? (
         <View style={{marginTop: 16}}>
@@ -49,7 +58,7 @@ export const SignIn = () => {
           </View>
           <View style={styles.footerView}>
             <Text style={styles.footerText}>
-              Do not have an account?{' '}
+              Do not have an account?
               <Text onPress={navigateToSignUp} style={styles.footerLink}>
                 Sign Up
               </Text>
