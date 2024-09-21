@@ -3,10 +3,11 @@ import {ScrollView} from 'react-native-gesture-handler';
 import {CustomButton} from '../../components/customButton/CustomButtom';
 import {BottomModel} from '../../components/bottomModel/BottomModel';
 import {useDetailTransaction} from './useDetailTransaction';
-import {Image} from 'react-native';
 import {DetailTransactionProps} from '../../types/types';
 import {styles} from './DetailTransactionStyles';
-import { ConfirmModal } from '../../components/confirmModal/ConfirmModal';
+import {ConfirmModal} from '../../components/confirmModal/ConfirmModal';
+import {DetailItem} from '../../components/detailItem/DetailItem';
+import {BlinkingImage} from '../../components/loading/Loading';
 
 export default function DetailTransaction({
   route,
@@ -59,18 +60,9 @@ export default function DetailTransaction({
         </View>
       </View>
       <View style={styles.floatingCard}>
-        <View style={styles.floatingCardTextContainer}>
-          <Text style={styles.greyText}>Type</Text>
-          <Text style={styles.bold_16}>{type}</Text>
-        </View>
-        <View style={styles.floatingCardTextContainer}>
-          <Text style={styles.greyText}>Category</Text>
-          <Text style={styles.bold_16}>{category}</Text>
-        </View>
-        <View style={styles.floatingCardTextContainer}>
-          <Text style={styles.greyText}>Wallet</Text>
-          <Text style={styles.bold_16}>Wallet</Text>
-        </View>
+        <DetailItem label="Type" value={type} styles={styles} />
+        <DetailItem label="Category" value={category} styles={styles} />
+        <DetailItem label="Wallet" value="Wallet" styles={styles} />
       </View>
 
       <ScrollView>
@@ -80,7 +72,7 @@ export default function DetailTransaction({
           <Text style={styles.description}>{description}</Text>
           <Text style={styles.heading}>Attachment</Text>
           {!url && <Text style={styles.description}>No Attachment</Text>}
-          {url && <Image style={styles.image} source={{uri: url}} />}
+          {url && <BlinkingImage style={styles.image} uri={url} />}
         </View>
       </ScrollView>
 
