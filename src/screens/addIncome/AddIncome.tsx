@@ -10,7 +10,7 @@ import CustomDropdown from '../../components/customDropDown/CustomDropDown';
 import {INCOMES} from '../../constants/constants';
 import {useAddIncome} from './useAddIncome';
 import {TransactionStatusModal} from '../../components/transactionStatusModal/TransactionStatusModal';
-import {styles} from '../addExpense/styles';
+import {styles} from '../addExpense/AddExpenseStyles';
 
 export default function AddIncome() {
   const {

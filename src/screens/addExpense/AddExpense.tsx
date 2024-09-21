@@ -10,7 +10,7 @@ import CustomDropdown from '../../components/customDropDown/CustomDropDown';
 import {EXPENSES} from '../../constants/constants';
 import {useAddExpense} from './useAddExpense';
 import {TransactionStatusModal} from '../../components/transactionStatusModal/TransactionStatusModal';
-import {styles} from './styles';
+import {styles} from './AddExpenseStyles';
 
 export default function AddExpense() {
   const {
