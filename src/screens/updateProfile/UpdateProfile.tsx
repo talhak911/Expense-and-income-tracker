@@ -9,17 +9,8 @@ import {useUpdateProfile} from './useUpdateProfile';
 import {styles} from './UpdateProfileStyles';
 import {IMAGES} from '../../constants/constants';
 export default function UpdateProfile() {
-  const {
-    user,
-    name,
-    email,
-    image,
-    loading,
-    handleImagePicker,
-    onChangeEmail,
-    onChangeName,
-    onPressUpdate,
-  } = useUpdateProfile();
+  const {user, fields, image, loading, handleImagePicker, onPressUpdate} =
+    useUpdateProfile();
 
   return (
     <SafeAreaView style={styles.container}>
@@ -28,7 +19,7 @@ export default function UpdateProfile() {
           <View>
             <Image
               source={
-                image||user?.photoURL
+                image || user?.photoURL
                   ? {uri: image || user?.photoURL}
                   : IMAGES.profile.toString()
               }
@@ -43,22 +34,16 @@ export default function UpdateProfile() {
           </View>
         </View>
         <View style={styles.bottomView}>
-          <View>
-            <Text style={styles.headingText}>Email</Text>
-            <CustomInput
-              onChange={onChangeEmail}
-              placeHolder="youremail@xyz.com"
-              value={email}
-            />
-          </View>
-          <View>
-            <Text style={styles.headingText}>Name</Text>
-            <CustomInput
-              onChange={onChangeName}
-              placeHolder="Talha Khan"
-              value={name}
-            />
-          </View>
+          {fields.map((field, index) => (
+            <View key={index}>
+              <Text style={styles.headingText}>{field.label}</Text>
+              <CustomInput
+                value={field.value}
+                onChange={field.onChange}
+                placeHolder={field.placeholder}
+              />
+            </View>
+          ))}
         </View>
         <View style={styles.buttonEnd}>
           <View style={styles.buttonContainer}>

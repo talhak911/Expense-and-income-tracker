@@ -36,9 +36,15 @@ export const styles = StyleSheet.create({
     gap: Height(2.8),
   },
   buttonContainer: {
-    alignItems:"center",
+    alignItems: 'center',
     paddingHorizontal: Width(4),
     paddingBottom: Height(2),
     backgroundColor: 'white',
+  },
+  cannotChange: {
+    marginTop: 20,
+    marginHorizontal: 20,
+    textAlign: 'center',
+    color: 'black',
   },
 });

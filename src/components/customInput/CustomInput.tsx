@@ -1,22 +1,20 @@
 import {TextInput} from 'react-native';
 import {styles} from './CustomInputStyles';
 import {COLORS} from '../../constants/color';
+import { CustomInputProps } from '../../types/types';
 
 export const CustomInput = ({
   value,
   placeHolder,
   editable,
   onChange,
-}: {
-  editable?: boolean;
-  value: string;
-  placeHolder: string;
-  onChange: (i: string) => void;
-}) => {
+  secureInput
+}: CustomInputProps) => {
   return (
     <TextInput
       style={styles.input}
       placeholder={placeHolder}
+      secureTextEntry={secureInput}
       placeholderTextColor={COLORS.grey}
       onChangeText={text => onChange(text)}
       value={value}

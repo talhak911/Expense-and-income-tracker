@@ -4,7 +4,8 @@ import {changePassword} from '../../redux/slices/authSlice';
 import Snackbar from 'react-native-snackbar';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '../../types/types';
-
+import auth from '@react-native-firebase/auth';
+import {PASSWORD_RESET_FIELDS} from '../../constants/inputFields';
 export const useResetPassword = () => {
   const navigation = useNavigation<StackNavigationProp>();
   const dispatch = useAppDispatch();
@@ -13,18 +14,19 @@ export const useResetPassword = () => {
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const email = useAppSelector(state => state.auth.user?.email);
-  const onChangePassword = (text: string) => {
-    setPassword(text);
-  };
+  const user = auth().currentUser;
+  const canChangePassword = !user?.providerData.some(
+    provider => provider.providerId === 'google.com',
+  );
 
-  const onChangeNewPassword = (text: string) => {
-    setNewPassword(text);
-  };
-
-  const onChangeConfirmPassword = (text: string) => {
-    setConfirmPassword(text);
-  };
-
+  const fields = PASSWORD_RESET_FIELDS(
+    password,
+    setPassword,
+    newPassword,
+    setNewPassword,
+    confirmPassword,
+    setConfirmPassword,
+  );
   const resetPassword = async () => {
     try {
       setLoading(true);
@@ -45,13 +47,14 @@ export const useResetPassword = () => {
           const res = await dispatch(
             changePassword({email, currentPassword: password, newPassword}),
           );
-          if (res.meta.requestStatus === 'fulfilled')
+          if (res.meta.requestStatus === 'fulfilled') {
             Snackbar.show({
               text: 'Password changed successfully',
               duration: Snackbar.LENGTH_SHORT,
               backgroundColor: 'green',
             });
-          navigation.navigate('Tab');
+            navigation.navigate('Tab');
+          }
         }
       }
     } catch (error) {
@@ -61,13 +64,9 @@ export const useResetPassword = () => {
     }
   };
   return {
-    password,
-    newPassword,
-    confirmPassword,
     loading,
-    onChangePassword,
-    onChangeNewPassword,
-    onChangeConfirmPassword,
+    canChangePassword,
+    fields,
     resetPassword,
   };
 };

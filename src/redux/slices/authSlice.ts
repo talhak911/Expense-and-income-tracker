@@ -113,7 +113,7 @@ export const updateEmail = createAsyncThunk(
         Snackbar.show({
           text: 'This operation requires recent authentication. Log in again before retrying this request.',
           backgroundColor: 'red',
-          duration: Snackbar.LENGTH_INDEFINITE,
+          duration: Snackbar.LENGTH_LONG,
           numberOfLines: 3,
           action: {
             text: 'Logout',

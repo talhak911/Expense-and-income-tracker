@@ -9,6 +9,7 @@ import Snackbar from 'react-native-snackbar';
 import {launchImageLibrary} from 'react-native-image-picker';
 import {isValidEmail} from '../../utils/utils';
 import {uploadAttachment} from '../../utils/uploadAttachment';
+import {UPDATE_PROFILE_FIELDS} from '../../constants/inputFields';
 
 export const useUpdateProfile = () => {
   const uid = useAppSelector(state => state.auth.user?.uid);
@@ -17,13 +18,10 @@ export const useUpdateProfile = () => {
   const user = useAppSelector(state => state.auth.user);
   const [email, setEmail] = useState(user?.email as string);
   const [name, setName] = useState(user?.displayName as string);
-  const [image, setImage] = useState<string|null>(null);
-  const onChangeName = (e: string) => {
-    setName(e);
-  };
-  const onChangeEmail = (e: string) => {
-    setEmail(e);
-  };
+  const [image, setImage] = useState<string | null>(null);
+
+  const fields = UPDATE_PROFILE_FIELDS(name, setName, email, setEmail);
+
   const handleImagePicker = () => {
     launchImageLibrary({mediaType: 'photo'}, response => {
       if (
@@ -84,13 +82,10 @@ export const useUpdateProfile = () => {
   };
   return {
     onPressUpdate,
-    onChangeEmail,
-    onChangeName,
     handleImagePicker,
+    fields,
     image,
     loading,
     user,
-    name,
-    email,
   };
 };
