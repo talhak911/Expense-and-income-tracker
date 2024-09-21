@@ -15,6 +15,9 @@ export const useAddExpense = () => {
   const [category, setCategory] = useState('');
   const uid = useAppSelector(state => state.auth.user?.uid);
   const currency = useAppSelector(state => state.transactions.currency);
+  const balance =useAppSelector(state=>state.transactions.accountBalance
+  )
+
   const closeModal = () => {
     setModalVisible(false);
   };
@@ -31,38 +34,46 @@ export const useAddExpense = () => {
     setAttachment(i);
   };
   const dispatch = useAppDispatch();
-  const addIncome = async () => {
+  const addExpense = async () => {
     try {
       setLoading(true);
-      if (!amount || !category) {
+      if (!amount || !category || parseFloat(amount) < 0) {
         Snackbar.show({
-          text: 'Enter Amount and Category',
+          text: 'Enter positive Amount and Category',
           backgroundColor: 'red',
         });
       } else {
         if (uid) {
-          const uploadedUrl = await uploadAttachment(attachment, uid);
-          const res = await dispatch(
-            addTransaction({
-              amount: parseFloat(amount),
-              category,
-              description,
-              type: 'expense',
-              uid,
-              attachment_url: uploadedUrl,
-            }),
-          );
-
-          if (res.meta.requestStatus === 'fulfilled') {
-            setAmount('');
-            setDescription('');
-            setCategory('');
-            setAttachment('');
-            setSelectedFile(null);
-            setImage('');
-            setModalVisible(true);
-            setTimeout(() => setModalVisible(false), 3000);
+         if(balance-parseFloat(amount) <0){
+            Snackbar.show({
+              text:`Can't add Expense your accout balance is ${balance}`,
+              backgroundColor:"red"
+            })
           }
+   else{
+    const uploadedUrl = await uploadAttachment(attachment, uid);
+    const res = await dispatch(
+      addTransaction({
+        amount: parseFloat(amount),
+        category,
+        description,
+        type: 'expense',
+        uid,
+        attachment_url: uploadedUrl,
+      }),
+    );
+
+    if (res.meta.requestStatus === 'fulfilled') {
+      setAmount('');
+      setDescription('');
+      setCategory('');
+      setAttachment('');
+      setSelectedFile(null);
+      setImage('');
+      setModalVisible(true);
+      setTimeout(() => setModalVisible(false), 3000);
+    }
+   }
         }
       }
     } catch (error) {
@@ -85,7 +96,7 @@ export const useAddExpense = () => {
     closeModal,
     setSelectedFile,
     setImage,
-    addIncome,
+    addExpense,
     onChangeAmount,
     onChangeAttachment,
     onChangeDescription,
