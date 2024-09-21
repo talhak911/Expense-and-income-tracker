@@ -35,9 +35,9 @@ export const useAddIncome = () => {
   const addIncome = async () => {
     try {
       setLoading(true);
-      if (!amount || !category) {
+      if (!amount || !category || parseFloat(amount)<0) {
         Snackbar.show({
-          text: 'Enter Amount and Category',
+          text: 'Enter positive Amount and Category',
           backgroundColor: 'red',
         });
       } else {
