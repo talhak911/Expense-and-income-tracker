@@ -4,6 +4,7 @@ import {TransactionsSliceType, TransactionType} from '../../types/types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const initialState: TransactionsSliceType = {
+  accountBalance:0,
   loading: false,
   transactions: [],
   currency: 'Rs ',
@@ -106,6 +107,9 @@ export const transactionsSlice = createSlice({
     setCurrency(state, action) {
       state.currency = action.payload;
     },
+    setBalance(state,action){
+      state.accountBalance=action.payload
+    }
   },
   extraReducers: builder => {
     builder
@@ -120,6 +124,6 @@ export const transactionsSlice = createSlice({
   },
 });
 
-export const {addTransactionToState, setTransactions, setCurrency} =
+export const {addTransactionToState, setTransactions, setCurrency,setBalance} =
   transactionsSlice.actions;
 export default transactionsSlice.reducer;

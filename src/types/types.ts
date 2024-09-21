@@ -165,6 +165,7 @@ export type AuthNavigationProp = NativeStackNavigationProp<AuthStackParamList>;
 export type TabNavigationProps = BottomTabNavigationProp<TabParamsList>;
 
 export type TransactionsSliceType = {
+  accountBalance:0,
   transactions: TransactionType[];
   loading: boolean;
   currency: string;
