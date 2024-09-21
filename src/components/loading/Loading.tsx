@@ -1,5 +1,4 @@
-import React from 'react';
-import { Image, View, Animated, StyleSheet, StyleProp } from 'react-native';
+import { Image, View, Animated, StyleSheet } from 'react-native';
 import { useLoading } from './useLoading';
 import { IMAGES } from '../../constants/constants';
 
